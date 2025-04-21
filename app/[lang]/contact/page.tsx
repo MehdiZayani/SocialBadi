@@ -3,7 +3,8 @@ import Footer from "../../../components/footer"
 import { getTranslations } from '../../../lib/i18n';
 import * as React from 'react'
 
-export default async function contact({ params }: { params: {  lang: string } }) {
+export default async function contact(props: { params: Promise<{  lang: string }> }) {
+    const params = await props.params;
     const translations = await getTranslations(params.lang)
     return (
         <>
