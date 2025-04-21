@@ -1,0 +1,38 @@
+{
+  "contact":"Kontakt",
+  "products":"Produkte",
+  "markets":"Märkte",
+  "contactus":"Kontaktieren Sie uns",
+  "contactform":{
+    "sendusmessage":"Senden Sie uns eine Nachricht",
+    "yourname":"Ihr Name",
+    "email":"E-Mail-Adresse",
+    "phonenumber":"Telefonnummer",
+    "companyname":"Name der Firma",
+    "message":"Nachricht",
+    "send":"Schicken"
+  },
+  "sectionhome": {
+    "whoarewe":{
+      "title":"Wer sind wir?",
+      "desc":"Seit über 70 Jahren ist AGRU Kunststofftechnik weltweit führend in der Herstellung und im Vertrieb innovativer Kunststofflösungen. Unser in Österreich gegründetes Unternehmen hat sich als wichtiger Player in anspruchsvollen Branchen wie z.B. etabliert",
+      "descColored":"die chemische Industrie, Wasseraufbereitung, Bauwesen und Energie.",
+      "desc2":"Mit unübertroffenem Fachwissen und einem ständigen Bekenntnis zur Qualität bieten wir ein umfassendes Sortiment an",
+      "desc2Colored":"Rohre, Platten, Formstücke, Membranen und Beschichtungssysteme",
+      "desc21":"Hergestellt aus Hochleistungspolymeren, die Haltbarkeit und Sicherheit für kritische Anwendungen garantieren."
+    },
+    "ourproducts":"UNSERE PRODUKTE",
+    "highquality":{
+      "title":"Überlegene Qualität",
+      "desc":"Zertifizierte Produkte, die den strengsten internationalen Standards entsprechen."
+    },
+    "inovation":{
+      "title":"Kontinuierliche Innovation",
+      "desc":"Modernste Lösungen, angepasst an die spezifischen Anforderungen jedes Projekts."
+    },
+    "durability":{
+      "title":"Nachhaltiges Engagement",
+      "desc":"Umweltbewusste Produktion zur Minimierung unseres ökologischen Fußabdrucks."
+    }
+}
+}

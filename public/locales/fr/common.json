@@ -1,0 +1,34 @@
+{
+    "contact":"Contact",
+    "products":"Produits",
+    "markets":"Marchés",
+    "contactus":"Contactez-nous",
+    "contactform":{
+      "sendusmessage":"Envoyez-nous un message",
+      "yourname":"Votre nom",
+      "email":"Adresse email",
+      "phonenumber":"Numéro de téléphone",
+      "companyname":"Nom de l'entreprise",
+      "message":"Message",
+      "send":"Envoyer"
+    },
+    "sectionhome": {
+        "title":"Promotez vos marques, engagez le public, stimulez vos ventes et la croissance.",
+        "subtitle":"Faites la promotion de produits, de services ou de marques via des canaux numériques pour atteindre et engager efficacement un public ciblé.",
+        "text1":"Personnel hautement qualifié",
+        "text2":"Garantie de remboursement à 100%",
+        "text3":"Paiement en ligne sécurisé et sécurisé",
+        "intro":{
+          "title":"Voix en temps réel"
+        },
+        "description":{
+          "text1":"Générez des voix IA aussi réelles que celles des humains.",
+          "text2":"Déployez partout",
+          "text3":"au Web, au téléphone, aux applications et au-delà.",
+          "text4":"Disponible 24h/24 et 7j/7 pour répondre aux questions,",
+          "text5":"Planifiez un rendez-vous ou effectuez un achat."    
+        }
+    }
+  }
+    
+  

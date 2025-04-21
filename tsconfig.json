@@ -22,6 +22,6 @@
       "@/*": ["./*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "app/[lang]/contact/page.jsx", "components/carouselproducts.jsx", "components/carouselproducts.jsx", "node_modules/dictionaries.ts", "app/[lang]/components/animations/InfiniteScrollButton.jsx", "app/[lang]/components/Intro/index.jsx"],
   "exclude": ["node_modules"]
 }

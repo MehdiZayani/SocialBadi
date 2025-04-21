@@ -1,0 +1,32 @@
+{
+  "contact":"Contact",
+  "products":"Products",
+  "markets":"Markets",
+  "contactus":"Contact us",
+  "contactform":{
+    "sendusmessage":"Send us a message",
+    "yourname":"Your name",
+    "email":"Email address",
+    "phonenumber":"Phone number",
+    "companyname":"Company name",
+    "message":"Message",
+    "send":"Send"
+  },
+  "sectionhome": {
+      "title":"Promote brands, engage audiences, drive sales, and growth.",
+      "subtitle":"Promote products, services, or brands through digital channels to reach and engage a targeted audience effectively.",
+      "text1":"Highly qualified personnel",
+      "text2":"100% money back guarantee",
+      "text3":"Secured & safe online payment",        
+      "intro":{
+        "title":"Real-time voice intelligence"
+      },
+      "description":{
+        "text1":"Generate AI voices as real as Humans.",
+        "text2":"Deploy everywhere",
+        "text3":"to web, to phone, to apps, and beyond.",
+        "text4":"Available 24/7 to answer questions,",
+        "text5":"Schedule an appointment, or complete a purchase."    
+      }
+    }
+}
