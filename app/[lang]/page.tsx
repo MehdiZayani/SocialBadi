@@ -520,7 +520,7 @@ function ContactSection({ t, locale }: { t: any; locale: string }) {
 }
 
 // Footer
-function Footer({ t }: { t: any }) {
+function Footer({ t, locale }: { t: any; locale: string }) {
   return (
     <footer className="bg-black text-white py-20 border-t border-white/10">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -538,55 +538,63 @@ function Footer({ t }: { t: any }) {
               {t.footer.description}
             </p>
             <div className="flex gap-4">
-              {['T', 'L', 'G', 'Y'].map((social) => (
-                <a
-                  key={social}
-                  href="#"
-                  className="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center hover:bg-blue-600 hover:border-blue-600 transition-all duration-300"
-                  title={social}
-                >
-                  <span className="text-xs font-bold">{social}</span>
-                </a>
-              ))}
+              <a
+                href="https://www.linkedin.com/company/socialbadi"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center hover:bg-blue-600 hover:border-blue-600 transition-all duration-300"
+                title="LinkedIn"
+              >
+                <span className="text-xs font-bold">in</span>
+              </a>
             </div>
           </div>
 
           <div>
             <h3 className="text-lg font-semibold mb-4">{t.footer.product.title}</h3>
             <ul className="space-y-3">
-              {t.footer.product.links.map((link: any, index: number) => (
-                <li key={index}>
-                  <a href="#" className="text-gray-400 hover:text-white transition-colors text-sm">
-                    {link}
-                  </a>
-                </li>
-              ))}
+              <li>
+                <a href={`/${locale}#features`} className="text-gray-400 hover:text-white transition-colors text-sm">
+                  {t.nav.features}
+                </a>
+              </li>
+              <li>
+                <a href={`/${locale}#solutions`} className="text-gray-400 hover:text-white transition-colors text-sm">
+                  {t.nav.solutions}
+                </a>
+              </li>
+              <li>
+                <a href={`/${locale}#pricing`} className="text-gray-400 hover:text-white transition-colors text-sm">
+                  {t.nav.pricing}
+                </a>
+              </li>
             </ul>
           </div>
 
           <div>
             <h3 className="text-lg font-semibold mb-4">{t.footer.company.title}</h3>
             <ul className="space-y-3">
-              {t.footer.company.links.map((link: any, index: number) => (
-                <li key={index}>
-                  <a href="#" className="text-gray-400 hover:text-white transition-colors text-sm">
-                    {link}
-                  </a>
-                </li>
-              ))}
+              <li>
+                <a href={`/${locale}/contact`} className="text-gray-400 hover:text-white transition-colors text-sm">
+                  {t.nav.contact}
+                </a>
+              </li>
+              <li>
+                <a href="https://www.linkedin.com/company/socialbadi" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition-colors text-sm">
+                  LinkedIn
+                </a>
+              </li>
             </ul>
           </div>
 
           <div>
             <h3 className="text-lg font-semibold mb-4">{t.footer.resources.title}</h3>
             <ul className="space-y-3">
-              {t.footer.resources.links.map((link: any, index: number) => (
-                <li key={index}>
-                  <a href="#" className="text-gray-400 hover:text-white transition-colors text-sm">
-                    {link}
-                  </a>
-                </li>
-              ))}
+              <li>
+                <a href={`/${locale}`} className="text-gray-400 hover:text-white transition-colors text-sm">
+                  {t.nav.home}
+                </a>
+              </li>
             </ul>
           </div>
         </div>
@@ -596,9 +604,8 @@ function Footer({ t }: { t: any }) {
             {t.footer.copyright}
           </p>
           <div className="flex gap-6 text-sm text-gray-400">
-            <a href="#" className="hover:text-white transition-colors">{t.footer.legal}</a>
-            <a href="#" className="hover:text-white transition-colors">{t.footer.privacy}</a>
-            <a href="#" className="hover:text-white transition-colors">{t.footer.cookies}</a>
+            <a href={`/${locale}/contact`} className="hover:text-white transition-colors">{t.footer.legal}</a>
+            <a href={`/${locale}/contact`} className="hover:text-white transition-colors">{t.footer.privacy}</a>
           </div>
         </div>
       </div>
@@ -677,7 +684,7 @@ export default function App() {
       <SolutionsSection t={t} />
       <PricingSection t={t} locale={locale} />
       <ContactSection t={t} locale={locale} />
-      <Footer t={t} />
+      <Footer t={t} locale={locale} />
     </div>
   );
 }
