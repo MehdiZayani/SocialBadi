@@ -64,7 +64,6 @@ export default function Navbar({ locale = 'fr', setLocale, translations, showCTA
     { label: currentTranslations.nav.home, href: `/${locale}` },
     { label: currentTranslations.nav.features, href: `/${locale}#features` },
     { label: currentTranslations.nav.solutions, href: `/${locale}#solutions` },
-    { label: currentTranslations.nav.pricing, href: `/${locale}/pricing` },
     { label: currentTranslations.nav.contact, href: `/${locale}/contact` }
   ];
 

@@ -86,7 +86,6 @@ function Navbar({ t, locale, setLocale }: { t: any; locale: any; setLocale: any 
     { label: t.nav.home, href: '#home' },
     { label: t.nav.features, href: '#features' },
     { label: t.nav.solutions, href: '#solutions' },
-    { label: t.nav.pricing, href: '/pricing' },
     { label: t.nav.contact, href: '/contact' }
   ];
   const handleLocaleChange = (newLocale: any) => {
