@@ -1,34 +1,143 @@
 {
-    "contact":"Contact",
-    "products":"Produits",
-    "markets":"Marchés",
-    "contactus":"Contactez-nous",
-    "contactform":{
-      "sendusmessage":"Envoyez-nous un message",
-      "yourname":"Votre nom",
-      "email":"Adresse email",
-      "phonenumber":"Numéro de téléphone",
-      "companyname":"Nom de l'entreprise",
-      "message":"Message",
-      "send":"Envoyer"
+    "nav": {
+      "home": "Accueil",
+      "features": "Fonctionnalités",
+      "solutions": "Solutions",
+      "pricing": "Tarifs",
+      "contact": "Contact",
+      "cta": "Commencer"
     },
-    "sectionhome": {
-        "title":"Promotez vos marques, engagez le public, stimulez vos ventes et la croissance.",
-        "subtitle":"Faites la promotion de produits, de services ou de marques via des canaux numériques pour atteindre et engager efficacement un public ciblé.",
-        "text1":"Personnel hautement qualifié",
-        "text2":"Garantie de remboursement à 100%",
-        "text3":"Paiement en ligne sécurisé et sécurisé",
-        "intro":{
-          "title":"Voix en temps réel"
+    "hero": {
+      "badge": "Propulsé par l'IA de nouvelle génération",
+      "title1": "Transformez Votre",
+      "title2": "Business avec l'IA",
+      "subtitle": "Des agents vocaux intelligents disponibles 24/7 pour",
+      "action1": "répondre",
+      "action2": "planifier",
+      "action3": "convertir",
+      "ctaPrimary": "Démarrer gratuitement",
+      "ctaSecondary": "Voir la démo",
+      "stats": {
+        "clients": "Clients actifs",
+        "uptime": "Disponibilité",
+        "conversations": "Conversations",
+        "satisfaction": "Satisfaction"
+      },
+      "socialProof": "Rejoignez",
+      "companies": "entreprises",
+      "trust": "qui nous font confiance"
+    },
+    "intro": {
+      "title": "L'IA qui travaille pour vous"
+    },
+    "features": {
+      "badge": "Fonctionnalités",
+      "title": "Tout ce dont vous avez besoin",
+      "subtitle": "Des outils puissants pour automatiser et optimiser votre croissance",
+      "items": [
+        {
+          "title": "Agents Vocaux IA",
+          "description": "Des conversations naturelles et fluides qui convertissent vos visiteurs en clients."
         },
-        "description":{
-          "text1":"Générez des voix IA aussi réelles que celles des humains.",
-          "text2":"Déployez partout",
-          "text3":"au Web, au téléphone, aux applications et au-delà.",
-          "text4":"Disponible 24h/24 et 7j/7 pour répondre aux questions,",
-          "text5":"Planifiez un rendez-vous ou effectuez un achat."    
+        {
+          "title": "Chatbots Intelligents",
+          "description": "Engagement client 24/7 avec des réponses instantanées et personnalisées."
+        },
+        {
+          "title": "Qualification de Leads",
+          "description": "Identification et notation automatique des prospects les plus prometteurs."
+        },
+        {
+          "title": "Prise de Rendez-vous",
+          "description": "Système de planification automatisé intégré à votre calendrier."
+        },
+        {
+          "title": "Sécurité Maximale",
+          "description": "Protection des données conforme RGPD avec chiffrement de bout en bout."
+        },
+        {
+          "title": "Performance Optimale",
+          "description": "Temps de réponse ultra-rapides pour une expérience utilisateur fluide."
         }
+      ]
+    },
+    "solutions": {
+      "title": "Solutions par Secteur",
+      "subtitle": "Des solutions sur mesure adaptées à votre industrie",
+      "learnMore": "En savoir plus",
+      "items": [
+        {
+          "title": "E-Commerce",
+          "description": "Augmentez vos ventes avec des assistants virtuels intelligents",
+          "features": ["Support client 24/7", "Recommandations produits", "Suivi des commandes"]
+        },
+        {
+          "title": "Services B2B",
+          "description": "Qualifiez et convertissez vos leads automatiquement",
+          "features": ["Qualification automatique", "Prise de RDV", "CRM intégré"]
+        },
+        {
+          "title": "Santé & Bien-être",
+          "description": "Gestion des rendez-vous et rappels automatisés",
+          "features": ["Planification intelligente", "Rappels patients", "Conformité HIPAA"]
+        },
+        {
+          "title": "Immobilier",
+          "description": "Captez et qualifiez vos prospects immobiliers",
+          "features": ["Visite virtuelle", "Qualification acheteurs", "Suivi prospects"]
+        }
+      ]
+    },
+    "pricing": {
+      "title": "Tarifs Transparents",
+      "subtitle": "Choisissez le plan qui vous convient",
+      "popular": "Plus populaire",
+      "cta": "Commencer",
+      "perMonth": "€/mois",
+      "plans": [
+        {
+          "name": "Starter",
+          "price": "120€",
+          "description": "Pour les petites entreprises",
+          "features": ["500 conversations/mois", "1 agent IA", "Support email", "Intégrations basiques"]
+        },
+        {
+          "name": "Business",
+          "price": "600€",
+          "description": "Pour les entreprises en croissance",
+          "features": ["3000 conversations/mois", "jusqu'a 5 agents IA", "Support prioritaire", "Toutes les intégrations", "Analyses avancées"]
+        },
+        {
+          "name": "Enterprise",
+          "price": "Sur mesure",
+          "description": "Pour les grandes entreprises",
+          "features": ["Conversations illimitées", "Agents IA illimités", "Support dédié 24/7", "Analytics & optimisation", "SLA garanti"]
+        }
+      ]
+    },
+    "contact": {
+      "title": "Prêt à commencer ?",
+      "subtitle": "Rejoignez des milliers d'entreprises qui transforment leur croissance avec l'IA",
+      "ctaPrimary": "Démarrer gratuitement",
+      "ctaSecondary": "Planifier une démo"
+    },
+    "footer": {
+      "description": "Transformez votre business avec des agents IA qui travaillent 24/7 pour engager vos clients et accélérer votre croissance.",
+      "copyright": "© 2025 SocialBadi. Tous droits réservés par Badi Corp.",
+      "legal": "Mentions légales",
+      "privacy": "Politique de confidentialité",
+      "cookies": "Cookies",
+      "product": {
+        "title": "Produit",
+        "links": ["Fonctionnalités", "Tarifs", "Intégrations", "API"]
+      },
+      "company": {
+        "title": "Entreprise",
+        "links": ["À propos", "Carrières", "Blog", "Presse"]
+      },
+      "resources": {
+        "title": "Ressources",
+        "links": ["Documentation", "Guides", "Webinaires", "Support"]
+      }
     }
   }
-    
-  

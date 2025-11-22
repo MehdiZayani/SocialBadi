@@ -1,32 +1,143 @@
 {
-  "contact":"Contact",
-  "products":"Products",
-  "markets":"Markets",
-  "contactus":"Contact us",
-  "contactform":{
-    "sendusmessage":"Send us a message",
-    "yourname":"Your name",
-    "email":"Email address",
-    "phonenumber":"Phone number",
-    "companyname":"Company name",
-    "message":"Message",
-    "send":"Send"
-  },
-  "sectionhome": {
-      "title":"Promote brands, engage audiences, drive sales, and growth.",
-      "subtitle":"Promote products, services, or brands through digital channels to reach and engage a targeted audience effectively.",
-      "text1":"Highly qualified personnel",
-      "text2":"100% money back guarantee",
-      "text3":"Secured & safe online payment",        
-      "intro":{
-        "title":"Real-time voice intelligence"
+    "nav": {
+      "home": "Home",
+      "features": "Features",
+      "solutions": "Solutions",
+      "pricing": "Pricing",
+      "contact": "Contact",
+      "cta": "Get Started"
+    },
+    "hero": {
+      "badge": "Powered by next-generation AI",
+      "title1": "Transform Your",
+      "title2": "Business with AI",
+      "subtitle": "Intelligent voice agents available 24/7 to",
+      "action1": "answer",
+      "action2": "schedule",
+      "action3": "convert",
+      "ctaPrimary": "Start for free",
+      "ctaSecondary": "Watch demo",
+      "stats": {
+        "clients": "Active clients",
+        "uptime": "Uptime",
+        "conversations": "Conversations",
+        "satisfaction": "Satisfaction"
       },
-      "description":{
-        "text1":"Generate AI voices as real as Humans.",
-        "text2":"Deploy everywhere",
-        "text3":"to web, to phone, to apps, and beyond.",
-        "text4":"Available 24/7 to answer questions,",
-        "text5":"Schedule an appointment, or complete a purchase."    
+      "socialProof": "Join",
+      "companies": "companies",
+      "trust": "trusting us"
+    },
+    "intro": {
+      "title": "AI That Works For You"
+    },
+    "features": {
+      "badge": "Features",
+      "title": "Everything you need",
+      "subtitle": "Powerful tools to automate and optimize your growth",
+      "items": [
+        {
+          "title": "AI Voice Agents",
+          "description": "Natural and fluid conversations that convert your visitors into customers."
+        },
+        {
+          "title": "Smart Chatbots",
+          "description": "24/7 customer engagement with instant and personalized responses."
+        },
+        {
+          "title": "Lead Qualification",
+          "description": "Automatic identification and scoring of the most promising prospects."
+        },
+        {
+          "title": "Appointment Scheduling",
+          "description": "Automated scheduling system integrated with your calendar."
+        },
+        {
+          "title": "Maximum Security",
+          "description": "GDPR-compliant data protection with end-to-end encryption."
+        },
+        {
+          "title": "Optimal Performance",
+          "description": "Ultra-fast response times for a smooth user experience."
+        }
+      ]
+    },
+    "solutions": {
+      "title": "Industry Solutions",
+      "subtitle": "Tailored solutions adapted to your industry",
+      "learnMore": "Learn more",
+      "items": [
+        {
+          "title": "E-Commerce",
+          "description": "Boost your sales with intelligent virtual assistants",
+          "features": ["24/7 customer support", "Product recommendations", "Order tracking"]
+        },
+        {
+          "title": "B2B Services",
+          "description": "Qualify and convert your leads automatically",
+          "features": ["Automatic qualification", "Appointment booking", "Integrated CRM"]
+        },
+        {
+          "title": "Healthcare & Wellness",
+          "description": "Automated appointment management and reminders",
+          "features": ["Smart scheduling", "Patient reminders", "HIPAA compliance"]
+        },
+        {
+          "title": "Real Estate",
+          "description": "Capture and qualify your real estate prospects",
+          "features": ["Virtual tour", "Buyer qualification", "Prospect tracking"]
+        }
+      ]
+    },
+    "pricing": {
+      "title": "Transparent Pricing",
+      "subtitle": "Choose the plan that suits you",
+      "popular": "Most popular",
+      "cta": "Get Started",
+      "perMonth": "/month",
+      "plans": [
+        {
+          "name": "Starter",
+          "price": "120€",
+          "description": "For small businesses",
+          "features": ["500 conversations/month", "1 AI agent", "Email support", "Basic integrations"]
+        },
+        {
+          "name": "Business",
+          "price": "600€",
+          "description": "For growing businesses",
+          "features": ["3000 conversations/month", "up to 5 AI agents", "Priority support", "All integrations", "Advanced analytics"]
+        },
+        {
+          "name": "Enterprise",
+          "price": "Custom",
+          "description": "For large enterprises",
+          "features": ["Unlimited conversations", "Unlimited AI agents", "24/7 dedicated support", "Analytics & optimization", "Guaranteed SLA"]
+        }
+      ]
+    },
+    "contact": {
+      "title": "Ready to get started?",
+      "subtitle": "Join thousands of companies transforming their growth with AI",
+      "ctaPrimary": "Start for free",
+      "ctaSecondary": "Schedule a demo"
+    },
+    "footer": {
+      "description": "Transform your business with AI agents working 24/7 to engage your customers and accelerate your growth.",
+      "copyright": "© 2025 SocialBadi. All rights reserved by Badi Corp.",
+      "legal": "Legal",
+      "privacy": "Privacy Policy",
+      "cookies": "Cookies",
+      "product": {
+        "title": "Product",
+        "links": ["Features", "Pricing", "Integrations", "API"]
+      },
+      "company": {
+        "title": "Company",
+        "links": ["About", "Careers", "Blog", "Press"]
+      },
+      "resources": {
+        "title": "Resources",
+        "links": ["Documentation", "Guides", "Webinars", "Support"]
       }
     }
-}
+  }
