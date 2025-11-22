@@ -62,8 +62,11 @@ export const metadata: Metadata = {
   },
   manifest: '/manifest.json',
   icons: {
-    icon: '/favicon.ico',
-    shortcut: '/favicon.ico',
+    icon: [
+      { url: '/icon.svg', type: 'image/svg+xml' },
+      { url: '/favicon.ico', sizes: '32x32' }
+    ],
+    shortcut: '/icon.svg',
     apple: '/favicon.ico',
   },
 };
@@ -87,7 +90,8 @@ export default async function RootLayout(
   return (
     <html lang={lang}>
       <head>
-        <link rel="icon" href="/favicon.ico" sizes="32x32" />
+        <link rel="icon" type="image/svg+xml" href="/icon.svg" />
+        <link rel="icon" type="image/x-icon" href="/favicon.ico" />
         <link rel="canonical" href="https://socialbadi.com" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </head>
