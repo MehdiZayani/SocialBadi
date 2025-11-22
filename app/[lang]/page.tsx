@@ -18,6 +18,10 @@ function useI18n() {
   const router = useRouter();
   const [locale, setLocaleState] = useState<'fr' | 'en'>('fr');
 
+  const navigateToContact = () => {
+    router.push(`/${locale}/contact`);
+  };
+
   // 1) Déduire la langue depuis l'URL /fr/... ou /en/...
   useEffect(() => {
     if (!pathname) return;
@@ -56,7 +60,7 @@ function useI18n() {
     en,
   };
 
-  return { t: translations[locale], locale, setLocale };
+  return { t: translations[locale], locale, setLocale, navigateToContact };
 }
 
 
@@ -149,10 +153,10 @@ function Navbar({ t, locale, setLocale }: { t: any; locale: any; setLocale: any 
 </button>
             </div>
             
-            <button className="px-6 py-2.5 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-full hover:shadow-lg hover:shadow-blue-500/50 transition-all duration-300 font-semibold text-sm flex items-center gap-2">
+            <a href={`/${locale}/contact`} className="px-6 py-2.5 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-full hover:shadow-lg hover:shadow-blue-500/50 transition-all duration-300 font-semibold text-sm flex items-center gap-2">
               {t.nav.cta}
               <ArrowRight className="w-4 h-4" />
-            </button>
+            </a>
           </div>
 
           <button
@@ -203,7 +207,7 @@ function Navbar({ t, locale, setLocale }: { t: any; locale: any; setLocale: any 
 }
 
 // Hero Section
-function HeroSection({ t }: { t: any }) {
+function HeroSection({ t, locale }: { t: any; locale: string }) {
   return (
     <section id="home" className="relative min-h-screen pt-32 pb-20 bg-black overflow-hidden">
       <div className="absolute inset-0">
@@ -246,10 +250,10 @@ function HeroSection({ t }: { t: any }) {
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center mb-16 animate-fadeIn" style={{animationDelay: '0.4s'}}>
-            <button className="group px-8 py-4 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-full hover:shadow-2xl hover:shadow-blue-500/50 transition-all duration-300 font-semibold flex items-center justify-center gap-2 text-lg">
+            <a href={`/${locale}/contact`} className="group px-8 py-4 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-full hover:shadow-2xl hover:shadow-blue-500/50 transition-all duration-300 font-semibold flex items-center justify-center gap-2 text-lg">
               {t.hero.ctaPrimary}
-              <ChevronRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-            </button>
+              <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+            </a>
             <button className="group px-8 py-4 bg-white/5 backdrop-blur-sm border border-white/10 text-white rounded-full hover:bg-white/10 transition-all duration-300 font-semibold flex items-center justify-center gap-2 text-lg">
               <Play className="w-5 h-5" />
               {t.hero.ctaSecondary}
@@ -425,7 +429,7 @@ function SolutionsSection({ t }: { t: any }) {
 }
 
 // Pricing Section
-function PricingSection({ t }: { t: any }) {
+function PricingSection({ t, locale }: { t: any; locale: string }) {
   const colors = [
     "from-blue-500 to-cyan-500",
     "from-purple-500 to-pink-500",
@@ -475,13 +479,13 @@ function PricingSection({ t }: { t: any }) {
                 ))}
               </ul>
               
-              <button className={`w-full py-3 rounded-full font-semibold transition-all duration-300 ${
+              <a href={`/${locale}/contact`} className={`w-full py-3 rounded-full font-semibold transition-all duration-300 flex items-center justify-center ${
                 index === 1
                   ? 'bg-gradient-to-r from-purple-600 to-pink-600 text-white hover:shadow-lg hover:shadow-purple-500/50'
                   : 'bg-white/10 text-white hover:bg-white/20'
               }`}>
                 {t.pricing.cta}
-              </button>
+              </a>
             </div>
           ))}
         </div>
@@ -491,7 +495,7 @@ function PricingSection({ t }: { t: any }) {
 }
 
 // Contact Section
-function ContactSection({ t }: { t: any }) {
+function ContactSection({ t, locale }: { t: any; locale: string }) {
   return (
     <section id="contact" className="relative py-32 bg-black">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
@@ -503,10 +507,10 @@ function ContactSection({ t }: { t: any }) {
         </p>
         
         <div className="flex flex-col sm:flex-row gap-6 justify-center">
-          <button className="px-10 py-4 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-full hover:shadow-2xl hover:shadow-blue-500/50 transition-all duration-300 font-semibold text-lg flex items-center justify-center gap-2">
+          <a href={`/${locale}/contact`} className="px-10 py-4 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-full hover:shadow-2xl hover:shadow-blue-500/50 transition-all duration-300 font-semibold text-lg flex items-center justify-center gap-2">
             {t.contact.ctaPrimary}
             <ArrowRight className="w-5 h-5" />
-          </button>
+          </a>
           <button className="px-10 py-4 bg-white/10 backdrop-blur-sm border border-white/20 text-white rounded-full hover:bg-white/20 transition-all duration-300 font-semibold text-lg">
             {t.contact.ctaSecondary}
           </button>
@@ -668,12 +672,12 @@ export default function App() {
       `}</style>
       
       <Navbar t={t} locale={locale} setLocale={setLocale} />
-      <HeroSection t={t} />
+      <HeroSection t={t} locale={locale} />
       <IntroSection t={t} />
       <FeaturesSection t={t} />
       <SolutionsSection t={t} />
-      <PricingSection t={t} />
-      <ContactSection t={t} />
+      <PricingSection t={t} locale={locale} />
+      <ContactSection t={t} locale={locale} />
       <Footer t={t} />
     </div>
   );

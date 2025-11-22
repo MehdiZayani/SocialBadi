@@ -1,6 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 "use client"
 import React, { useState } from 'react';
+import { useParams } from 'next/navigation';
 import { 
   Check, 
   X,
@@ -21,7 +22,7 @@ import {
 } from 'lucide-react';
 
 // Navbar
-function Navbar() {
+function Navbar({ locale }: { locale: string }) {
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 bg-black/95 backdrop-blur-md border-b border-white/10">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -30,12 +31,12 @@ function Navbar() {
             SocialBadi
           </h1>
           <div className="flex items-center gap-6">
-            <a href="#home" className="text-gray-300 hover:text-white transition-colors text-sm font-medium">
+            <a href={`/${locale}`} className="text-gray-300 hover:text-white transition-colors text-sm font-medium">
               Home
             </a>
-            <button className="px-6 py-2 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-full hover:shadow-lg hover:shadow-blue-500/50 transition-all text-sm font-semibold">
+            <a href={`/${locale}/contact`} className="px-6 py-2 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-full hover:shadow-lg hover:shadow-blue-500/50 transition-all text-sm font-semibold">
               Contact Sales
-            </button>
+            </a>
           </div>
         </div>
       </div>
@@ -99,7 +100,7 @@ function PricingHero({ billingPeriod, setBillingPeriod }: { billingPeriod: strin
 }
 
 // Pricing Cards
-function PricingCards({ billingPeriod }: { billingPeriod: string }) {
+function PricingCards({ billingPeriod, locale }: { billingPeriod: string; locale: string }) {
   const plans = [
     {
       name: 'Starter',
@@ -214,13 +215,13 @@ function PricingCards({ billingPeriod }: { billingPeriod: string }) {
                   </div>
                 )}
 
-                <button className={`w-full px-6 py-4 rounded-xl font-semibold text-sm transition-all mb-6 ${
+                <a href={`/${locale}/contact`} className={`w-full px-6 py-4 rounded-xl font-semibold text-sm transition-all mb-6 flex items-center justify-center ${
                   plan.popular
                     ? 'bg-gradient-to-r from-blue-600 to-purple-600 text-white hover:shadow-lg hover:shadow-blue-500/50'
                     : 'bg-white/10 text-white hover:bg-white/20 border border-white/20'
                 }`}>
                   {plan.cta}
-                </button>
+                </a>
 
                 <div className="space-y-3">
                   {plan.features.map((feature, idx) => (
@@ -419,7 +420,7 @@ function TrustSection() {
 }
 
 // CTA Section
-function CTASection() {
+function CTASection({ locale }: { locale: string }) {
   return (
     <section className="py-20 bg-gradient-to-b from-gray-900 to-black">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -434,13 +435,13 @@ function CTASection() {
               Start your 14-day free trial today. No credit card required. Cancel anytime.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <button className="px-8 py-4 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-full hover:shadow-2xl hover:shadow-blue-500/50 transition-all font-semibold flex items-center justify-center gap-2">
+              <a href={`/${locale}/contact`} className="px-8 py-4 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-full hover:shadow-2xl hover:shadow-blue-500/50 transition-all font-semibold flex items-center justify-center gap-2">
                 Start Free Trial
                 <ArrowRight className="w-5 h-5" />
-              </button>
-              <button className="px-8 py-4 bg-white/10 backdrop-blur-sm border border-white/20 text-white rounded-full hover:bg-white/20 transition-all font-semibold">
+              </a>
+              <a href={`/${locale}/contact`} className="px-8 py-4 bg-white/10 backdrop-blur-sm border border-white/20 text-white rounded-full hover:bg-white/20 transition-all font-semibold">
                 Contact Sales
-              </button>
+              </a>
             </div>
             <p className="text-gray-400 text-sm mt-6">
               Questions? Talk to our sales team at sales@socialbadi.com
@@ -455,16 +456,18 @@ function CTASection() {
 // Main Component
 export default function PricingPage() {
   const [billingPeriod, setBillingPeriod] = useState('monthly');
+  const params = useParams();
+  const locale = (params?.lang as string) || 'fr';
 
   return (
     <div className="min-h-screen bg-black">
-      <Navbar />
+      <Navbar locale={locale} />
       <PricingHero billingPeriod={billingPeriod} setBillingPeriod={setBillingPeriod} />
-      <PricingCards billingPeriod={billingPeriod} />
+      <PricingCards billingPeriod={billingPeriod} locale={locale} />
       <AddOns />
       <TrustSection />
       <FAQSection />
-      <CTASection />
+      <CTASection locale={locale} />
     </div>
   );
 }
