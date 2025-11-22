@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+/* eslint-disable @typescript-eslint/no-unused-vars */
 
 "use client";
 
@@ -60,7 +62,7 @@ function useI18n() {
 
 
 // Navbar Component
-function Navbar({ t, locale, setLocale }) {
+function Navbar({ t, locale, setLocale }: { t: any; locale: any; setLocale: any }) {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isVisible, setIsVisible] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
@@ -83,7 +85,7 @@ function Navbar({ t, locale, setLocale }) {
     { label: t.nav.pricing, href: '/pricing' },
     { label: t.nav.contact, href: '/contact' }
   ];
-  const handleLocaleChange = (newLocale) => {
+  const handleLocaleChange = (newLocale: any) => {
     setLocale(newLocale);
 
     // Redirection simple côté client
@@ -201,7 +203,7 @@ function Navbar({ t, locale, setLocale }) {
 }
 
 // Hero Section
-function HeroSection({ t }) {
+function HeroSection({ t }: { t: any }) {
   return (
     <section id="home" className="relative min-h-screen pt-32 pb-20 bg-black overflow-hidden">
       <div className="absolute inset-0">
@@ -289,7 +291,7 @@ function HeroSection({ t }) {
 }
 
 // Intro Section
-function IntroSection({ t }) {
+function IntroSection({ t }: { t: any }) {
   return (
     <div className="relative w-full flex justify-center py-20 bg-gradient-to-b from-black via-gray-900 to-black">
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
@@ -308,7 +310,7 @@ function IntroSection({ t }) {
 }
 
 // Features Section
-function FeaturesSection({ t }) {
+function FeaturesSection({ t }: { t: any }) {
   const icons = [Phone, MessageSquare, BarChart3, CheckSquare, Shield, Zap];
   const colors = [
     "from-blue-500 to-cyan-500",
@@ -336,7 +338,7 @@ function FeaturesSection({ t }) {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {t.features.items.map((feature, index) => {
+          {t.features.items.map((feature: any, index: number) => {
             const Icon = icons[index];
             return (
               <div
@@ -358,7 +360,7 @@ function FeaturesSection({ t }) {
 }
 
 // Solutions Section
-function SolutionsSection({ t }) {
+function SolutionsSection({ t }: { t: any }) {
   const [selectedSolution, setSelectedSolution] = useState(0);
   const icons = [Users, BarChart3, CheckSquare, Zap];
   const colors = [
@@ -381,7 +383,7 @@ function SolutionsSection({ t }) {
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-          {t.solutions.items.map((solution, index) => {
+          {t.solutions.items.map((solution: any, index: number) => {
             const Icon = icons[index];
             return (
               <div
@@ -401,7 +403,7 @@ function SolutionsSection({ t }) {
                 <p className="text-gray-400 text-lg mb-6">{solution.description}</p>
                 
                 <ul className="space-y-3 mb-6">
-                  {solution.features.map((feature, idx) => (
+                  {solution.features.map((feature: any, idx: number) => (
                     <li key={idx} className="flex items-center gap-3 text-gray-300">
                       <div className={`w-2 h-2 rounded-full bg-gradient-to-r ${colors[index]}`}></div>
                       {feature}
@@ -423,7 +425,7 @@ function SolutionsSection({ t }) {
 }
 
 // Pricing Section
-function PricingSection({ t }) {
+function PricingSection({ t }: { t: any }) {
   const colors = [
     "from-blue-500 to-cyan-500",
     "from-purple-500 to-pink-500",
@@ -441,7 +443,7 @@ function PricingSection({ t }) {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {t.pricing.plans.map((plan, index) => (
+          {t.pricing.plans.map((plan: any, index: number) => (
             <div
               key={index}
               className={`relative p-8 rounded-3xl border-2 transition-all duration-300 hover:scale-105 ${
@@ -465,7 +467,7 @@ function PricingSection({ t }) {
               </div>
               
               <ul className="space-y-4 mb-8">
-                {plan.features.map((feature, idx) => (
+                {plan.features.map((feature: any, idx: number) => (
                   <li key={idx} className="flex items-start gap-3 text-gray-300">
                     <CheckSquare className="w-5 h-5 text-green-400 flex-shrink-0 mt-0.5" />
                     <span>{feature}</span>
@@ -489,7 +491,7 @@ function PricingSection({ t }) {
 }
 
 // Contact Section
-function ContactSection({ t }) {
+function ContactSection({ t }: { t: any }) {
   return (
     <section id="contact" className="relative py-32 bg-black">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
@@ -515,7 +517,7 @@ function ContactSection({ t }) {
 }
 
 // Footer
-function Footer({ t }) {
+function Footer({ t }: { t: any }) {
   return (
     <footer className="bg-black text-white py-20 border-t border-white/10">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -549,7 +551,7 @@ function Footer({ t }) {
           <div>
             <h3 className="text-lg font-semibold mb-4">{t.footer.product.title}</h3>
             <ul className="space-y-3">
-              {t.footer.product.links.map((link, index) => (
+              {t.footer.product.links.map((link: any, index: number) => (
                 <li key={index}>
                   <a href="#" className="text-gray-400 hover:text-white transition-colors text-sm">
                     {link}
@@ -562,7 +564,7 @@ function Footer({ t }) {
           <div>
             <h3 className="text-lg font-semibold mb-4">{t.footer.company.title}</h3>
             <ul className="space-y-3">
-              {t.footer.company.links.map((link, index) => (
+              {t.footer.company.links.map((link: any, index: number) => (
                 <li key={index}>
                   <a href="#" className="text-gray-400 hover:text-white transition-colors text-sm">
                     {link}
@@ -575,7 +577,7 @@ function Footer({ t }) {
           <div>
             <h3 className="text-lg font-semibold mb-4">{t.footer.resources.title}</h3>
             <ul className="space-y-3">
-              {t.footer.resources.links.map((link, index) => (
+              {t.footer.resources.links.map((link: any, index: number) => (
                 <li key={index}>
                   <a href="#" className="text-gray-400 hover:text-white transition-colors text-sm">
                     {link}

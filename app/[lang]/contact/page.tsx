@@ -5,7 +5,6 @@ import { usePathname, useRouter } from 'next/navigation';
 import { 
   Mail, 
   Phone, 
-  MapPin, 
   Send, 
   CheckCircle, 
   Clock, 
@@ -16,9 +15,6 @@ import {
   ArrowRight,
   Sparkles,
   Bot,
-  Menu,
-  X,
-  Globe,
   ChevronDown
 } from 'lucide-react';
 
@@ -232,7 +228,7 @@ const translations = {
 function useI18n() {
   const pathname = usePathname();
   const router = useRouter();
-  const [locale, setLocaleState] = useState('fr');
+  const [locale, setLocaleState] = useState<'fr' | 'en'>('fr');
 
   useEffect(() => {
     if (!pathname) return;
@@ -250,20 +246,21 @@ function useI18n() {
     }
   }, [pathname]);
 
-  const setLocale = (newLocale) => {
+  const setLocale = (newLocale: 'fr' | 'en') => {
     if (!pathname) return;
     const pathWithoutLocale = pathname.replace(/^\/(fr|en)/, '') || '';
     router.push(`/${newLocale}${pathWithoutLocale || '/'}`);
     setLocaleState(newLocale);
   };
 
-  return { t: translations[locale], locale, setLocale };
+  return { t: translations[locale as 'fr' | 'en'], locale, setLocale };
 }
 
 
 
 // Contact Form Component
-function ContactForm({ t }) {
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+function ContactForm({ t }: { t: any }) {
   const [formData, setFormData] = useState({
     firstName: '',
     lastName: '',
@@ -278,7 +275,7 @@ function ContactForm({ t }) {
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const handleChange = (e) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     setFormData({
       ...formData,
       [e.target.name]: e.target.value
@@ -478,7 +475,7 @@ function ContactForm({ t }) {
           name="message"
           value={formData.message}
           onChange={handleChange}
-          rows="5"
+          rows={5}
           className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white placeholder-gray-500 focus:outline-none focus:border-blue-500/50 focus:bg-white/10 transition-all resize-none"
           placeholder={t.contact.messagePlaceholder}
         ></textarea>
@@ -506,7 +503,7 @@ function ContactForm({ t }) {
 }
 
 // Contact Info Card
-function ContactInfoCard({ icon: Icon, title, content, href }) {
+function ContactInfoCard({ icon: Icon, title, content, href }: { icon: React.ElementType; title: string; content: string; href: string }) {
   return (
     <a
       href={href}
@@ -527,7 +524,7 @@ function ContactInfoCard({ icon: Icon, title, content, href }) {
 }
 
 // Feature Card
-function FeatureCard({ icon: Icon, title, description }) {
+function FeatureCard({ icon: Icon, title, description }: { icon: React.ElementType; title: string; description: string }) {
   return (
     <div className="p-6 bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl hover:border-blue-500/50 transition-all duration-300 group">
       <div className="p-3 bg-gradient-to-br from-blue-500/20 to-purple-500/20 rounded-lg w-fit mb-4 group-hover:scale-110 transition-transform">
@@ -540,7 +537,8 @@ function FeatureCard({ icon: Icon, title, description }) {
 }
 
 // Footer
-function Footer({ t }) {
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+function Footer({ t }: { t: any }) {
   return (
     <footer className="bg-black text-white py-20 border-t border-white/10">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -574,7 +572,8 @@ function Footer({ t }) {
           <div>
             <h3 className="text-lg font-semibold mb-4">{t.footer.product.title}</h3>
             <ul className="space-y-3">
-              {t.footer.product.links.map((link, index) => (
+              {/* eslint-disable-next-line @typescript-eslint/no-explicit-any */}
+              {t.footer.product.links.map((link: any, index: number) => (
                 <li key={index}>
                   <a href="#" className="text-gray-400 hover:text-white transition-colors text-sm">
                     {link}
@@ -587,7 +586,8 @@ function Footer({ t }) {
           <div>
             <h3 className="text-lg font-semibold mb-4">{t.footer.company.title}</h3>
             <ul className="space-y-3">
-              {t.footer.company.links.map((link, index) => (
+              {/* eslint-disable-next-line @typescript-eslint/no-explicit-any */}
+              {t.footer.company.links.map((link: any, index: number) => (
                 <li key={index}>
                   <a href="#" className="text-gray-400 hover:text-white transition-colors text-sm">
                     {link}
@@ -600,7 +600,8 @@ function Footer({ t }) {
           <div>
             <h3 className="text-lg font-semibold mb-4">{t.footer.resources.title}</h3>
             <ul className="space-y-3">
-              {t.footer.resources.links.map((link, index) => (
+              {/* eslint-disable-next-line @typescript-eslint/no-explicit-any */}
+              {t.footer.resources.links.map((link: any, index: number) => (
                 <li key={index}>
                   <a href="#" className="text-gray-400 hover:text-white transition-colors text-sm">
                     {link}
@@ -632,7 +633,7 @@ export default function ContactPage() {
 
   return (
     <div className="min-h-screen bg-black">
-      <Navbar translations={t} locale={locale} setLocale={setLocale} />
+      <Navbar translations={t} locale={locale as 'fr' | 'en'} setLocale={setLocale} />
       
       {/* Hero Section */}
       <section className="relative pt-32 pb-20 overflow-hidden">
@@ -754,7 +755,8 @@ export default function ContactPage() {
             <p className="text-gray-400">{t.contact.faqSubtitle}</p>
           </div>
           <div className="space-y-4">
-            {t.contact.faqs.map((faq, index) => (
+            {/* eslint-disable-next-line @typescript-eslint/no-explicit-any */}
+            {t.contact.faqs.map((faq: any, index: number) => (
               <details
                 key={index}
                 className="group bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl overflow-hidden hover:border-blue-500/50 transition-all"

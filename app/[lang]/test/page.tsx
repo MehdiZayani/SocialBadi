@@ -1,10 +1,13 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
+/* eslint-disable @typescript-eslint/no-explicit-any */
+/* eslint-disable @next/next/no-img-element */
 "use client";
-import React, { useState, useLayoutEffect, useRef, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Menu, X, ChevronRight, Users, CheckSquare, Lock, Sparkles, Zap, Bot } from 'lucide-react';
 import Link from 'next/link';
 
 // Simulated Image Component (replace with Next.js Image in production)
-const Image = ({ src, alt, fill, priority, className, style }) => (
+const Image = ({ src, alt, fill, priority, className, style }: any) => (
   <img 
     src={typeof src === 'string' ? src : '/api/placeholder/400/300'} 
     alt={alt} 
@@ -14,9 +17,9 @@ const Image = ({ src, alt, fill, priority, className, style }) => (
 );
 
 // Mock GSAP for demo purposes
-const gsap = {
+const gsap: any = {
   registerPlugin: () => {},
-  timeline: (config) => ({
+  timeline: (config: any) => ({
     from: () => ({ to: () => ({}) }),
     to: () => ({}),
     kill: () => {}
@@ -31,7 +34,7 @@ const gsap = {
 };
 
 // Navbar Component
-function Navbar({ translations = {} }) {
+function Navbar({ translations = {} }: { translations?: any }) {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isVisible, setIsVisible] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
@@ -49,9 +52,9 @@ function Navbar({ translations = {} }) {
   }, [lastScrollY]);
 
   const navItems = [
-    { label: translations.products || 'Products', href: '#products' },
-    { label: translations.markets || 'Markets', href: '#markets' },
-    { label: translations.contact || 'Contact', href: '#contact' }
+    { label: (translations as any).products || 'Products', href: '#products' },
+    { label: (translations as any).markets || 'Markets', href: '#markets' },
+    { label: (translations as any).contact || 'Contact', href: '#contact' }
   ];
 
   return (
@@ -140,18 +143,18 @@ function HeroSection({ translations = {} }) {
 
           <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-6 leading-tight">
             <span className="bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">
-              {translations.sectionhome?.title || "Transform Your Business with AI Agents"}
+              {(translations as any).sectionhome?.title || "Transform Your Business with AI Agents"}
             </span>
           </h1>
 
           <p className="text-lg sm:text-xl text-gray-300 mb-12 max-w-2xl mx-auto">
-            {translations.sectionhome?.subtitle || "Create intelligent voice agents available 24/7 to answer questions, schedule appointments, and drive conversions"}
+            {(translations as any).sectionhome?.subtitle || "Create intelligent voice agents available 24/7 to answer questions, schedule appointments, and drive conversions"}
           </p>
 
           {/* CTA Buttons */}
           <div className="flex flex-col sm:flex-row gap-4 justify-center mb-16">
             <Link href="/contact" className="group px-8 py-4 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-full hover:shadow-2xl hover:shadow-blue-500/50 transition-all duration-300 font-semibold flex items-center justify-center gap-2">
-              {translations.contactus || "Get Started"}
+              {(translations as any).contactus || "Get Started"}
               <ChevronRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
             </Link>
             <button className="px-8 py-4 bg-white/5 backdrop-blur-sm border border-white/10 text-white rounded-full hover:bg-white/10 transition-all duration-300 font-semibold">
@@ -165,21 +168,21 @@ function HeroSection({ translations = {} }) {
               <div className="p-2 bg-blue-500/20 rounded-lg">
                 <Users className="w-6 h-6 text-blue-400" />
               </div>
-              <p className="text-sm text-gray-300">{translations.sectionhome?.text1 || "Expert Team"}</p>
+              <p className="text-sm text-gray-300">{(translations as any).sectionhome?.text1 || "Expert Team"}</p>
             </div>
 
             <div className="flex items-center gap-3 p-4 bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl">
               <div className="p-2 bg-purple-500/20 rounded-lg">
                 <CheckSquare className="w-6 h-6 text-purple-400" />
               </div>
-              <p className="text-sm text-gray-300">{translations.sectionhome?.text2 || "Proven Results"}</p>
+              <p className="text-sm text-gray-300">{(translations as any).sectionhome?.text2 || "Proven Results"}</p>
             </div>
 
             <div className="flex items-center gap-3 p-4 bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl">
               <div className="p-2 bg-pink-500/20 rounded-lg">
                 <Lock className="w-6 h-6 text-pink-400" />
               </div>
-              <p className="text-sm text-gray-300">{translations.sectionhome?.text3 || "Secure & Private"}</p>
+              <p className="text-sm text-gray-300">{(translations as any).sectionhome?.text3 || "Secure & Private"}</p>
             </div>
           </div>
         </div>
@@ -189,7 +192,7 @@ function HeroSection({ translations = {} }) {
 }
 
 // Intro Section
-function IntroSection({ translations = {} }) {
+function IntroSection({ translations = {} }: { translations?: any }) {
   return (
     <div className="relative w-full flex justify-center py-20 bg-gradient-to-b from-black via-gray-900 to-black">
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
@@ -208,7 +211,7 @@ function IntroSection({ translations = {} }) {
 }
 
 // Description Section
-function DescriptionSection({ translations = {} }) {
+function DescriptionSection({ translations = {} }: { translations?: any }) {
   const phrases = [
     translations?.sectionhome?.description?.text1 || "Automate customer interactions",
     translations?.sectionhome?.description?.text2 || "Qualify leads instantly",
@@ -237,7 +240,7 @@ function DescriptionSection({ translations = {} }) {
 }
 
 // Projects Section
-function ProjectsSection({ translations = {} }) {
+function ProjectsSection({ translations = {} }: { translations?: any }) {
   const [selectedProject, setSelectedProject] = useState(0);
 
   const projects = [

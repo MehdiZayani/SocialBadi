@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 "use client"
 import React, { useState } from 'react';
 import { 
@@ -5,14 +6,12 @@ import {
   X,
   Star,
   Zap,
-  Shield,
   Sparkles,
   ArrowRight,
   HelpCircle,
   Users,
   MessageSquare,
   Phone,
-  Calendar,
   BarChart3,
   Globe,
   Clock,
@@ -45,7 +44,7 @@ function Navbar() {
 }
 
 // Hero Section
-function PricingHero({ billingPeriod, setBillingPeriod }) {
+function PricingHero({ billingPeriod, setBillingPeriod }: { billingPeriod: string; setBillingPeriod: any }) {
   return (
     <section className="relative pt-32 pb-12 overflow-hidden">
       <div className="absolute inset-0 bg-gradient-to-br from-blue-900/20 via-purple-900/20 to-black">
@@ -100,7 +99,7 @@ function PricingHero({ billingPeriod, setBillingPeriod }) {
 }
 
 // Pricing Cards
-function PricingCards({ billingPeriod }) {
+function PricingCards({ billingPeriod }: { billingPeriod: string }) {
   const plans = [
     {
       name: 'Starter',
@@ -202,7 +201,7 @@ function PricingCards({ billingPeriod }) {
                       <span className="text-4xl font-bold text-white">${price}</span>
                       <span className="text-gray-400">/mo</span>
                     </div>
-                    {billingPeriod === 'annual' && (
+                    {billingPeriod === 'annual' && plan.monthlyPrice && plan.annualPrice && (
                       <div className="text-sm text-green-400 mt-1">
                         Save ${(plan.monthlyPrice - plan.annualPrice) * 12}/year
                       </div>
