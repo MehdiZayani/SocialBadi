@@ -8,6 +8,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const routes = [
     '',
     '/contact',
+    '/legal',
+    '/privacy',
   ];
 
   const sitemap: MetadataRoute.Sitemap = [];

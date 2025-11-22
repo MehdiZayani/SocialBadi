@@ -622,8 +622,8 @@ function Footer({ t, locale }: { t: any; locale: string }) {
             {t.footer.copyright}
           </p>
           <div className="flex gap-6 text-sm text-gray-400">
-            <a href={`/${locale}/contact`} className="hover:text-white transition-colors">{t.footer.legal}</a>
-            <a href={`/${locale}/contact`} className="hover:text-white transition-colors">{t.footer.privacy}</a>
+            <a href={`/${locale}/legal`} className="hover:text-white transition-colors">{t.footer.legal}</a>
+            <a href={`/${locale}/privacy`} className="hover:text-white transition-colors">{t.footer.privacy}</a>
           </div>
         </div>
       </div>
