@@ -1,24 +1,43 @@
 import { NextResponse } from 'next/server';
 import type { NextRequest } from 'next/server';
 
-const locales = ['en', 'fr','de']; // Langues supportées
+const locales = ['en', 'fr', 'de']; // Supported languages
+const defaultLocale = 'fr';
 
 export function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
 
-  // Vérifie si la première partie du chemin est une langue supportée
+  // Skip middleware for static files, API routes, and special Next.js paths
+  if (
+    pathname.startsWith('/_next') ||
+    pathname.startsWith('/api') ||
+    pathname.startsWith('/static') ||
+    pathname.includes('.') // Files with extensions (images, fonts, etc.)
+  ) {
+    return NextResponse.next();
+  }
+
+  // Check if pathname already has a locale
   const pathnameHasLocale = locales.some(
     (locale) => pathname.startsWith(`/${locale}/`) || pathname === `/${locale}`
   );
 
-  if (pathnameHasLocale) return;
+  // If pathname already has a locale, continue
+  if (pathnameHasLocale) {
+    return NextResponse.next();
+  }
 
-  // Redirige vers la langue par défaut (par exemple 'fr')
-  const defaultLocale = 'fr';
-  request.nextUrl.pathname = `/${defaultLocale}${pathname}`;
-  return NextResponse.redirect(request.nextUrl);
+  // Redirect to default locale
+  const newUrl = request.nextUrl.clone();
+  newUrl.pathname = `/${defaultLocale}${pathname}`;
+  return NextResponse.redirect(newUrl);
 }
 
 export const config = {
-  matcher: ['/((?!_next|api|favicon.ico).*)'],
+  matcher: [
+    // Match all pathnames except for
+    // - … if they start with `/api`, `/_next` or `/_vercel`
+    // - … the ones containing a dot (e.g. `favicon.ico`)
+    '/((?!api|_next|_vercel|.*\\..*).*)',
+  ],
 };
