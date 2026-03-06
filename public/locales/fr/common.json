@@ -1,0 +1,129 @@
+{
+    "nav": {
+      "home": "Accueil",
+      "features": "Fonctionnalités",
+      "solutions": "Solutions",
+      "contact": "Contact",
+      "cta": "Commencer"
+    },
+    "hero": {
+      "badge": "Votre partenaire de croissance tout-en-un",
+      "title1": "Développez Votre",
+      "title2": "Business avec Nous",
+      "subtitle": "Gestion d'Ads, CRM & automatisations pour",
+      "action1": "acquérir",
+      "action2": "suivre",
+      "action3": "convertir",
+      "ctaPrimary": "Commencer",
+      "ctaSecondary": "Réserver une démo",
+      "stats": {
+        "clients": "Clients actifs",
+        "uptime": "Disponibilité",
+        "conversations": "Leads gérés",
+        "satisfaction": "Satisfaction"
+      },
+      "socialProof": "Rejoignez",
+      "companies": "entreprises",
+      "trust": "qui nous font confiance"
+    },
+    "intro": {
+      "title": "On s'occupe de votre croissance"
+    },
+    "features": {
+      "badge": "Fonctionnalités",
+      "title": "Tout ce dont vous avez besoin",
+      "subtitle": "Ads, CRM & automatisations pour acquérir et convertir plus de clients",
+      "items": [
+        {
+          "title": "Facebook & Google Ads",
+          "description": "Nous gérons vos campagnes publicitaires sur Facebook, Instagram et Google pour générer des leads qualifiés."
+        },
+        {
+          "title": "CRM Maison",
+          "description": "Accédez à notre CRM propriétaire pour suivre tous vos leads, clients et opportunités au même endroit."
+        },
+        {
+          "title": "Suivi des Leads",
+          "description": "Capture et relance automatique des leads pour qu'aucun prospect ne passe entre les mailles du filet."
+        },
+        {
+          "title": "Prise de Rendez-vous",
+          "description": "Système de réservation intégré — vos clients prennent rendez-vous directement dans votre agenda."
+        },
+        {
+          "title": "SMS Automatiques",
+          "description": "Envoyez des séquences SMS automatisées pour relancer vos leads et confirmer vos rendez-vous."
+        },
+        {
+          "title": "Emails Automatiques",
+          "description": "Campagnes d'emails automatisées pour engager vos prospects et fidéliser vos clients."
+        }
+      ]
+    },
+    "solutions": {
+      "title": "Nos Solutions",
+      "subtitle": "Un écosystème complet pour acquérir, gérer et convertir vos leads",
+      "learnMore": "En savoir plus",
+      "items": [
+        {
+          "title": "Publicité Payante",
+          "description": "Des campagnes Facebook Ads & Google Ads performantes gérées par des experts",
+          "features": ["Facebook & Instagram Ads", "Google Ads & SEA", "Campagnes de retargeting"]
+        },
+        {
+          "title": "CRM & Gestion de Leads",
+          "description": "Notre CRM maison vous donne une visibilité totale sur votre pipeline",
+          "features": ["Suivi centralisé des leads", "Gestion du pipeline", "Historique & notes clients"]
+        },
+        {
+          "title": "Prise de Rendez-vous",
+          "description": "Système de réservation intégré pour que vos clients prennent RDV facilement",
+          "features": ["Page de réservation en ligne", "Synchronisation calendrier", "Rappels automatiques"]
+        },
+        {
+          "title": "Automatisation SMS & Email",
+          "description": "Messagerie automatisée pour relancer vos leads et conclure plus de ventes",
+          "features": ["Séquences SMS", "Campagnes email", "Relances automatiques"]
+        }
+      ]
+    },
+    "crm": {
+      "badge": "Inclus avec chaque offre",
+      "title": "Accès gratuit à notre CRM — pour chaque client",
+      "subtitle": "En travaillant avec nous, vous accédez gratuitement à notre CRM maison. Suivez vos leads, gérez vos rendez-vous et consultez vos résultats en temps réel.",
+      "detail": "Pas d'abonnement tiers nécessaire. Notre CRM est conçu pour notre façon de travailler, et il est à vous tant que vous êtes client.",
+      "perks": [
+        "Suivi complet des leads et du pipeline",
+        "Prise de rendez-vous intégrée",
+        "Relances SMS et email automatisées",
+        "Tableau de bord en temps réel",
+        "Inclus sans frais supplémentaires"
+      ],
+      "cta": "Commencer"
+    },
+    "contact": {
+      "title": "Prêt à passer à la vitesse supérieure ?",
+      "subtitle": "Confiez-nous vos Ads, votre CRM et vos automatisations pour vous concentrer sur votre business",
+      "ctaPrimary": "Commencer",
+      "ctaSecondary": "Réserver une démo"
+    },
+    "footer": {
+      "description": "Gestion d'Ads, accès CRM, prise de rendez-vous et messagerie automatisée — tout ce qu'il faut pour développer votre business.",
+      "copyright": "© 2026 SocialBadi. Tous droits réservés par Badi Corp.",
+      "legal": "Mentions légales",
+      "privacy": "Politique de confidentialité",
+      "cookies": "Cookies",
+      "product": {
+        "title": "Produit",
+        "links": ["Fonctionnalités", "Tarifs", "Intégrations", "API"]
+      },
+      "company": {
+        "title": "Entreprise",
+        "links": ["À propos", "Carrières", "Blog", "Presse"]
+      },
+      "resources": {
+        "title": "Ressources",
+        "links": ["Documentation", "Guides", "Webinaires", "Support"]
+      }
+    }
+  }

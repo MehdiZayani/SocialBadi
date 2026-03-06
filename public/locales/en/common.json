@@ -1,0 +1,129 @@
+{
+    "nav": {
+      "home": "Home",
+      "features": "Features",
+      "solutions": "Solutions",
+      "contact": "Contact",
+      "cta": "Get Started"
+    },
+    "hero": {
+      "badge": "Your all-in-one growth partner",
+      "title1": "Grow Your",
+      "title2": "Business with Us",
+      "subtitle": "Ads management, CRM & automations to",
+      "action1": "acquire",
+      "action2": "track",
+      "action3": "convert",
+      "ctaPrimary": "Get Started",
+      "ctaSecondary": "Book a demo",
+      "stats": {
+        "clients": "Active clients",
+        "uptime": "Uptime",
+        "conversations": "Leads managed",
+        "satisfaction": "Satisfaction"
+      },
+      "socialProof": "Join",
+      "companies": "companies",
+      "trust": "trusting us"
+    },
+    "intro": {
+      "title": "We Handle Your Growth"
+    },
+    "features": {
+      "badge": "Features",
+      "title": "Everything you need",
+      "subtitle": "Ads, CRM & automations to acquire and convert more clients",
+      "items": [
+        {
+          "title": "Facebook & Google Ads",
+          "description": "We manage your ad campaigns on Facebook, Instagram and Google to generate qualified leads."
+        },
+        {
+          "title": "In-House CRM",
+          "description": "Access our proprietary CRM to track all your leads, clients and opportunities in one place."
+        },
+        {
+          "title": "Lead Tracking",
+          "description": "Automatic lead capture and follow-up so no prospect slips through the cracks."
+        },
+        {
+          "title": "Built-in Scheduling",
+          "description": "Integrated appointment booking — your clients book directly into your calendar."
+        },
+        {
+          "title": "Automatic SMS",
+          "description": "Send automated SMS sequences to nurture leads and confirm appointments."
+        },
+        {
+          "title": "Automatic Emails",
+          "description": "Automated email campaigns to engage your prospects and retain your clients."
+        }
+      ]
+    },
+    "solutions": {
+      "title": "Our Solutions",
+      "subtitle": "A complete ecosystem to acquire, manage and convert your leads",
+      "learnMore": "Learn more",
+      "items": [
+        {
+          "title": "Paid Advertising",
+          "description": "High-performing Facebook Ads & Google Ads campaigns managed by experts",
+          "features": ["Facebook & Instagram Ads", "Google Ads & SEA", "Retargeting campaigns"]
+        },
+        {
+          "title": "CRM & Lead Management",
+          "description": "Our in-house CRM gives you full visibility on your pipeline",
+          "features": ["Centralized lead tracking", "Deal pipeline management", "Client history & notes"]
+        },
+        {
+          "title": "Scheduling & Booking",
+          "description": "Built-in appointment system so your clients can book with ease",
+          "features": ["Online booking page", "Calendar sync", "Automatic reminders"]
+        },
+        {
+          "title": "SMS & Email Automation",
+          "description": "Automated messaging to nurture leads and close more deals",
+          "features": ["SMS sequences", "Email campaigns", "Follow-up automations"]
+        }
+      ]
+    },
+    "crm": {
+      "badge": "Included with every plan",
+      "title": "Free access to our CRM — for every client",
+      "subtitle": "When you work with us, you get full access to our in-house CRM at no extra cost. Track your leads, manage appointments, and monitor your results in real time.",
+      "detail": "No third-party subscription needed. Our CRM is built specifically for the way we work, and it is yours as long as you are a client.",
+      "perks": [
+        "Full lead and pipeline tracking",
+        "Integrated appointment scheduling",
+        "Automated SMS and email follow-ups",
+        "Real-time reporting dashboard",
+        "Included at no extra cost"
+      ],
+      "cta": "Get started"
+    },
+    "contact": {
+      "title": "Ready to grow?",
+      "subtitle": "Let us handle your ads, CRM and automations so you can focus on your business",
+      "ctaPrimary": "Get Started",
+      "ctaSecondary": "Book a demo"
+    },
+    "footer": {
+      "description": "Ads management, CRM access, appointment scheduling and automated messaging — everything you need to grow your business.",
+      "copyright": "© 2026 SocialBadi. All rights reserved by Badi Corp.",
+      "legal": "Legal",
+      "privacy": "Privacy Policy",
+      "cookies": "Cookies",
+      "product": {
+        "title": "Product",
+        "links": ["Features", "Pricing", "Integrations", "API"]
+      },
+      "company": {
+        "title": "Company",
+        "links": ["About", "Careers", "Blog", "Press"]
+      },
+      "resources": {
+        "title": "Resources",
+        "links": ["Documentation", "Guides", "Webinars", "Support"]
+      }
+    }
+  }

@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <defs>
+    <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#3b82f6;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#8b5cf6;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Rounded square background with gradient (same as navbar logo) -->
+  <rect x="8" y="8" width="84" height="84" rx="16" ry="16" fill="url(#gradient)"/>
+  
+  <!-- Bot icon (robot) -->
+  <!-- Robot head -->
+  <rect x="35" y="35" width="30" height="25" rx="4" ry="4" fill="white"/>
+  
+  <!-- Robot antenna -->
+  <line x1="50" y1="25" x2="50" y2="35" stroke="white" stroke-width="2"/>
+  <circle cx="50" cy="23" r="3" fill="white"/>
+  
+  <!-- Robot eyes -->
+  <circle cx="43" cy="45" r="3" fill="#3b82f6"/>
+  <circle cx="57" cy="45" r="3" fill="#3b82f6"/>
+  
+  <!-- Robot mouth -->
+  <rect x="42" y="52" width="16" height="3" rx="1.5" ry="1.5" fill="#3b82f6"/>
+  
+  <!-- Robot body -->
+  <rect x="38" y="62" width="24" height="15" rx="3" ry="3" fill="white" opacity="0.9"/>
+  
+  <!-- Robot details (chest indicator) -->
+  <circle cx="50" cy="69" r="2" fill="#8b5cf6"/>
+</svg>
