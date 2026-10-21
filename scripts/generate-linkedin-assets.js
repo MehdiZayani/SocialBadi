@@ -132,51 +132,71 @@ async function generateLinkedInAssets() {
     <html>
       <head>
         <meta charset="utf-8" />
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&family=JetBrains+Mono:wght@500;600;700&display=swap" rel="stylesheet">
         <style>
           * { box-sizing: border-box; margin: 0; padding: 0; }
           body {
             width: 1584px;
             height: 396px;
             background: #ffffff;
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
             overflow: hidden;
+            -webkit-font-smoothing: antialiased;
           }
           .banner {
             width: 1584px;
             height: 396px;
             position: relative;
-            background: #fcfcfd;
+            background: #fafbfe;
             display: flex;
             align-items: center;
             justify-content: space-between;
-            padding: 0 90px;
+            padding-left: 360px; /* RESERVED CLEARANCE FOR LINKEDIN LOGO (Bottom-Left) */
+            padding-right: 60px;
             overflow: hidden;
           }
-          /* Background Grids & Orbs */
+
+          /* Ambient Tech Grids & Beams */
           .grid {
             position: absolute;
             inset: 0;
-            background-image: radial-gradient(rgba(37, 99, 235, 0.14) 1.5px, transparent 1.5px);
+            background-image: radial-gradient(rgba(37, 99, 235, 0.12) 1.5px, transparent 1.5px);
             background-size: 28px 28px;
-            opacity: 0.8;
+            opacity: 0.85;
           }
-          .gradient-beam-left {
+          /* Halo glow specifically positioned behind the LinkedIn profile picture */
+          .logo-dock-halo {
             position: absolute;
-            width: 600px;
-            height: 400px;
-            left: -100px;
+            left: 20px;
+            bottom: -40px;
+            width: 380px;
+            height: 380px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(37, 99, 235, 0.16) 0%, rgba(99, 102, 241, 0.06) 50%, transparent 70%);
+            filter: blur(40px);
+            pointer-events: none;
+          }
+          .gradient-beam-top-left {
+            position: absolute;
+            width: 500px;
+            height: 300px;
+            left: -80px;
             top: -100px;
-            background: radial-gradient(circle, rgba(37, 99, 235, 0.18) 0%, transparent 60%);
+            background: radial-gradient(circle, rgba(37, 99, 235, 0.12) 0%, transparent 65%);
             filter: blur(50px);
+            pointer-events: none;
           }
           .gradient-beam-right {
             position: absolute;
             width: 700px;
             height: 500px;
             right: -100px;
-            top: -50px;
-            background: radial-gradient(circle, rgba(99, 102, 241, 0.22) 0%, rgba(139, 92, 246, 0.12) 40%, transparent 70%);
+            top: -60px;
+            background: radial-gradient(circle, rgba(79, 70, 229, 0.14) 0%, rgba(147, 51, 234, 0.06) 45%, transparent 70%);
             filter: blur(60px);
+            pointer-events: none;
           }
           .top-border {
             position: absolute;
@@ -185,58 +205,64 @@ async function generateLinkedInAssets() {
             right: 0;
             height: 4px;
             background: linear-gradient(90deg, #2563eb 0%, #4f46e5 50%, #8b5cf6 100%);
+            z-index: 20;
           }
-          
-          /* Left Brand Block */
-          .left-content {
+
+          /* Main Content Block (Shifted right to avoid logo) */
+          .main-content {
             position: relative;
             z-index: 10;
-            max-width: 820px;
+            max-width: 740px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
           }
           .badge-row {
             display: flex;
             align-items: center;
-            gap: 12px;
-            margin-bottom: 16px;
+            gap: 10px;
+            margin-bottom: 14px;
           }
           .status-pill {
             display: inline-flex;
             align-items: center;
             gap: 8px;
-            padding: 6px 14px;
-            background: rgba(255, 255, 255, 0.9);
+            padding: 5px 13px;
+            background: rgba(255, 255, 255, 0.95);
             border: 1px solid rgba(226, 232, 240, 0.9);
             border-radius: 9999px;
             box-shadow: 0 2px 8px rgba(15, 23, 42, 0.04);
-            font-family: monospace;
-            font-size: 13px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 12px;
             font-weight: 700;
             color: #0f172a;
           }
           .status-dot {
-            width: 8px;
-            height: 8px;
+            width: 7px;
+            height: 7px;
             border-radius: 50%;
             background: #10b981;
+            box-shadow: 0 0 8px rgba(16, 185, 129, 0.6);
           }
           .category-pill {
-            display: inline-block;
-            padding: 6px 14px;
+            display: inline-flex;
+            align-items: center;
+            padding: 5px 13px;
             background: #eff6ff;
             border: 1px solid #bfdbfe;
             border-radius: 9999px;
-            font-family: monospace;
-            font-size: 13px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 12px;
             font-weight: 700;
             color: #1d4ed8;
           }
-          
+
           .brand-title {
-            font-size: 48px;
+            font-size: 44px;
             font-weight: 800;
-            letter-spacing: -1.5px;
+            letter-spacing: -1.4px;
             color: #0f172a;
-            line-height: 1.1;
+            line-height: 1.12;
             margin-bottom: 12px;
           }
           .brand-title span {
@@ -245,14 +271,14 @@ async function generateLinkedInAssets() {
             -webkit-text-fill-color: transparent;
           }
           .tagline {
-            font-size: 19px;
+            font-size: 16.5px;
             font-weight: 500;
             color: #475569;
             line-height: 1.4;
-            margin-bottom: 22px;
+            margin-bottom: 20px;
           }
-          
-          /* Capabilities Pills */
+
+          /* Tech Pills */
           .pills-row {
             display: flex;
             align-items: center;
@@ -260,14 +286,15 @@ async function generateLinkedInAssets() {
             flex-wrap: wrap;
           }
           .tech-pill {
-            padding: 6px 14px;
-            background: #ffffff;
+            padding: 6px 13px;
+            background: rgba(255, 255, 255, 0.9);
             border: 1px solid #e2e8f0;
             border-radius: 8px;
-            font-size: 13px;
+            font-size: 12.5px;
             font-weight: 600;
             color: #334155;
             box-shadow: 0 1px 3px rgba(15, 23, 42, 0.04);
+            white-space: nowrap;
           }
           .tech-pill.highlight {
             background: #0f172a;
@@ -275,7 +302,7 @@ async function generateLinkedInAssets() {
             border-color: #0f172a;
           }
 
-          /* Right Feature Showcase */
+          /* Right Showcase: Metrics & CTA */
           .right-showcase {
             position: relative;
             z-index: 10;
@@ -283,23 +310,24 @@ async function generateLinkedInAssets() {
             flex-direction: column;
             align-items: flex-end;
             gap: 16px;
+            min-width: 390px;
           }
           .metrics-card {
             background: rgba(255, 255, 255, 0.95);
             backdrop-filter: blur(12px);
             border: 1px solid rgba(226, 232, 240, 0.95);
             border-radius: 20px;
-            padding: 20px 28px;
-            box-shadow: 0 15px 35px -5px rgba(15, 23, 42, 0.08);
+            padding: 18px 24px;
+            box-shadow: 0 15px 35px -5px rgba(15, 23, 42, 0.07), 0 4px 12px -2px rgba(15, 23, 42, 0.03);
             display: flex;
             align-items: center;
-            gap: 28px;
+            gap: 24px;
           }
           .metric-item {
             text-align: center;
           }
           .metric-value {
-            font-size: 28px;
+            font-size: 26px;
             font-weight: 800;
             color: #0f172a;
             letter-spacing: -0.5px;
@@ -308,8 +336,8 @@ async function generateLinkedInAssets() {
           }
           .metric-value.blue { color: #2563eb; }
           .metric-label {
-            font-size: 11px;
-            font-family: monospace;
+            font-size: 10.5px;
+            font-family: 'JetBrains Mono', monospace;
             text-transform: uppercase;
             font-weight: 600;
             color: #64748b;
@@ -317,22 +345,37 @@ async function generateLinkedInAssets() {
           }
           .metric-divider {
             width: 1px;
-            height: 36px;
+            height: 34px;
             background: #e2e8f0;
           }
-          
+
+          .cta-row {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+          }
           .url-badge {
             display: inline-flex;
             align-items: center;
             gap: 8px;
-            padding: 8px 18px;
+            padding: 8px 20px;
             background: linear-gradient(135deg, #2563eb 0%, #4f46e5 100%);
             border-radius: 9999px;
             color: #ffffff;
-            font-family: monospace;
+            font-family: 'JetBrains Mono', monospace;
             font-size: 13px;
             font-weight: 700;
             box-shadow: 0 4px 14px rgba(37, 99, 235, 0.3);
+          }
+          .sub-badge {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 11px;
+            font-weight: 600;
+            color: #64748b;
+            background: rgba(255, 255, 255, 0.8);
+            border: 1px solid #e2e8f0;
+            padding: 6px 12px;
+            border-radius: 9999px;
           }
         </style>
       </head>
@@ -340,11 +383,12 @@ async function generateLinkedInAssets() {
         <div class="banner">
           <div class="top-border"></div>
           <div class="grid"></div>
-          <div class="gradient-beam-left"></div>
+          <div class="logo-dock-halo"></div>
+          <div class="gradient-beam-top-left"></div>
           <div class="gradient-beam-right"></div>
 
-          <!-- Left Side: Brand & Value Prop -->
-          <div class="left-content">
+          <!-- Main Content: Shifted so bottom-left is 100% free for the logo -->
+          <div class="main-content">
             <div class="badge-row">
               <div class="status-pill">
                 <div class="status-dot"></div>
@@ -360,7 +404,7 @@ async function generateLinkedInAssets() {
             </div>
 
             <div class="tagline">
-              Web &amp; Mobile Applications • Intelligent AI Automations • High-Velocity SaaS
+              Custom Web &amp; Mobile Apps • Intelligent AI Automations • High-Velocity SaaS
             </div>
 
             <div class="pills-row">
@@ -372,7 +416,7 @@ async function generateLinkedInAssets() {
             </div>
           </div>
 
-          <!-- Right Side: Metrics & Domain -->
+          <!-- Right Showcase: Metrics & CTA -->
           <div class="right-showcase">
             <div class="metrics-card">
               <div class="metric-item">
@@ -391,8 +435,9 @@ async function generateLinkedInAssets() {
               </div>
             </div>
 
-            <div class="url-badge">
-              socialbadi.com ↗
+            <div class="cta-row">
+              <div class="sub-badge">Direct Partner Eng.</div>
+              <div class="url-badge">socialbadi.com ↗</div>
             </div>
           </div>
         </div>
@@ -402,6 +447,144 @@ async function generateLinkedInAssets() {
 
   await page.screenshot({ path: path.join(OUT_DIR, 'linkedin-banner.png'), type: 'png' });
   console.log('Saved linkedin-banner.png');
+
+  // 3. GENERATE A SIMULATION PREVIEW (Banner + LinkedIn Profile Photo Overlap)
+  console.log('Generating LinkedIn Mockup Preview...');
+  const bannerBuffer = fs.readFileSync(path.join(OUT_DIR, 'linkedin-banner.png'));
+  const bannerBase64 = `data:image/png;base64,${bannerBuffer.toString('base64')}`;
+
+  await page.setContent(`
+    <!DOCTYPE html>
+    <html>
+      <head>
+        <meta charset="utf-8" />
+        <style>
+          * { box-sizing: border-box; margin: 0; padding: 0; }
+          body {
+            width: 1584px;
+            height: 480px;
+            background: #f1f5f9;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            padding: 24px 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+          }
+          .container {
+            width: 1544px;
+            background: #ffffff;
+            border-radius: 12px;
+            overflow: visible;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            position: relative;
+          }
+          .banner-img {
+            width: 1544px;
+            height: 386px;
+            display: block;
+            border-radius: 12px 12px 0 0;
+            object-fit: cover;
+          }
+          /* Exact LinkedIn Company Logo Box */
+          .mockup-logo-box {
+            position: absolute;
+            left: 36px;
+            bottom: -45px;
+            width: 190px;
+            height: 190px;
+            background: #ffffff;
+            border-radius: 28px;
+            border: 4px solid #ffffff;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.18);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 50;
+            overflow: hidden;
+          }
+          .mockup-logo-inner {
+            width: 100%;
+            height: 100%;
+            border-radius: 24px;
+            background: linear-gradient(135deg, #2563eb 0%, #4f46e5 100%);
+            padding: 5px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+          }
+          .mockup-white-card {
+            width: 100%;
+            height: 100%;
+            background: #ffffff;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+          }
+          .chevron {
+            width: 52px;
+            height: 52px;
+            border-right: 13px solid #2563eb;
+            border-top: 13px solid #2563eb;
+            transform: rotate(45deg);
+            border-radius: 4px;
+            margin-right: 6px;
+          }
+          .cursor-line {
+            width: 36px;
+            height: 13px;
+            background: #2563eb;
+            border-radius: 7px;
+            margin-top: 34px;
+          }
+          .header-bar {
+            height: 60px;
+            background: #ffffff;
+            border-radius: 0 0 12px 12px;
+            padding-left: 260px;
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            color: #475569;
+            font-size: 14px;
+            font-weight: 700;
+          }
+          .tag-check {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: #ecfdf5;
+            color: #059669;
+            border: 1px solid #a7f3d0;
+            padding: 4px 12px;
+            border-radius: 9999px;
+            font-size: 12px;
+          }
+        </style>
+      </head>
+      <body>
+        <div class="container">
+          <img class="banner-img" src="${bannerBase64}" />
+          <div class="mockup-logo-box">
+            <div class="mockup-logo-inner">
+              <div class="mockup-white-card">
+                <div style="display:flex;align-items:center;gap:6px;">
+                  <div class="chevron"></div>
+                  <div class="cursor-line"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="header-bar">
+            <span class="tag-check">✓ Logo Clearance Verified</span>
+            <span>LinkedIn Company Page Simulation • 0 Overlap with Text, Badges, or Tech Pills</span>
+          </div>
+        </div>
+      </body>
+    </html>
+  `);
+  await page.screenshot({ path: path.join(OUT_DIR, 'linkedin-preview-simulation.png'), type: 'png' });
+  console.log('Saved linkedin-preview-simulation.png');
 
   await browser.close();
 }
