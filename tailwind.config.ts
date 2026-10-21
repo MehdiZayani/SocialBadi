@@ -9,19 +9,6 @@ export default {
   ],
   theme: {
   	extend: {
-		backgroundImage: {
-			'agruline' : "url('../images/agruline.jpg')",
-			'concreteprotection' : "url('../images/concreteprotection.jpg')",
-			'ligningsystems' : "url('../images/ligningsystems.jpg')",
-			'semifinishedproducts' : "url('../images/semifinishedproducts.jpg')",
-			'weldingsystems' : "url('../images/weldingsystems.jpg')",
-			'agruchem' : "url('../images/agruchem.jpg')",
-			'purad' : "url('../images/purad.jpg')",
-
-
-
-
-		  },
   		colors: {
   			background: 'hsl(var(--background))',
   			foreground: 'hsl(var(--foreground))',
