@@ -983,7 +983,7 @@ export default function HomePage({
                 </a>
 
                 <a
-                  href="tel:+33769848031"
+                  href="tel:+21693304304"
                   className="flex items-center gap-4 p-4 rounded-2xl bg-white border border-slate-200 hover:border-emerald-500 hover:shadow-md transition-all group shadow-sm"
                 >
                   <div className="w-12 h-12 rounded-xl bg-emerald-50 border border-emerald-200 flex items-center justify-center text-emerald-600 group-hover:scale-105 transition-transform">
@@ -994,7 +994,7 @@ export default function HomePage({
                       Téléphone & WhatsApp Studio
                     </span>
                     <span className="text-sm font-bold text-slate-900 group-hover:text-emerald-600 transition-colors">
-                      +33 7 69 84 80 31
+                      +216 93 304 304
                     </span>
                   </div>
                 </a>

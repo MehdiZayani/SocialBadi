@@ -50,7 +50,7 @@ export default function LegalPage() {
 • Head of AI : Yassine Rassas
 • Consultant Cyber Sécurité : Mehdi Amemou
 • Email de contact : contact@socialbadi.com
-• Téléphone : +33 7 69 84 80 31`
+• Téléphone : +216 93 304 304`
         },
         {
           icon: Server,
@@ -86,7 +86,7 @@ Pour exercer ces prérogatives ou obtenir des précisions sur vos droits, vous p
         title: "Contact Juridique",
         desc: "Pour toute notification légale ou demande officielle, contactez notre équipe :",
         email: "contact@socialbadi.com",
-        phone: "+33 7 69 84 80 31"
+        phone: "+216 93 304 304"
       }
     },
     en: {
@@ -105,7 +105,7 @@ Pour exercer ces prérogatives ou obtenir des précisions sur vos droits, vous p
 • Head of AI : Yassine Rassas
 • Cybersecurity Consultant : Mehdi Amemou
 • Official Inquiries : contact@socialbadi.com
-• Phone : +33 7 69 84 80 31`
+• Phone : +216 93 304 304`
         },
         {
           icon: Server,
@@ -141,7 +141,7 @@ For detailed privacy disclosures or data requests, refer to our Privacy Policy o
         title: "Legal Inquiries",
         desc: "For formal notices or compliance documentation, reach out to our legal desk:",
         email: "contact@socialbadi.com",
-        phone: "+33 7 69 84 80 31"
+        phone: "+216 93 304 304"
       }
     }
   };

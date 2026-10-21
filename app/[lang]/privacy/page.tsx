@@ -103,7 +103,7 @@ Nous utilisons uniquement des cookies techniques strictement indispensables au b
         title: "Contact & Délégué aux Données",
         desc: "Pour toute interrogation concernant notre politique de confidentialité ou l'exercice de vos droits :",
         email: "contact@socialbadi.com",
-        phone: "+33 7 69 84 80 31",
+        phone: "+216 93 304 304",
         address: "SocialBadi Studio — Paris / Tunis"
       }
     },
@@ -176,7 +176,7 @@ Only essential technical cookies necessary for session state and locale preferen
         title: "Privacy Officer & Contact",
         desc: "For questions regarding our privacy framework or to request data access:",
         email: "contact@socialbadi.com",
-        phone: "+33 7 69 84 80 31",
+        phone: "+216 93 304 304",
         address: "SocialBadi Studio — Paris / Tunis"
       }
     }

@@ -108,7 +108,7 @@ export default async function RootLayout(
               logo: 'https://socialbadi.com/icon.svg',
               contactPoint: {
                 '@type': 'ContactPoint',
-                telephone: '+33-7-69-84-80-31',
+                telephone: '+216-93-304-304',
                 contactType: 'customer service',
                 email: 'contact@socialbadi.com',
                 availableLanguage: ['French', 'English']

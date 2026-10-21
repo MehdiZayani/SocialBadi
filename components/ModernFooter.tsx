@@ -184,11 +184,11 @@ export default function ModernFooter({ locale = "fr" }: { locale?: "fr" | "en" }
                 <span className="font-medium">contact@socialbadi.com</span>
               </a>
               <a
-                href="tel:+33769848031"
+                href="tel:+21693304304"
                 className="flex items-center gap-2 hover:text-blue-600 transition-colors"
               >
                 <Phone className="w-3.5 h-3.5 text-blue-600" />
-                <span className="font-medium">+33 7 69 84 80 31</span>
+                <span className="font-medium">+216 93 304 304</span>
               </a>
               <div className="flex items-center gap-2 text-slate-500">
                 <MapPin className="w-3.5 h-3.5" />
