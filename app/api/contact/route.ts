@@ -401,15 +401,15 @@ export async function POST(request: NextRequest) {
       message,
     });
 
-    // Format verified sender
-    const senderEmail = process.env.RESEND_FROM_EMAIL?.replace(/['"]/g, '').trim() || 'notif@socialbadi.com';
-    const fromAddress = senderEmail.includes('<') ? senderEmail : `SocialBadi Studio <${senderEmail}>`;
+    // Distinct verified sender addresses
+    const adminFromAddress = 'SocialBadi Studio <notif@socialbadi.com>';
+    const clientFromAddress = 'SocialBadi Studio <noreply@socialbadi.com>';
 
-    // 1. Dispatch notification email to internal team (Mehdi & Yassine)
+    // 1. Dispatch notification email to internal team (Mehdi & Yassine) from notif@socialbadi.com
     const adminDeliveryResults = await Promise.allSettled(
       ADMIN_EMAILS.map((recipient) =>
         resend.emails.send({
-          from: fromAddress,
+          from: adminFromAddress,
           to: [recipient],
           subject: `🚀 Nouveau Lead: ${fullName} - ${service}`,
           html: adminHtml,
@@ -417,11 +417,11 @@ export async function POST(request: NextRequest) {
       )
     );
 
-    // 2. Dispatch automated confirmation email to the client with the same Light Studio branding
+    // 2. Dispatch automated confirmation email to the client from noreply@socialbadi.com
     let confirmationId: string | undefined = undefined;
     try {
       const clientEmailResult = await resend.emails.send({
-        from: fromAddress,
+        from: clientFromAddress,
         to: [email],
         subject: `✨ Confirmation : Votre projet avec SocialBadi Studio`,
         html: clientHtml,
