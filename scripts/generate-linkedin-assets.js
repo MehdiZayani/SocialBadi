@@ -586,6 +586,460 @@ async function generateLinkedInAssets() {
   await page.screenshot({ path: path.join(OUT_DIR, 'linkedin-preview-simulation.png'), type: 'png' });
   console.log('Saved linkedin-preview-simulation.png');
 
+  // 4. GENERATE LINKEDIN EMPLOYEE / TEAM BANNER (1584 x 396 px)
+  console.log('Generating LinkedIn Employee Banner (1584x396)...');
+  await page.setViewport({ width: 1584, height: 396, deviceScaleFactor: 2 });
+  await page.setContent(`
+    <!DOCTYPE html>
+    <html>
+      <head>
+        <meta charset="utf-8" />
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&family=JetBrains+Mono:wght@500;600;700&display=swap" rel="stylesheet">
+        <style>
+          * { box-sizing: border-box; margin: 0; padding: 0; }
+          body {
+            width: 1584px;
+            height: 396px;
+            background: #ffffff;
+            font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            overflow: hidden;
+            -webkit-font-smoothing: antialiased;
+          }
+          .banner {
+            width: 1584px;
+            height: 396px;
+            position: relative;
+            background: #fafbfe;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding-left: 330px; /* CLEARANCE FOR CIRCULAR PERSONAL PROFILE PHOTO */
+            padding-right: 60px;
+            overflow: hidden;
+          }
+
+          /* Ambient Tech Grids & Beams */
+          .grid {
+            position: absolute;
+            inset: 0;
+            background-image: radial-gradient(rgba(37, 99, 235, 0.12) 1.5px, transparent 1.5px);
+            background-size: 28px 28px;
+            opacity: 0.85;
+          }
+          /* Circular ambient halo for the employee profile avatar */
+          .avatar-halo {
+            position: absolute;
+            left: 20px;
+            bottom: -50px;
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(37, 99, 235, 0.18) 0%, rgba(99, 102, 241, 0.08) 50%, transparent 70%);
+            filter: blur(35px);
+            pointer-events: none;
+          }
+          .gradient-beam-top-left {
+            position: absolute;
+            width: 450px;
+            height: 280px;
+            left: -60px;
+            top: -100px;
+            background: radial-gradient(circle, rgba(37, 99, 235, 0.12) 0%, transparent 65%);
+            filter: blur(45px);
+            pointer-events: none;
+          }
+          .gradient-beam-right {
+            position: absolute;
+            width: 700px;
+            height: 500px;
+            right: -100px;
+            top: -60px;
+            background: radial-gradient(circle, rgba(79, 70, 229, 0.14) 0%, rgba(147, 51, 234, 0.06) 45%, transparent 70%);
+            filter: blur(60px);
+            pointer-events: none;
+          }
+          .top-border {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #2563eb 0%, #4f46e5 50%, #8b5cf6 100%);
+            z-index: 20;
+          }
+
+          /* Main Content */
+          .main-content {
+            position: relative;
+            z-index: 10;
+            max-width: 760px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+          }
+          .badge-row {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 14px;
+          }
+          .status-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 5px 14px;
+            background: rgba(255, 255, 255, 0.95);
+            border: 1px solid rgba(226, 232, 240, 0.9);
+            border-radius: 9999px;
+            box-shadow: 0 2px 8px rgba(15, 23, 42, 0.04);
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 12px;
+            font-weight: 700;
+            color: #0f172a;
+          }
+          .status-dot {
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+            background: #10b981;
+            box-shadow: 0 0 8px rgba(16, 185, 129, 0.6);
+          }
+          .company-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 5px 14px;
+            background: #eff6ff;
+            border: 1px solid #bfdbfe;
+            border-radius: 9999px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 12px;
+            font-weight: 700;
+            color: #1d4ed8;
+          }
+
+          .brand-title {
+            font-size: 44px;
+            font-weight: 800;
+            letter-spacing: -1.4px;
+            color: #0f172a;
+            line-height: 1.12;
+            margin-bottom: 12px;
+          }
+          .brand-title span {
+            background: linear-gradient(135deg, #2563eb 0%, #4f46e5 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+          }
+          .tagline {
+            font-size: 16.5px;
+            font-weight: 500;
+            color: #475569;
+            line-height: 1.4;
+            margin-bottom: 20px;
+          }
+
+          /* Tech Stack Pills */
+          .pills-row {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            flex-wrap: wrap;
+          }
+          .tech-pill {
+            padding: 6px 13px;
+            background: rgba(255, 255, 255, 0.9);
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            font-size: 12.5px;
+            font-weight: 600;
+            color: #334155;
+            box-shadow: 0 1px 3px rgba(15, 23, 42, 0.04);
+            white-space: nowrap;
+          }
+          .tech-pill.highlight {
+            background: #0f172a;
+            color: #ffffff;
+            border-color: #0f172a;
+          }
+
+          /* Right Showcase: Studio Brand Dock */
+          .right-showcase {
+            position: relative;
+            z-index: 10;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            gap: 16px;
+            min-width: 360px;
+          }
+          .studio-card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(226, 232, 240, 0.95);
+            border-radius: 20px;
+            padding: 18px 22px;
+            box-shadow: 0 15px 35px -5px rgba(15, 23, 42, 0.07), 0 4px 12px -2px rgba(15, 23, 42, 0.03);
+            display: flex;
+            align-items: center;
+            gap: 16px;
+          }
+          .mini-logo {
+            width: 52px;
+            height: 52px;
+            border-radius: 14px;
+            background: linear-gradient(135deg, #2563eb 0%, #4f46e5 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 14px rgba(37, 99, 235, 0.25);
+            flex-shrink: 0;
+          }
+          .chevron-mini {
+            width: 14px;
+            height: 14px;
+            border-right: 3.5px solid #ffffff;
+            border-top: 3.5px solid #ffffff;
+            transform: rotate(45deg);
+            margin-right: 2px;
+          }
+          .cursor-mini {
+            width: 10px;
+            height: 3.5px;
+            background: #ffffff;
+            border-radius: 2px;
+            margin-top: 8px;
+          }
+          .studio-info {
+            display: flex;
+            flex-direction: column;
+          }
+          .studio-name {
+            font-size: 16px;
+            font-weight: 800;
+            color: #0f172a;
+            letter-spacing: -0.3px;
+          }
+          .studio-desc {
+            font-size: 11px;
+            font-family: 'JetBrains Mono', monospace;
+            color: #64748b;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            font-weight: 600;
+          }
+
+          .cta-row {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+          }
+          .url-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 20px;
+            background: linear-gradient(135deg, #2563eb 0%, #4f46e5 100%);
+            border-radius: 9999px;
+            color: #ffffff;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 13px;
+            font-weight: 700;
+            box-shadow: 0 4px 14px rgba(37, 99, 235, 0.3);
+          }
+          .hiring-badge {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 11px;
+            font-weight: 600;
+            color: #475569;
+            background: rgba(255, 255, 255, 0.85);
+            border: 1px solid #e2e8f0;
+            padding: 6px 12px;
+            border-radius: 9999px;
+          }
+        </style>
+      </head>
+      <body>
+        <div class="banner">
+          <div class="top-border"></div>
+          <div class="grid"></div>
+          <div class="avatar-halo"></div>
+          <div class="gradient-beam-top-left"></div>
+          <div class="gradient-beam-right"></div>
+
+          <!-- Main Content: Shifted for employee round avatar clearance -->
+          <div class="main-content">
+            <div class="badge-row">
+              <div class="status-pill">
+                <div class="status-dot"></div>
+                Building at SocialBadi
+              </div>
+              <div class="company-pill">
+                Software Engineering &amp; AI
+              </div>
+            </div>
+
+            <div class="brand-title">
+              Engineering Digital Products <span>that Scale.</span>
+            </div>
+
+            <div class="tagline">
+              Full-Stack Web &amp; Mobile • Autonomous AI Agents • High-Velocity SaaS
+            </div>
+
+            <div class="pills-row">
+              <div class="tech-pill highlight">Next.js 15</div>
+              <div class="tech-pill">TypeScript</div>
+              <div class="tech-pill">Agentic AI &amp; LLMs</div>
+              <div class="tech-pill">React Native Mobile</div>
+              <div class="tech-pill">Cloud Architecture</div>
+            </div>
+          </div>
+
+          <!-- Right Showcase: Studio Card -->
+          <div class="right-showcase">
+            <div class="studio-card">
+              <div class="mini-logo">
+                <div style="display:flex;align-items:center;gap:3px;">
+                  <div class="chevron-mini"></div>
+                  <div class="cursor-mini"></div>
+                </div>
+              </div>
+              <div class="studio-info">
+                <span class="studio-name">SocialBadi Studio</span>
+                <span class="studio-desc">Digital Products &amp; AI</span>
+              </div>
+            </div>
+
+            <div class="cta-row">
+              <div class="hiring-badge">Let's Build Together</div>
+              <div class="url-badge">socialbadi.com ↗</div>
+            </div>
+          </div>
+        </div>
+      </body>
+    </html>
+  `);
+
+  await page.screenshot({ path: path.join(OUT_DIR, 'linkedin-employee-banner.png'), type: 'png' });
+  console.log('Saved linkedin-employee-banner.png');
+
+  // 5. GENERATE EMPLOYEE PROFILE MOCKUP PREVIEW (With Circular Profile Avatar Overlap)
+  console.log('Generating LinkedIn Employee Profile Mockup...');
+  const empBannerBuffer = fs.readFileSync(path.join(OUT_DIR, 'linkedin-employee-banner.png'));
+  const empBannerBase64 = `data:image/png;base64,${empBannerBuffer.toString('base64')}`;
+
+  await page.setContent(`
+    <!DOCTYPE html>
+    <html>
+      <head>
+        <meta charset="utf-8" />
+        <style>
+          * { box-sizing: border-box; margin: 0; padding: 0; }
+          body {
+            width: 1584px;
+            height: 480px;
+            background: #f1f5f9;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            padding: 24px 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+          }
+          .container {
+            width: 1544px;
+            background: #ffffff;
+            border-radius: 12px;
+            overflow: visible;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            position: relative;
+          }
+          .banner-img {
+            width: 1544px;
+            height: 386px;
+            display: block;
+            border-radius: 12px 12px 0 0;
+            object-fit: cover;
+          }
+          /* Circular LinkedIn Personal Profile Avatar */
+          .mockup-avatar {
+            position: absolute;
+            left: 45px;
+            bottom: -55px;
+            width: 170px;
+            height: 170px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+            border: 4px solid #ffffff;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #ffffff;
+            font-size: 40px;
+            font-weight: 700;
+            z-index: 50;
+          }
+          .avatar-inner {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 4px;
+          }
+          .avatar-role {
+            font-size: 11px;
+            font-family: monospace;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #94a3b8;
+          }
+          .header-bar {
+            height: 60px;
+            background: #ffffff;
+            border-radius: 0 0 12px 12px;
+            padding-left: 245px;
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            color: #475569;
+            font-size: 14px;
+            font-weight: 700;
+          }
+          .tag-check {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: #eff6ff;
+            color: #1d4ed8;
+            border: 1px solid #bfdbfe;
+            padding: 4px 12px;
+            border-radius: 9999px;
+            font-size: 12px;
+          }
+        </style>
+      </head>
+      <body>
+        <div class="container">
+          <img class="banner-img" src="${empBannerBase64}" />
+          <div class="mockup-avatar">
+            <div class="avatar-inner">
+              <span>👤</span>
+              <span class="avatar-role">Profile Photo</span>
+            </div>
+          </div>
+          <div class="header-bar">
+            <span class="tag-check">✓ Employee Banner Simulation</span>
+            <span>LinkedIn Personal Profile • 0 Overlap with Circular Avatar</span>
+          </div>
+        </div>
+      </body>
+    </html>
+  `);
+  await page.screenshot({ path: path.join(OUT_DIR, 'linkedin-employee-preview-simulation.png'), type: 'png' });
+  console.log('Saved linkedin-employee-preview-simulation.png');
+
   await browser.close();
 }
 
