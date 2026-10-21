@@ -1,32 +1,47 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" fill="none">
   <defs>
-    <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" style="stop-color:#3b82f6;stop-opacity:1" />
-      <stop offset="100%" style="stop-color:#8b5cf6;stop-opacity:1" />
+    <!-- Brand Gradient: Electric Blue 600 to Indigo 600 -->
+    <linearGradient id="sbGradient" x1="0%" y1="100%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#2563eb" />
+      <stop offset="100%" stop-color="#4f46e5" />
+    </linearGradient>
+
+    <!-- Subtle Drop Shadow -->
+    <filter id="sbShadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="4" stdDeviation="5" flood-color="#1e40af" flood-opacity="0.28" />
+    </filter>
+
+    <!-- Inner Surface Subtle Gradient -->
+    <linearGradient id="innerGlow" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#ffffff" />
+      <stop offset="100%" stop-color="#f8fafc" />
     </linearGradient>
   </defs>
-  
-  <!-- Rounded square background with gradient (same as navbar logo) -->
-  <rect x="8" y="8" width="84" height="84" rx="16" ry="16" fill="url(#gradient)"/>
-  
-  <!-- Bot icon (robot) -->
-  <!-- Robot head -->
-  <rect x="35" y="35" width="30" height="25" rx="4" ry="4" fill="white"/>
-  
-  <!-- Robot antenna -->
-  <line x1="50" y1="25" x2="50" y2="35" stroke="white" stroke-width="2"/>
-  <circle cx="50" cy="23" r="3" fill="white"/>
-  
-  <!-- Robot eyes -->
-  <circle cx="43" cy="45" r="3" fill="#3b82f6"/>
-  <circle cx="57" cy="45" r="3" fill="#3b82f6"/>
-  
-  <!-- Robot mouth -->
-  <rect x="42" y="52" width="16" height="3" rx="1.5" ry="1.5" fill="#3b82f6"/>
-  
-  <!-- Robot body -->
-  <rect x="38" y="62" width="24" height="15" rx="3" ry="3" fill="white" opacity="0.9"/>
-  
-  <!-- Robot details (chest indicator) -->
-  <circle cx="50" cy="69" r="2" fill="#8b5cf6"/>
+
+  <!-- Outer Rounded Squircle with Gradient Stroke / Fill -->
+  <rect x="6" y="6" width="88" height="88" rx="24" fill="url(#sbGradient)" filter="url(#sbShadow)" />
+
+  <!-- Inner Pure Card Surface matching Navbar Logo Frame -->
+  <rect x="11" y="11" width="78" height="78" rx="19" fill="url(#innerGlow)" />
+
+  <!-- Terminal Prompt Glyph '>_' in Electric Blue -->
+  <!-- Chevron '>' -->
+  <polyline
+    points="31,34 49,50 31,66"
+    stroke="#2563eb"
+    stroke-width="8.5"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  />
+
+  <!-- Blinking/Static Cursor Underscore '_' -->
+  <line
+    x1="55"
+    y1="66"
+    x2="71"
+    y2="66"
+    stroke="#2563eb"
+    stroke-width="8.5"
+    stroke-linecap="round"
+  />
 </svg>

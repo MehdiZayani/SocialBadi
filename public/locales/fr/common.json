@@ -3,8 +3,54 @@
       "home": "Accueil",
       "features": "Fonctionnalités",
       "solutions": "Solutions",
+      "projects": "Nos Projets",
       "contact": "Contact",
       "cta": "Commencer"
+    },
+    "projects": {
+      "badge": "Portfolio & Réalisations",
+      "title": "Nos Projets Récents",
+      "subtitle": "Découvrez nos créations sur-mesure : sites vitrines haut de gamme, applications web interactives et plateformes digitales orientées conversion.",
+      "visitSite": "Visiter le site",
+      "liveStatus": "En ligne",
+      "items": [
+        {
+          "id": "lucci",
+          "title": "Lucci Design",
+          "category": "Site Web Vitrine & Luxe",
+          "tagline": "Menuiserie raffinée & agencement d'intérieur sur-mesure",
+          "url": "https://luccidesign.tn/",
+          "domain": "luccidesign.tn",
+          "image": "/projects/lucci-design.jpg",
+          "description": "Conception d'un univers digital haut de gamme pour un créateur d'intérieurs et de menuiserie d'art. Présentation soignée des cuisines de prestige, dressings, simulateur interactif et capture de prospects qualifiés.",
+          "tags": ["Cuisines & Dressings", "Design Haut de Gamme", "Simulateur Devis", "Prise de Rendez-vous"],
+          "highlights": ["Design immersif & épuré", "Génération de devis qualifiés", "Catalogue interactif"]
+        },
+        {
+          "id": "zitouna",
+          "title": "Menu Zitouna",
+          "category": "Application Web & QR Menu",
+          "tagline": "Expérience culinaire & carte digitale interactive",
+          "url": "https://zitounamenu.vercel.app/",
+          "domain": "zitounamenu.vercel.app",
+          "image": "/projects/zitouna-menu.jpg",
+          "description": "Application web de menu digital ultra-rapide pour restaurant & coffee bar. Navigation instantanée par catégories (brunch, toasts, bowls, boissons), optimisation mobile 100% et accès QR code sans friction.",
+          "tags": ["Web App Mobile", "Menu QR Code", "Fast Loading", "Expérience Utilisateur"],
+          "highlights": ["Chargement ultra-rapide <0.5s", "Navigation tactile fluide", "Zéro application à télécharger"]
+        },
+        {
+          "id": "archi-renov",
+          "title": "Archi Renov",
+          "category": "Plateforme Web & Acquisition",
+          "tagline": "Pilotage de rénovation tous corps d'état à Paris & IDF",
+          "url": "https://archi-renov.com/",
+          "domain": "archi-renov.com",
+          "image": "/projects/archi-renov.jpg",
+          "description": "Plateforme web complète pour une entreprise générale de rénovation haut de gamme à Paris. Portfolio de réalisations avant/après, simulateur d'estimation de travaux, formulaires de contact et stratégie Google Ads & SEO.",
+          "tags": ["Rénovation & BTP", "Devis en Ligne", "Stratégie SEO Paris", "Campagnes Google Ads"],
+          "highlights": ["Capture de leads ultra-ciblée", "Showcase de projets avant/après", "Tunnel de conversion optimisé"]
+        }
+      ]
     },
     "hero": {
       "badge": "Votre partenaire de croissance tout-en-un",

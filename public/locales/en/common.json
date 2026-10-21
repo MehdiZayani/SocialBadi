@@ -3,8 +3,54 @@
       "home": "Home",
       "features": "Features",
       "solutions": "Solutions",
+      "projects": "Our Projects",
       "contact": "Contact",
       "cta": "Get Started"
+    },
+    "projects": {
+      "badge": "Portfolio & Case Studies",
+      "title": "Our Recent Projects",
+      "subtitle": "Discover our bespoke digital solutions: high-end showcase websites, interactive web applications, and conversion-focused platforms.",
+      "visitSite": "Visit Website",
+      "liveStatus": "Live",
+      "items": [
+        {
+          "id": "lucci",
+          "title": "Lucci Design",
+          "category": "Luxury Showcase Website",
+          "tagline": "Refined carpentry & custom interior design",
+          "url": "https://luccidesign.tn/",
+          "domain": "luccidesign.tn",
+          "image": "/projects/lucci-design.jpg",
+          "description": "Bespoke high-end digital showcase for a luxury interior design and carpentry brand. Immersive presentation of luxury kitchens, dressings, interactive project simulator, and qualified lead capture.",
+          "tags": ["Luxury Furniture", "High-End Design", "Quote Simulator", "Appointment Booking"],
+          "highlights": ["Immersive & sleek aesthetic", "Qualified lead capture", "Interactive catalog"]
+        },
+        {
+          "id": "zitouna",
+          "title": "Zitouna Menu",
+          "category": "Web App & QR Code Menu",
+          "tagline": "Interactive digital menu & dining experience",
+          "url": "https://zitounamenu.vercel.app/",
+          "domain": "zitounamenu.vercel.app",
+          "image": "/projects/zitouna-menu.jpg",
+          "description": "Ultra-fast digital menu web app for a premium restaurant and coffee bar. Instant category browsing (brunch, toasts, bowls, drinks), seamless QR code access, and 100% mobile-first UX.",
+          "tags": ["Mobile Web App", "QR Code Menu", "Fast Loading", "Gastronomy UX"],
+          "highlights": ["Sub-0.5s instant loading", "Fluid touch navigation", "No app install required"]
+        },
+        {
+          "id": "archi-renov",
+          "title": "Archi Renov",
+          "category": "Lead-Gen & Construction Platform",
+          "tagline": "Full-scale home renovation & architecture in Paris",
+          "url": "https://archi-renov.com/",
+          "domain": "archi-renov.com",
+          "image": "/projects/archi-renov.jpg",
+          "description": "Complete digital platform for a Parisian general contracting and high-end remodeling firm. Before-and-after project gallery, online quote estimation simulator, and Google Ads / SEO strategy.",
+          "tags": ["Architecture & Remodeling", "Online Estimator", "Paris SEO Strategy", "Google Ads Campaigns"],
+          "highlights": ["High-intent lead generation", "Before/after project showcase", "Optimized conversion funnel"]
+        }
+      ]
     },
     "hero": {
       "badge": "Your all-in-one growth partner",

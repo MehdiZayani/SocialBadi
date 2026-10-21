@@ -1,26 +1,32 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { Resend } from 'resend';
 
-const resend = new Resend(process.env.RESEND_API_KEY);
+const resend = new Resend(process.env.RESEND_API_KEY || 're_placeholder');
 
 export async function POST(request: NextRequest) {
   try {
     const body = await request.json();
-    const { firstName, lastName, email, phone, company, service, message, budget } = body;
+    const fullName = body.name || `${body.firstName || ''} ${body.lastName || ''}`.trim() || 'Client';
+    const email = body.email;
+    const phone = body.phone || '—';
+    const company = body.company || '—';
+    const service = body.service || 'Ingénierie Web & IA';
+    const message = body.message;
+    const budget = body.budget;
 
     // Validate required fields
-    if (!firstName || !lastName || !email || !message) {
+    if (!email || !message) {
       return NextResponse.json(
         { error: 'Missing required fields' },
         { status: 400 }
       );
     }
 
-    // Send notification email to you
+    // Send notification email to personal email
     const notificationEmail = await resend.emails.send({
-      from: 'SocialBadi Contact Form <contact@socialbadi.com>',
-      to: ['medmehdizayani1@gmail.com'], // Your email
-      subject: `🚀 New Lead: ${firstName} ${lastName} - ${service || 'General Inquiry'}`,
+      from: 'SocialBadi Contact Form <onboarding@resend.dev>',
+      to: ['medmehdizayani1@gmail.com'], // Your personal email
+      subject: `🚀 Nouveau Contact Lead: ${fullName} - ${service}`,
       html: `
         <!DOCTYPE html>
         <html>
@@ -43,7 +49,7 @@ export async function POST(request: NextRequest) {
                 <table style="width: 100%; color: #e5e7eb;">
                   <tr>
                     <td style="padding: 8px 0; font-weight: 600; color: #9ca3af;">Name:</td>
-                    <td style="padding: 8px 0; color: #ffffff;">${firstName} ${lastName}</td>
+                    <td style="padding: 8px 0; color: #ffffff;">${fullName}</td>
                   </tr>
                   <tr>
                     <td style="padding: 8px 0; font-weight: 600; color: #9ca3af;">Email:</td>
@@ -109,7 +115,7 @@ export async function POST(request: NextRequest) {
             <!-- Header with Gradient -->
             <div style="background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%); padding: 40px 30px; border-radius: 16px 16px 0 0; text-align: center; position: relative; overflow: hidden;">
               <div style="position: relative; z-index: 1;">
-                <h1 style="margin: 0 0 10px 0; color: #ffffff; font-size: 32px; font-weight: bold;">🚀 Thank You, ${firstName}!</h1>
+                <h1 style="margin: 0 0 10px 0; color: #ffffff; font-size: 32px; font-weight: bold;">🚀 Thank You, ${fullName}!</h1>
                 <p style="margin: 0; color: rgba(255, 255, 255, 0.9); font-size: 16px;">We've received your message</p>
               </div>
             </div>

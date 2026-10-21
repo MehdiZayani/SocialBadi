@@ -3,8 +3,11 @@
 
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'next/navigation';
-import { Shield, Lock, Eye, Database, UserCheck, Mail } from 'lucide-react';
+import Link from 'next/link';
+import { Shield, Lock, Eye, Database, UserCheck, Mail, ArrowLeft, CheckCircle2 } from 'lucide-react';
 import Navbar from '@/components/Navbar';
+import ModernFooter from '@/components/ModernFooter';
+import CyberGrid from '@/components/react-bits/CyberGrid';
 import fr from '@/public/locales/fr/common.json';
 import en from '@/public/locales/en/common.json';
 
@@ -32,183 +35,149 @@ export default function PrivacyPage() {
 
   const privacyContent = {
     fr: {
+      badge: "Confidentialité & RGPD",
       title: "Politique de Confidentialité",
-      intro: "Chez SocialBadi, nous prenons très au sérieux la protection de vos données personnelles. Cette politique de confidentialité vous informe sur la manière dont nous collectons, utilisons et protégeons vos informations.",
+      intro: "Chez SocialBadi, nous appliquons les standards de sécurité les plus stricts pour la protection de vos données personnelles et professionnelles.",
+      lastUpdated: "Dernière mise à jour : Février 2025",
       sections: [
         {
           icon: Database,
-          title: "Données collectées",
-          content: `Lorsque vous utilisez notre formulaire de contact, nous collectons :
+          title: "1. Données collectées",
+          content: `Lorsque vous utilisez notre formulaire de contact ou échangez avec nos équipes, nous recueillons :
 
-• Nom et prénom
-• Adresse email
-• Nom de l'entreprise
-• Message
+• Nom complet et coordonnées professionnelles
+• Adresse email vérifiée
+• Nom de l'entreprise et secteur d'activité
+• Descriptif du projet et besoins techniques
 
-Ces données sont collectées uniquement avec votre consentement explicite lors de la soumission du formulaire.`
+Ces informations sont collectées exclusivement avec votre consentement libre, spécifique et éclairé.`
         },
         {
           icon: Eye,
-          title: "Utilisation des données",
-          content: `Nous utilisons vos données personnelles uniquement pour :
+          title: "2. Finalités du traitement",
+          content: `Vos données sont traitées pour des objectifs précis et légitimes :
 
-• Répondre à vos demandes de contact
-• Vous fournir des informations sur nos services
-• Améliorer notre service client
+• Étude technique et cadrage de vos projets digitaux
+• Établissement de propositions d'ingénierie et devis personnalisés
+• Communication directe liée à l'exécution des prestations
+• Support et accompagnement technique dédié
 
-Nous ne vendons, ne louons et ne partageons jamais vos données avec des tiers à des fins commerciales.`
+Nous ne commercialisons, ne louons et ne cédons aucune donnée à des tiers publicitaires.`
         },
         {
           icon: Lock,
-          title: "Sécurité des données",
-          content: `Vos données sont stockées de manière sécurisée et protégées par :
+          title: "3. Sécurité & Infrastructure",
+          content: `L'ensemble de nos architectures applique le principe du Security-by-Design :
 
-• Chiffrement SSL/TLS pour toutes les transmissions
-• Serveurs sécurisés hébergés par Vercel
-• Accès restreint aux données (équipe autorisée uniquement)
-• Sauvegardes régulières
-
-Nous mettons en œuvre toutes les mesures techniques et organisationnelles nécessaires pour protéger vos données contre tout accès non autorisé, perte ou destruction.`
+• Chiffrement de bout en bout SSL / TLS 1.3
+• Infrastructure cloud sécurisée (Vercel Enterprise, serveurs certifiés ISO 27001)
+• Cloisonnement strict des environnements de développement et de production
+• Sauvegardes automatisées quotidiennes et audits de vulnérabilité réguliers.`
         },
         {
           icon: UserCheck,
-          title: "Vos droits (RGPD)",
-          content: `Conformément au RGPD, vous disposez des droits suivants :
+          title: "4. Vos droits fondamentaux (RGPD)",
+          content: `Conformément au Règlement Général sur la Protection des Données, vous disposez des droits suivants :
 
-• Droit d'accès : obtenir une copie de vos données
-• Droit de rectification : corriger vos données inexactes
-• Droit à l'effacement : supprimer vos données
-• Droit à la limitation : limiter le traitement de vos données
-• Droit à la portabilité : recevoir vos données dans un format structuré
-• Droit d'opposition : vous opposer au traitement de vos données
+• Droit d'accès et de communication de vos données
+• Droit de rectification ou d'effacement (« droit à l'oubli »)
+• Droit à la limitation du traitement et droit d'opposition
+• Droit à la portabilité de vos données dans un format interopérable
 
-Pour exercer ces droits, contactez-nous à : contact@socialbadi.com`
+Pour exercer ces droits, vous pouvez contacter notre délégué à la protection des données : contact@socialbadi.com`
         },
         {
           icon: Shield,
-          title: "Cookies",
-          content: `Notre site n'utilise pas de cookies de tracking, de publicité ou d'analyse.
+          title: "5. Politique relative aux Cookies",
+          content: `Notre site n'utilise aucun traceur invasif, ni cookie de ciblage publicitaire tiers.
 
-Nous utilisons uniquement des cookies techniques strictement nécessaires au bon fonctionnement du site (ex: préférence de langue).
-
-Vous pouvez désactiver les cookies dans les paramètres de votre navigateur à tout moment.`
+Nous utilisons uniquement des cookies techniques strictement indispensables au bon fonctionnement de la plateforme (sauvegarde de la langue d'affichage et session utilisateur sécurisée).`
         },
         {
           icon: Mail,
-          title: "Conservation des données",
-          content: `Vos données sont conservées :
-
-• Données de contact : 3 ans maximum après votre dernier contact
-• Données de prospection : jusqu'à votre demande de suppression
-
-Passé ces délais, vos données sont automatiquement supprimées de nos systèmes.`
-        },
-        {
-          icon: Database,
-          title: "Modifications de cette politique",
-          content: `Nous nous réservons le droit de modifier cette politique de confidentialité à tout moment.
-
-Toute modification sera publiée sur cette page avec la date de mise à jour.
-
-Nous vous encourageons à consulter régulièrement cette page pour rester informé de la manière dont nous protégeons vos données.`
+          title: "6. Durée de conservation",
+          content: `Les données relatives à une demande de devis ou de cadrage sont conservées pendant un maximum de 3 ans après le dernier échange actif. À l'issue de cette période, les données sont définitivement purgées de nos bases sécurisées.`
         }
       ],
       contact: {
-        title: "Contact",
-        content: `Pour toute question concernant cette politique de confidentialité ou pour exercer vos droits, contactez-nous :
-
-Email : contact@socialbadi.com
-LinkedIn : linkedin.com/company/socialbadi`
+        title: "Contact & Délégué aux Données",
+        desc: "Pour toute interrogation concernant notre politique de confidentialité ou l'exercice de vos droits :",
+        email: "contact@socialbadi.com",
+        phone: "+33 7 69 84 80 31",
+        address: "SocialBadi Studio — Paris / Tunis"
       }
     },
     en: {
+      badge: "Privacy & GDPR",
       title: "Privacy Policy",
-      intro: "At SocialBadi, we take the protection of your personal data very seriously. This privacy policy informs you about how we collect, use and protect your information.",
+      intro: "At SocialBadi, we uphold the highest security standards to safeguard your personal and enterprise data with complete transparency.",
+      lastUpdated: "Last updated: February 2025",
       sections: [
         {
           icon: Database,
-          title: "Data Collected",
-          content: `When you use our contact form, we collect:
+          title: "1. Data Collected",
+          content: `When contacting our team or submitting project inquiries, we collect:
 
-• First and last name
-• Email address
-• Company name
-• Message
+• Full name and professional contact details
+• Verified business email address
+• Company name and industry vertical
+• Project specifications and technical requirements
 
-This data is collected only with your explicit consent when submitting the form.`
+This information is strictly collected with your explicit, informed consent.`
         },
         {
           icon: Eye,
-          title: "Use of Data",
-          content: `We use your personal data only to:
+          title: "2. Purpose of Processing",
+          content: `Your data is processed strictly for legitimate operational purposes:
 
-• Respond to your contact requests
-• Provide you with information about our services
-• Improve our customer service
+• Technical scoping and project architecture assessment
+• Formulation of customized proposals and engineering estimates
+• Direct communication regarding ongoing deliverables
+• Dedicated technical support and onboarding
 
-We never sell, rent or share your data with third parties for commercial purposes.`
+We never sell, rent, or monetize your information with third-party advertisers.`
         },
         {
           icon: Lock,
-          title: "Data Security",
-          content: `Your data is stored securely and protected by:
+          title: "3. Security & Cloud Infrastructure",
+          content: `All platforms and pipelines follow strict Security-by-Design protocols:
 
-• SSL/TLS encryption for all transmissions
-• Secure servers hosted by Vercel
-• Restricted data access (authorized team only)
-• Regular backups
-
-We implement all necessary technical and organizational measures to protect your data against unauthorized access, loss or destruction.`
+• Full end-to-end SSL / TLS 1.3 encryption across all network layers
+• High-security cloud infrastructure (ISO 27001 certified data centers)
+• Strict isolation between development, staging, and production environments
+• Automated daily redundant snapshots and continuous vulnerability testing.`
         },
         {
           icon: UserCheck,
-          title: "Your Rights (GDPR)",
-          content: `In accordance with GDPR, you have the following rights:
+          title: "4. Your Rights (GDPR & Compliance)",
+          content: `In compliance with the General Data Protection Regulation, you maintain:
 
-• Right of access: obtain a copy of your data
-• Right of rectification: correct inaccurate data
-• Right to erasure: delete your data
-• Right to restriction: limit the processing of your data
-• Right to portability: receive your data in a structured format
-• Right to object: object to the processing of your data
+• Right of access to your personal records
+• Right to rectification or immediate erasure ('Right to be Forgotten')
+• Right to restriction of processing and objection
+• Right to data portability in standard JSON / CSV format
 
-To exercise these rights, contact us at: contact@socialbadi.com`
+To exercise any of these privileges, contact: contact@socialbadi.com`
         },
         {
           icon: Shield,
-          title: "Cookies",
-          content: `Our site does not use tracking, advertising or analytics cookies.
+          title: "5. Cookie Governance",
+          content: `Our web application operates without invasive third-party ad tracking or behavioral analytics beacons.
 
-We only use technical cookies strictly necessary for the proper functioning of the site (e.g., language preference).
-
-You can disable cookies in your browser settings at any time.`
+Only essential technical cookies necessary for session state and locale preferences are deployed.`
         },
         {
           icon: Mail,
-          title: "Data Retention",
-          content: `Your data is kept:
-
-• Contact data: maximum 3 years after your last contact
-• Prospecting data: until your deletion request
-
-After these periods, your data is automatically deleted from our systems.`
-        },
-        {
-          icon: Database,
-          title: "Changes to This Policy",
-          content: `We reserve the right to modify this privacy policy at any time.
-
-Any changes will be posted on this page with the update date.
-
-We encourage you to regularly consult this page to stay informed about how we protect your data.`
+          title: "6. Data Retention Schedule",
+          content: `Inquiry and scoping records are maintained for a maximum of 3 years following the most recent active correspondence, after which they are permanently expunged.`
         }
       ],
       contact: {
-        title: "Contact",
-        content: `For any questions regarding this privacy policy or to exercise your rights, contact us:
-
-Email: contact@socialbadi.com
-LinkedIn: linkedin.com/company/socialbadi`
+        title: "Privacy Officer & Contact",
+        desc: "For questions regarding our privacy framework or to request data access:",
+        email: "contact@socialbadi.com",
+        phone: "+33 7 69 84 80 31",
+        address: "SocialBadi Studio — Paris / Tunis"
       }
     }
   };
@@ -216,64 +185,94 @@ LinkedIn: linkedin.com/company/socialbadi`
   const content = privacyContent[locale];
 
   return (
-    <div className="min-h-screen bg-black text-white">
+    <div className="min-h-screen bg-[#fcfcfd] text-slate-900 relative selection:bg-blue-500/20 selection:text-blue-900">
+      <CyberGrid />
       <Navbar translations={t} locale={locale} />
-      
-      <div className="pt-32 pb-20">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          {/* Header */}
-          <div className="text-center mb-16">
-            <div className="inline-flex items-center justify-center w-20 h-20 rounded-full bg-gradient-to-r from-blue-500 to-purple-500 mb-6">
-              <Shield className="w-10 h-10 text-white" />
-            </div>
-            <h1 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
-              {content.title}
-            </h1>
-            <p className="text-gray-400 text-lg max-w-2xl mx-auto">
-              {content.intro}
-            </p>
-            <p className="text-gray-500 text-sm mt-4">
-              {locale === 'fr' ? 'Dernière mise à jour : 22 novembre 2025' : 'Last updated: November 22, 2025'}
-            </p>
+
+      <main className="relative pt-32 pb-24 px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto z-10">
+        {/* Breadcrumb Navigation */}
+        <div className="mb-8">
+          <Link
+            href={`/${locale}`}
+            className="inline-flex items-center gap-2 text-xs font-mono font-semibold text-slate-500 hover:text-blue-600 transition-colors"
+          >
+            <ArrowLeft className="w-4 h-4" />
+            <span>{locale === 'fr' ? "Retour à l'accueil" : "Back to Home"}</span>
+          </Link>
+        </div>
+
+        {/* Header Hero */}
+        <div className="text-center max-w-3xl mx-auto mb-16">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-50 border border-blue-200 text-xs font-mono font-semibold text-blue-700 mb-4 shadow-sm">
+            <Shield className="w-3.5 h-3.5 text-blue-600" />
+            <span>{content.badge}</span>
           </div>
 
-          {/* Content */}
-          <div className="space-y-8">
-            {content.sections.map((section, index) => (
-              <div key={index} className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-8 hover:bg-white/10 transition-all duration-300">
-                <h2 className="text-2xl font-bold mb-4 text-white flex items-center gap-3">
-                  <section.icon className="w-6 h-6 text-blue-400" />
+          <h1 className="text-4xl sm:text-5xl font-extrabold tracking-tight text-slate-900 mb-5">
+            {content.title}
+          </h1>
+
+          <p className="text-base sm:text-lg text-slate-600 leading-relaxed max-w-2xl mx-auto">
+            {content.intro}
+          </p>
+
+          <p className="text-xs font-mono text-slate-600 mt-4">
+            {content.lastUpdated}
+          </p>
+        </div>
+
+        {/* Policy Sections Grid */}
+        <div className="space-y-6 mb-12">
+          {content.sections.map((section, idx) => (
+            <div
+              key={idx}
+              className="p-8 rounded-3xl bg-white/90 border border-slate-200/90 shadow-[0_4px_20px_-4px_rgba(15,23,42,0.05)] hover:border-blue-400/50 transition-all duration-300"
+            >
+              <div className="flex items-center gap-3 mb-4">
+                <div className="w-10 h-10 rounded-xl bg-blue-50 border border-blue-200 flex items-center justify-center text-blue-600 shadow-sm">
+                  <section.icon className="w-5 h-5" />
+                </div>
+                <h2 className="text-xl font-bold text-slate-900 tracking-tight">
                   {section.title}
                 </h2>
-                <div className="text-gray-300 whitespace-pre-line leading-relaxed">
-                  {section.content}
-                </div>
               </div>
-            ))}
 
-            {/* Contact Section */}
-            <div className="bg-gradient-to-r from-blue-600/10 to-purple-600/10 border border-blue-500/30 rounded-2xl p-8">
-              <h2 className="text-2xl font-bold mb-4 text-white flex items-center gap-3">
-                <Mail className="w-6 h-6 text-blue-400" />
-                {content.contact.title}
-              </h2>
-              <div className="text-gray-300 whitespace-pre-line leading-relaxed">
-                {content.contact.content}
+              <div className="text-sm text-slate-600 whitespace-pre-line leading-relaxed pl-0 sm:pl-13">
+                {section.content}
               </div>
             </div>
-          </div>
+          ))}
+        </div>
 
-          {/* Back to home */}
-          <div className="mt-16 text-center">
-            <a 
-              href={`/${locale}`}
-              className="inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-full hover:shadow-2xl hover:shadow-blue-500/50 transition-all duration-300 font-semibold"
-            >
-              {locale === 'fr' ? "Retour à l'accueil" : 'Back to Home'}
-            </a>
+        {/* Contact Banner */}
+        <div className="p-8 sm:p-10 rounded-3xl bg-gradient-to-br from-blue-50 via-indigo-50/50 to-white border border-blue-200 shadow-md mb-12">
+          <div className="flex flex-col md:flex-row md:items-center justify-between gap-6">
+            <div>
+              <span className="text-xs font-mono font-bold uppercase tracking-wider text-blue-600 block mb-1">
+                {content.contact.title}
+              </span>
+              <h3 className="text-2xl font-bold text-slate-900 mb-2">
+                {locale === 'fr' ? "Une question relative à vos données ?" : "Questions regarding your personal data?"}
+              </h3>
+              <p className="text-sm text-slate-600 max-w-xl">
+                {content.contact.desc}
+              </p>
+            </div>
+
+            <div className="flex flex-col sm:flex-row gap-3">
+              <a
+                href={`mailto:${content.contact.email}`}
+                className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full bg-slate-900 hover:bg-slate-800 text-white text-xs font-bold transition-all shadow-md"
+              >
+                <Mail className="w-4 h-4" />
+                <span>{content.contact.email}</span>
+              </a>
+            </div>
           </div>
         </div>
-      </div>
+      </main>
+
+      <ModernFooter locale={locale} />
     </div>
   );
 }

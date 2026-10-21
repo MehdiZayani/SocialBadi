@@ -3,8 +3,11 @@
 
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'next/navigation';
-import { Scale, FileText } from 'lucide-react';
+import Link from 'next/link';
+import { Scale, FileText, Building2, Server, ShieldCheck, ArrowLeft, Mail, Phone } from 'lucide-react';
 import Navbar from '@/components/Navbar';
+import ModernFooter from '@/components/ModernFooter';
+import CyberGrid from '@/components/react-bits/CyberGrid';
 import fr from '@/public/locales/fr/common.json';
 import en from '@/public/locales/en/common.json';
 
@@ -32,142 +35,208 @@ export default function LegalPage() {
 
   const legalContent = {
     fr: {
+      badge: "Cadre Réglementaire",
       title: "Mentions Légales",
+      intro: "Informations légales et réglementaires relatives à l'exploitation de la plateforme et aux services d'ingénierie logicielle fournis par SocialBadi.",
+      lastUpdated: "Dernière mise à jour : Février 2025",
       sections: [
         {
-          title: "Éditeur du site",
-          content: `Le site SocialBadi est édité par SocialBadi, société en cours de constitution.
+          icon: Building2,
+          title: "1. Éditeur de la Plateforme",
+          content: `Le site SocialBadi (accessible à l'adresse socialbadi.com) est édité par le Studio SocialBadi :
 
-Siège social : À définir
-Email : contact@socialbadi.com
-Directeur de publication : Mehdi Zayani`
+• Dénomination : SocialBadi Studio & Engineering
+• Fondateur & Directeur de Publication : Mehdi Zayani (CEO)
+• Head of AI : Yassine Rassas
+• Consultant Cyber Sécurité : Mehdi Amemou
+• Email de contact : contact@socialbadi.com
+• Téléphone : +33 7 69 84 80 31`
         },
         {
-          title: "Hébergement",
-          content: `Le site est hébergé par Vercel Inc.
-340 S Lemon Ave #4133
-Walnut, CA 91789
-États-Unis`
+          icon: Server,
+          title: "2. Hébergement & Infrastructure Cloud",
+          content: `L'infrastructure applicative et l'hébergement du site sont assurés par :
+
+• Hébergeur : Vercel Inc.
+• Adresse : 340 S Lemon Ave #4133, Walnut, CA 91789, États-Unis
+• Certification : ISO 27001, SOC 2 Type II
+• Réseau de distribution : Global Edge Network CDN (Europe / International)`
         },
         {
-          title: "Propriété intellectuelle",
-          content: `L'ensemble du contenu de ce site (textes, images, vidéos, logo, identité visuelle) est la propriété exclusive de SocialBadi, sauf mention contraire.
+          icon: ShieldCheck,
+          title: "3. Propriété Intellectuelle & Droits d'Auteur",
+          content: `L'intégralité du contenu présent sur cette plateforme (code source, architectures, interfaces, textes, identité visuelle, animations et éléments graphiques) constitue une œuvre de l'esprit protégée par le Code de la Propriété Intellectuelle et les conventions internationales.
 
-Toute reproduction, distribution, modification, adaptation, retransmission ou publication de ces différents éléments est strictement interdite sans l'accord exprès par écrit de SocialBadi.`
+Toute reproduction, représentation, extraction, modification ou exploitation commerciale totale ou partielle sans accord écrit préalable de SocialBadi est formellement prohibée.`
         },
         {
-          title: "Données personnelles",
-          content: `Conformément au Règlement Général sur la Protection des Données (RGPD), vous disposez d'un droit d'accès, de rectification et de suppression de vos données personnelles.
+          icon: FileText,
+          title: "4. Protection des Données Personnelles (RGPD)",
+          content: `Conformément aux dispositions du Règlement Général sur la Protection des Données (RGPD 2016/679), les utilisateurs disposent d'un droit permanent d'accès, de rectification, de portabilité et de suppression de leurs informations personnelles.
 
-Pour exercer ce droit, contactez-nous à : contact@socialbadi.com
-
-Pour plus d'informations, consultez notre Politique de Confidentialité.`
+Pour exercer ces prérogatives ou obtenir des précisions sur vos droits, vous pouvez consulter notre Politique de Confidentialité ou écrire à : contact@socialbadi.com`
         },
         {
-          title: "Cookies",
-          content: `Ce site n'utilise pas de cookies de tracking ou de publicité. Seuls les cookies essentiels au bon fonctionnement du site peuvent être utilisés.`
-        },
-        {
-          title: "Responsabilité",
-          content: `SocialBadi s'efforce d'assurer l'exactitude et la mise à jour des informations diffusées sur ce site. Toutefois, SocialBadi ne peut garantir l'exactitude, la précision ou l'exhaustivité des informations mises à disposition sur ce site.
-
-SocialBadi ne pourra être tenue responsable des dommages directs ou indirects qui pourraient résulter de l'accès au site ou de l'utilisation du site et/ou des informations qui y sont contenues.`
+          icon: Scale,
+          title: "5. Limitation de Responsabilité",
+          content: `SocialBadi s'engage à assurer la plus haute disponibilité et exactitude des informations diffusées sur ce site. Néanmoins, SocialBadi ne saurait être tenu responsable d'éventuelles interruptions techniques, latences de réseau ou dommages indirects liés à l'usage de la plateforme.`
         }
-      ]
+      ],
+      contact: {
+        title: "Contact Juridique",
+        desc: "Pour toute notification légale ou demande officielle, contactez notre équipe :",
+        email: "contact@socialbadi.com",
+        phone: "+33 7 69 84 80 31"
+      }
     },
     en: {
+      badge: "Regulatory Notice",
       title: "Legal Notice",
+      intro: "Statutory information regarding the operation of the SocialBadi engineering studio and digital production platform.",
+      lastUpdated: "Last updated: February 2025",
       sections: [
         {
-          title: "Website Publisher",
-          content: `The SocialBadi website is published by SocialBadi, a company in the process of formation.
+          icon: Building2,
+          title: "1. Platform Publisher",
+          content: `The SocialBadi website (accessible at socialbadi.com) is operated by SocialBadi Studio:
 
-Registered office: To be defined
-Email: contact@socialbadi.com
-Publication Director: Mehdi Zayani`
+• Entity : SocialBadi Studio & Engineering
+• Founder & Publication Director : Mehdi Zayani (CEO)
+• Head of AI : Yassine Rassas
+• Cybersecurity Consultant : Mehdi Amemou
+• Official Inquiries : contact@socialbadi.com
+• Phone : +33 7 69 84 80 31`
         },
         {
-          title: "Hosting",
-          content: `The website is hosted by Vercel Inc.
-340 S Lemon Ave #4133
-Walnut, CA 91789
-United States`
+          icon: Server,
+          title: "2. Cloud Hosting & Infrastructure",
+          content: `The software deployment and edge hosting services are powered by:
+
+• Cloud Host : Vercel Inc.
+• Address : 340 S Lemon Ave #4133, Walnut, CA 91789, USA
+• Compliance : ISO 27001, SOC 2 Type II certified data centers
+• CDN Delivery : Low-latency Global Edge CDN network`
         },
         {
-          title: "Intellectual Property",
-          content: `All content on this site (text, images, videos, logo, visual identity) is the exclusive property of SocialBadi, unless otherwise stated.
+          icon: ShieldCheck,
+          title: "3. Intellectual Property Rights",
+          content: `All assets, source architectures, dynamic components, brand marks, and documentation published on this domain are proprietary intellectual property of SocialBadi.
 
-Any reproduction, distribution, modification, adaptation, retransmission or publication of these elements is strictly prohibited without the express written consent of SocialBadi.`
+Unauthorized reproduction, distribution, decompilation, or commercial dissemination without explicit prior written authorization is strictly prohibited.`
         },
         {
-          title: "Personal Data",
-          content: `In accordance with the General Data Protection Regulation (GDPR), you have the right to access, rectify and delete your personal data.
+          icon: FileText,
+          title: "4. Data Privacy & GDPR Compliance",
+          content: `In accordance with the European Union General Data Protection Regulation (GDPR), users have full rights of access, correction, data portability, and deletion.
 
-To exercise this right, contact us at: contact@socialbadi.com
-
-For more information, see our Privacy Policy.`
+For detailed privacy disclosures or data requests, refer to our Privacy Policy or email: contact@socialbadi.com`
         },
         {
-          title: "Cookies",
-          content: `This site does not use tracking or advertising cookies. Only cookies essential for the proper functioning of the site may be used.`
-        },
-        {
-          title: "Liability",
-          content: `SocialBadi strives to ensure the accuracy and updating of information published on this site. However, SocialBadi cannot guarantee the accuracy, precision or completeness of the information made available on this site.
-
-SocialBadi cannot be held responsible for direct or indirect damages that may result from access to the site or use of the site and/or information contained therein.`
+          icon: Scale,
+          title: "5. Limitation of Liability",
+          content: `SocialBadi maintains high availability standards for all digital services. However, SocialBadi accepts no liability for temporary server interruptions, upstream carrier disruptions, or indirect damages stemming from website usage.`
         }
-      ]
+      ],
+      contact: {
+        title: "Legal Inquiries",
+        desc: "For formal notices or compliance documentation, reach out to our legal desk:",
+        email: "contact@socialbadi.com",
+        phone: "+33 7 69 84 80 31"
+      }
     }
   };
 
   const content = legalContent[locale];
 
   return (
-    <div className="min-h-screen bg-black text-white">
+    <div className="min-h-screen bg-[#fcfcfd] text-slate-900 relative selection:bg-blue-500/20 selection:text-blue-900">
+      <CyberGrid />
       <Navbar translations={t} locale={locale} />
-      
-      <div className="pt-32 pb-20">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          {/* Header */}
-          <div className="text-center mb-16">
-            <div className="inline-flex items-center justify-center w-20 h-20 rounded-full bg-gradient-to-r from-blue-500 to-purple-500 mb-6">
-              <Scale className="w-10 h-10 text-white" />
-            </div>
-            <h1 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
-              {content.title}
-            </h1>
-            <p className="text-gray-400 text-lg">
-              {locale === 'fr' ? 'Dernière mise à jour : 22 novembre 2025' : 'Last updated: November 22, 2025'}
-            </p>
+
+      <main className="relative pt-32 pb-24 px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto z-10">
+        {/* Breadcrumb Navigation */}
+        <div className="mb-8">
+          <Link
+            href={`/${locale}`}
+            className="inline-flex items-center gap-2 text-xs font-mono font-semibold text-slate-500 hover:text-blue-600 transition-colors"
+          >
+            <ArrowLeft className="w-4 h-4" />
+            <span>{locale === 'fr' ? "Retour à l'accueil" : "Back to Home"}</span>
+          </Link>
+        </div>
+
+        {/* Header Hero */}
+        <div className="text-center max-w-3xl mx-auto mb-16">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-50 border border-blue-200 text-xs font-mono font-semibold text-blue-700 mb-4 shadow-sm">
+            <Scale className="w-3.5 h-3.5 text-blue-600" />
+            <span>{content.badge}</span>
           </div>
 
-          {/* Content */}
-          <div className="space-y-12">
-            {content.sections.map((section, index) => (
-              <div key={index} className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-8 hover:bg-white/10 transition-all duration-300">
-                <h2 className="text-2xl font-bold mb-4 text-white flex items-center gap-3">
-                  <FileText className="w-6 h-6 text-blue-400" />
+          <h1 className="text-4xl sm:text-5xl font-extrabold tracking-tight text-slate-900 mb-5">
+            {content.title}
+          </h1>
+
+          <p className="text-base sm:text-lg text-slate-600 leading-relaxed max-w-2xl mx-auto">
+            {content.intro}
+          </p>
+
+          <p className="text-xs font-mono text-slate-600 mt-4">
+            {content.lastUpdated}
+          </p>
+        </div>
+
+        {/* Legal Sections Grid */}
+        <div className="space-y-6 mb-12">
+          {content.sections.map((section, idx) => (
+            <div
+              key={idx}
+              className="p-8 rounded-3xl bg-white/90 border border-slate-200/90 shadow-[0_4px_20px_-4px_rgba(15,23,42,0.05)] hover:border-blue-400/50 transition-all duration-300"
+            >
+              <div className="flex items-center gap-3 mb-4">
+                <div className="w-10 h-10 rounded-xl bg-blue-50 border border-blue-200 flex items-center justify-center text-blue-600 shadow-sm">
+                  <section.icon className="w-5 h-5" />
+                </div>
+                <h2 className="text-xl font-bold text-slate-900 tracking-tight">
                   {section.title}
                 </h2>
-                <div className="text-gray-300 whitespace-pre-line leading-relaxed">
-                  {section.content}
-                </div>
               </div>
-            ))}
-          </div>
 
-          {/* Back to home */}
-          <div className="mt-16 text-center">
-            <a 
-              href={`/${locale}`}
-              className="inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-full hover:shadow-2xl hover:shadow-blue-500/50 transition-all duration-300 font-semibold"
-            >
-              {locale === 'fr' ? "Retour à l'accueil" : 'Back to Home'}
-            </a>
+              <div className="text-sm text-slate-600 whitespace-pre-line leading-relaxed pl-0 sm:pl-13">
+                {section.content}
+              </div>
+            </div>
+          ))}
+        </div>
+
+        {/* Contact Banner */}
+        <div className="p-8 sm:p-10 rounded-3xl bg-gradient-to-br from-blue-50 via-indigo-50/50 to-white border border-blue-200 shadow-md mb-12">
+          <div className="flex flex-col md:flex-row md:items-center justify-between gap-6">
+            <div>
+              <span className="text-xs font-mono font-bold uppercase tracking-wider text-blue-600 block mb-1">
+                {content.contact.title}
+              </span>
+              <h3 className="text-2xl font-bold text-slate-900 mb-2">
+                {locale === 'fr' ? "Demande d'information juridique ?" : "Formal legal correspondence?"}
+              </h3>
+              <p className="text-sm text-slate-600 max-w-xl">
+                {content.contact.desc}
+              </p>
+            </div>
+
+            <div className="flex flex-col sm:flex-row gap-3">
+              <a
+                href={`mailto:${content.contact.email}`}
+                className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full bg-slate-900 hover:bg-slate-800 text-white text-xs font-bold transition-all shadow-md"
+              >
+                <Mail className="w-4 h-4" />
+                <span>{content.contact.email}</span>
+              </a>
+            </div>
           </div>
         </div>
-      </div>
+      </main>
+
+      <ModernFooter locale={locale} />
     </div>
   );
 }

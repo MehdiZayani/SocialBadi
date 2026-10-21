@@ -64,34 +64,31 @@ export const metadata: Metadata = {
   icons: {
     icon: [
       { url: '/icon.svg', type: 'image/svg+xml' },
+      { url: '/favicon.png', type: 'image/png', sizes: '128x128' },
       { url: '/favicon.ico', sizes: '32x32' }
     ],
     shortcut: '/icon.svg',
-    apple: '/favicon.ico',
+    apple: '/favicon.png',
   },
 };
 
 export default async function RootLayout(
   props: {
     children: React.ReactNode;
-    params: Promise<{ lang: string }>;
+    params?: Promise<{ lang?: string }>;
   }
 ) {
-  const params = await props.params;
-
-  const {
-    lang
-  } = params;
-
-  const {
-    children
-  } = props;
+  const resolvedParams = props.params ? await props.params : undefined;
+  const lang = resolvedParams?.lang || 'fr';
+  const { children } = props;
 
   return (
     <html lang={lang}>
       <head>
         <link rel="icon" type="image/svg+xml" href="/icon.svg" />
+        <link rel="icon" type="image/png" sizes="128x128" href="/favicon.png" />
         <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="apple-touch-icon" href="/favicon.png" />
         <link rel="canonical" href="https://socialbadi.com" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </head>
@@ -108,7 +105,7 @@ export default async function RootLayout(
               name: 'SocialBadi',
               description: 'AI-powered business solutions including voice agents and chatbots',
               url: 'https://socialbadi.com',
-              logo: 'https://socialbadi.com/logo.png',
+              logo: 'https://socialbadi.com/icon.svg',
               contactPoint: {
                 '@type': 'ContactPoint',
                 telephone: '+33-7-69-84-80-31',
