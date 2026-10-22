@@ -37,17 +37,18 @@ export const metadata: Metadata = {
     title: 'SocialBadi - AI-Powered Business Solutions',
     description: 'Transform your business with AI-powered voice agents, intelligent chatbots, and automated customer engagement solutions.',
     images: [{
-      url: '/og-image.png',
+      url: 'https://socialbadi.com/og-image.png',
       width: 1200,
       height: 630,
-      alt: 'SocialBadi - AI Business Solutions',
+      alt: 'SocialBadi - Studio d\'Ingénierie Logicielle, Web, Mobile & IA',
+      type: 'image/png',
     }],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'SocialBadi - AI-Powered Business Solutions',
-    description: 'Transform your business with AI-powered voice agents and intelligent chatbots.',
-    images: ['/og-image.png'],
+    title: 'SocialBadi - Studio d\'Ingénierie Logicielle, Web, Mobile & IA',
+    description: 'Studio d\'ingénierie digitale sur-mesure : applications web d\'exception, plateformes mobiles et solutions IA.',
+    images: ['https://socialbadi.com/og-image.png'],
   },
   robots: {
     index: true,
