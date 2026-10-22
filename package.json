@@ -6,7 +6,8 @@
     "dev": "next dev --turbopack",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "generate:ads": "node scripts/generate-ad-creative.js"
   },
   "dependencies": {
     "@formatjs/intl-localematcher": "^0.5.10",
