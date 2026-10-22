@@ -23,8 +23,9 @@ export default function CyberGrid() {
 
     window.addEventListener("resize", handleResize);
 
-    // Floating subtle particles for light theme
-    const particleCount = 35;
+    // Floating subtle particles for light theme (fewer on mobile to prevent TBT)
+    const isMobile = window.innerWidth < 768;
+    const particleCount = isMobile ? 14 : 26;
     const particles: Array<{
       x: number;
       y: number;
@@ -41,10 +42,10 @@ export default function CyberGrid() {
       particles.push({
         x: Math.random() * width,
         y: Math.random() * height,
-        vx: (Math.random() - 0.5) * 0.35,
-        vy: (Math.random() - 0.5) * 0.35,
+        vx: (Math.random() - 0.5) * 0.25,
+        vy: (Math.random() - 0.5) * 0.25,
         size: Math.random() * 2 + 1,
-        alpha: Math.random() * 0.3 + 0.15,
+        alpha: Math.random() * 0.25 + 0.1,
         color: colors[Math.floor(Math.random() * colors.length)],
       });
     }
@@ -52,37 +53,37 @@ export default function CyberGrid() {
     const render = () => {
       ctx.clearRect(0, 0, width, height);
 
-      particles.forEach((p) => {
+      const pLen = particles.length;
+      for (let i = 0; i < pLen; i++) {
+        const p = particles[i];
         p.x += p.vx;
         p.y += p.vy;
 
         if (p.x < 0) p.x = width;
-        if (p.x > width) p.x = 0;
+        else if (p.x > width) p.x = 0;
         if (p.y < 0) p.y = height;
-        if (p.y > height) p.y = 0;
+        else if (p.y > height) p.y = 0;
 
         ctx.beginPath();
         ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
         ctx.fillStyle = p.color;
         ctx.globalAlpha = p.alpha;
-        ctx.shadowBlur = 8;
-        ctx.shadowColor = p.color;
         ctx.fill();
-      });
 
-      // Connect nearby particles
-      for (let i = 0; i < particles.length; i++) {
-        for (let j = i + 1; j < particles.length; j++) {
-          const dx = particles[i].x - particles[j].x;
-          const dy = particles[i].y - particles[j].y;
-          const dist = Math.sqrt(dx * dx + dy * dy);
+        // Connect nearby particles without expensive shadowBlur
+        for (let j = i + 1; j < pLen; j++) {
+          const p2 = particles[j];
+          const dx = p.x - p2.x;
+          const dy = p.y - p2.y;
+          const distSq = dx * dx + dy * dy;
 
-          if (dist < 120) {
+          if (distSq < 10000) { // 100px max distance squared (avoids Math.sqrt)
+            const dist = Math.sqrt(distSq);
             ctx.beginPath();
-            ctx.moveTo(particles[i].x, particles[i].y);
-            ctx.lineTo(particles[j].x, particles[j].y);
-            ctx.strokeStyle = particles[i].color;
-            ctx.globalAlpha = (1 - dist / 120) * 0.08;
+            ctx.moveTo(p.x, p.y);
+            ctx.lineTo(p2.x, p2.y);
+            ctx.strokeStyle = p.color;
+            ctx.globalAlpha = (1 - dist / 100) * 0.06;
             ctx.lineWidth = 0.75;
             ctx.stroke();
           }
@@ -90,14 +91,23 @@ export default function CyberGrid() {
       }
 
       ctx.globalAlpha = 1;
-      ctx.shadowBlur = 0;
-
       animationFrameId = requestAnimationFrame(render);
     };
 
-    render();
+    // Defer start slightly so initial page paint and critical hydration aren't blocked
+    let startTimeout: NodeJS.Timeout;
+    if (typeof window !== "undefined" && "requestIdleCallback" in window) {
+      (window as any).requestIdleCallback(() => {
+        animationFrameId = requestAnimationFrame(render);
+      });
+    } else {
+      startTimeout = setTimeout(() => {
+        animationFrameId = requestAnimationFrame(render);
+      }, 300);
+    }
 
     return () => {
+      if (startTimeout) clearTimeout(startTimeout);
       cancelAnimationFrame(animationFrameId);
       window.removeEventListener("resize", handleResize);
     };

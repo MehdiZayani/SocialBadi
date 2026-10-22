@@ -32,6 +32,8 @@ import {
   Check
 } from "lucide-react";
 
+import dynamic from "next/dynamic";
+
 import SmoothScroll from "@/components/SmoothScroll";
 import Navbar from "@/components/Navbar";
 import ModernFooter from "@/components/ModernFooter";
@@ -42,10 +44,25 @@ import SpotlightCard from "@/components/react-bits/SpotlightCard";
 import MagneticButton from "@/components/react-bits/MagneticButton";
 import TextScramble from "@/components/react-bits/TextScramble";
 import CyberGrid from "@/components/react-bits/CyberGrid";
-import InteractiveTerminal from "@/components/react-bits/InteractiveTerminal";
-import ProjectCaseStudyModal from "@/components/ProjectCaseStudyModal";
 import { projectsData, ProjectCaseStudy } from "@/lib/projectsData";
 import { smoothScrollTo } from "@/lib/scroll";
+
+const InteractiveTerminal = dynamic(
+  () => import("@/components/react-bits/InteractiveTerminal"),
+  {
+    ssr: false,
+    loading: () => (
+      <div className="w-full max-w-4xl mx-auto h-[360px] rounded-2xl bg-slate-900/5 border border-slate-200/60 animate-pulse" />
+    ),
+  }
+);
+
+const ProjectCaseStudyModal = dynamic(
+  () => import("@/components/ProjectCaseStudyModal"),
+  {
+    ssr: false,
+  }
+);
 
 export default function HomePage({
   params,

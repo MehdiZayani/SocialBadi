@@ -188,8 +188,8 @@ export default function TechConstellation({ locale = "fr" }: { locale?: "fr" | "
   const track1 = filtered.slice(0, half);
   const track2 = filtered.slice(half);
 
-  const infiniteTrack1 = [...track1, ...track1, ...track1, ...track1];
-  const infiniteTrack2 = [...track2, ...track2, ...track2, ...track2];
+  const infiniteTrack1 = [...track1, ...track1];
+  const infiniteTrack2 = [...track2, ...track2];
 
   return (
     <div className="w-full relative overflow-hidden py-4">

@@ -2,8 +2,6 @@
 
 import React, { useEffect, useRef } from "react";
 import Lenis from "lenis";
-import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 export default function SmoothScroll({
   children,
@@ -13,8 +11,6 @@ export default function SmoothScroll({
   const lenisRef = useRef<Lenis | null>(null);
 
   useEffect(() => {
-    gsap.registerPlugin(ScrollTrigger);
-
     const lenis = new Lenis({
       duration: 1.15,
       easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
@@ -28,15 +24,12 @@ export default function SmoothScroll({
     lenisRef.current = lenis;
     (window as unknown as { __lenis?: Lenis | null }).__lenis = lenis;
 
-    // Sync Lenis with GSAP ScrollTrigger
-    lenis.on("scroll", ScrollTrigger.update);
-
-    const updateTicker = (time: number) => {
-      lenis.raf(time * 1000);
+    let rafId: number;
+    const raf = (time: number) => {
+      lenis.raf(time);
+      rafId = requestAnimationFrame(raf);
     };
-
-    gsap.ticker.add(updateTicker);
-    gsap.ticker.lagSmoothing(0);
+    rafId = requestAnimationFrame(raf);
 
     // If an initial anchor hash exists in URL, scroll to it smoothly once layout is ready
     if (typeof window !== "undefined" && window.location.hash) {
@@ -49,7 +42,7 @@ export default function SmoothScroll({
       }, 350);
       return () => {
         clearTimeout(timer);
-        gsap.ticker.remove(updateTicker);
+        cancelAnimationFrame(rafId);
         (window as unknown as { __lenis?: Lenis | null }).__lenis = null;
         lenis.destroy();
         lenisRef.current = null;
@@ -57,7 +50,7 @@ export default function SmoothScroll({
     }
 
     return () => {
-      gsap.ticker.remove(updateTicker);
+      cancelAnimationFrame(rafId);
       (window as unknown as { __lenis?: Lenis | null }).__lenis = null;
       lenis.destroy();
       lenisRef.current = null;

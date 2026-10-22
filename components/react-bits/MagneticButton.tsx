@@ -1,7 +1,6 @@
 "use client";
 
 import React, { useRef, useEffect } from "react";
-import gsap from "gsap";
 
 interface MagneticButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   children: React.ReactNode;
@@ -23,35 +22,34 @@ export default function MagneticButton({
     const el = btnRef.current;
     if (!el) return;
 
+    let rafId: number;
+
     const handleMouseMove = (e: globalThis.MouseEvent) => {
-      const rect = el.getBoundingClientRect();
-      const centerX = rect.left + rect.width / 2;
-      const centerY = rect.top + rect.height / 2;
+      cancelAnimationFrame(rafId);
+      rafId = requestAnimationFrame(() => {
+        const rect = el.getBoundingClientRect();
+        const centerX = rect.left + rect.width / 2;
+        const centerY = rect.top + rect.height / 2;
 
-      const deltaX = (e.clientX - centerX) * strength;
-      const deltaY = (e.clientY - centerY) * strength;
+        const deltaX = (e.clientX - centerX) * strength;
+        const deltaY = (e.clientY - centerY) * strength;
 
-      gsap.to(el, {
-        x: deltaX,
-        y: deltaY,
-        duration: 0.35,
-        ease: "power2.out",
+        el.style.transition = "transform 0.15s cubic-bezier(0.25, 1, 0.5, 1)";
+        el.style.transform = `translate3d(${deltaX}px, ${deltaY}px, 0)`;
       });
     };
 
     const handleMouseLeave = () => {
-      gsap.to(el, {
-        x: 0,
-        y: 0,
-        duration: 0.65,
-        ease: "elastic.out(1.1, 0.4)",
-      });
+      cancelAnimationFrame(rafId);
+      el.style.transition = "transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275)";
+      el.style.transform = "translate3d(0, 0, 0)";
     };
 
-    el.addEventListener("mousemove", handleMouseMove);
-    el.addEventListener("mouseleave", handleMouseLeave);
+    el.addEventListener("mousemove", handleMouseMove, { passive: true });
+    el.addEventListener("mouseleave", handleMouseLeave, { passive: true });
 
     return () => {
+      cancelAnimationFrame(rafId);
       el.removeEventListener("mousemove", handleMouseMove);
       el.removeEventListener("mouseleave", handleMouseLeave);
     };

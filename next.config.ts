@@ -9,6 +9,10 @@ const nextConfig: NextConfig = {
   },
   // Enable compression
   compress: true,
+  // Tree-shake heavy packages to reduce bundle size and JS evaluation time
+  experimental: {
+    optimizePackageImports: ["lucide-react", "framer-motion"],
+  },
   // Generate sitemap
   async headers() {
     return [

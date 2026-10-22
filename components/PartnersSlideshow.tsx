@@ -62,10 +62,8 @@ interface PartnersSlideshowProps {
 export default function PartnersSlideshow({
   onSelectProject,
 }: PartnersSlideshowProps) {
-  // Multiply list for continuous infinite loop marquee
+  // Multiply list for continuous infinite loop marquee (2x is sufficient for 50% translation)
   const marqueeItems = [
-    ...PARTNER_LOGOS,
-    ...PARTNER_LOGOS,
     ...PARTNER_LOGOS,
     ...PARTNER_LOGOS,
   ];
@@ -99,7 +97,7 @@ export default function PartnersSlideshow({
                 height={80}
                 sizes="(max-width: 640px) 140px, (max-width: 1024px) 180px, 220px"
                 className="max-h-full max-w-full object-contain filter opacity-85 hover:opacity-100 group-hover:scale-105 transition-all duration-300 rounded-md"
-                priority={index < 6}
+                priority={index < 3}
               />
             </div>
           </div>
