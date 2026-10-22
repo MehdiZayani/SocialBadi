@@ -1,0 +1,26 @@
+# SocialBadi Studio
+
+> High-Performance Web & Mobile Engineering, AI Agents & Process Automation Studio.
+
+SocialBadi is a boutique software engineering studio designing and building bespoke web platforms, intuitive mobile applications, 24/7 intelligent AI conversational agents, and automated business workflows.
+
+## Core Capabilities
+- [Custom Web Applications & High-Performance Platforms](https://socialbadi.com/en#services): Tailor-made, high-velocity web platforms engineered for client conversion, security, and effortless scalability.
+- [Intuitive Mobile Applications & Experiences](https://socialbadi.com/en#services): Native iOS and Android applications with offline continuity, targeted push notifications, and biometric security.
+- [Process Automation & Operational Efficiency](https://socialbadi.com/en#services): End-to-end workflow automation connecting your CRM, dashboards, billing, and communication channels.
+- [24/7 Intelligent AI Agents & Lead Qualification](https://socialbadi.com/en#services): Multi-channel conversational AI assistants for instant customer support and lead scoring across Web and WhatsApp.
+- [Custom Client Portals & Business Ecosystems](https://socialbadi.com/en#services): Secure multi-role client portals, automated subscription billing, and real-time executive dashboards.
+
+## Case Studies & Deployments
+- [BadiCRM Enterprise Platform](https://socialbadi.com/en/projects): Scalable SaaS CRM platform with AI lead scoring and real-time business pipelines.
+- [Meraki Club VIP Concierge](https://socialbadi.com/en/projects): Digital member portal, 24/7 AI concierge, and Revolut Business payment integration.
+- [Lucci Design Luxury Showcase](https://socialbadi.com/en/projects): High-end artisan showcase with 100/100 Core Web Vitals and international visibility.
+- [Restaurant Zitouna QR WebApp](https://socialbadi.com/en/projects): Instant scan-to-table digital ordering platform with real-time order tracking.
+- [Archi Renov Paris](https://socialbadi.com/en/projects): General contractor platform with automated quote estimator and high organic search ranking.
+
+## Contact & Inquiries
+- [Start a Project](https://socialbadi.com/en#contact): Direct engineering project intake and sprint scoping.
+- [Technical Case Studies](https://socialbadi.com/en/projects): Full architectural documentation and production metrics.
+- Email: contact@socialbadi.com
+- Telephone: +216 93 304 304
+- Locations: Paris, France & Sousse, Tunisia

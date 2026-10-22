@@ -2,8 +2,10 @@
 
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { Terminal, Menu, X, ArrowRight } from "lucide-react";
 import MagneticButton from "./react-bits/MagneticButton";
+import { smoothScrollTo } from "@/lib/scroll";
 
 interface NavbarProps {
   locale?: "fr" | "en";
@@ -12,9 +14,16 @@ interface NavbarProps {
   showCTA?: boolean;
 }
 
+interface NavItem {
+  label: string;
+  href: string;
+  hash?: string;
+}
+
 export default function Navbar({ locale = "fr", setLocale, translations, showCTA = true }: NavbarProps) {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const pathname = usePathname();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -24,16 +33,40 @@ export default function Navbar({ locale = "fr", setLocale, translations, showCTA
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const navLinks = [
-    { label: locale === "fr" ? "Expertise" : "Services", href: `/${locale}#services` },
-    { label: locale === "fr" ? "Clients" : "Clients", href: `/${locale}#clients` },
-    { label: locale === "fr" ? "Technologies" : "Tech Stack", href: `/${locale}#technologies` },
-    { label: locale === "fr" ? "Équipe" : "Team", href: `/${locale}#team` },
+  // Close mobile drawer automatically when route/pathname changes
+  useEffect(() => {
+    setMobileMenuOpen(false);
+  }, [pathname]);
+
+  // Lock body scroll and pause Lenis while mobile menu is open to prevent touch fighting
+  useEffect(() => {
+    if (mobileMenuOpen) {
+      document.body.style.overflow = "hidden";
+      const lenis = (window as unknown as { __lenis?: { stop: () => void; start: () => void } }).__lenis;
+      if (lenis && typeof lenis.stop === "function") lenis.stop();
+    } else {
+      document.body.style.overflow = "";
+      const lenis = (window as unknown as { __lenis?: { stop: () => void; start: () => void } }).__lenis;
+      if (lenis && typeof lenis.start === "function") lenis.start();
+    }
+    return () => {
+      document.body.style.overflow = "";
+      const lenis = (window as unknown as { __lenis?: { stop: () => void; start: () => void } }).__lenis;
+      if (lenis && typeof lenis.start === "function") lenis.start();
+    };
+  }, [mobileMenuOpen]);
+
+  const navLinks: NavItem[] = [
+    { label: locale === "fr" ? "Expertise" : "Services", href: `/${locale}#services`, hash: "services" },
+    { label: locale === "fr" ? "Clients" : "Clients", href: `/${locale}#clients`, hash: "clients" },
+    { label: locale === "fr" ? "Technologies" : "Tech Stack", href: `/${locale}#technologies`, hash: "technologies" },
+    { label: locale === "fr" ? "Équipe" : "Team", href: `/${locale}#team`, hash: "team" },
     { label: locale === "fr" ? "Projets" : "Projects", href: `/${locale}/projects` },
-    { label: locale === "fr" ? "Contact" : "Contact", href: `/${locale}#contact` },
+    { label: locale === "fr" ? "Contact" : "Contact", href: `/${locale}#contact`, hash: "contact" },
   ];
 
   const handleToggleLang = (target: "fr" | "en") => {
+    setMobileMenuOpen(false);
     if (setLocale) {
       setLocale(target);
     } else if (typeof window !== "undefined") {
@@ -43,25 +76,48 @@ export default function Navbar({ locale = "fr", setLocale, translations, showCTA
     }
   };
 
-  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
-    if (!href.includes("#")) {
+  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, link: NavItem) => {
+    setMobileMenuOpen(false);
+
+    if (!link.hash) {
       return; // Normal route navigation like /projects
     }
 
     if (typeof window !== "undefined") {
-      const [targetPath, hash] = href.split("#");
-      const currentPath = window.location.pathname;
-      const isHome = currentPath === targetPath || (currentPath === `/${locale}` && targetPath === `/${locale}`) || currentPath === `/${locale}/`;
+      const current = (pathname || window.location.pathname || "").replace(/\/$/, "");
+      const isHome =
+        current === "" ||
+        current === "/fr" ||
+        current === "/en" ||
+        current === `/${locale}`;
 
-      if (isHome && hash) {
+      if (isHome) {
         e.preventDefault();
-        const element = document.getElementById(hash);
-        if (element) {
-          element.scrollIntoView({ behavior: "smooth" });
-        }
+        window.history.pushState(null, "", `/${locale}#${link.hash}`);
+        smoothScrollTo(link.hash, -80);
       } else {
-        e.preventDefault();
-        window.location.href = href;
+        // Let browser navigate to `/${locale}#${link.hash}`
+      }
+    }
+  };
+
+  const handleCTAClick = () => {
+    setMobileMenuOpen(false);
+    const current = (pathname || (typeof window !== "undefined" ? window.location.pathname : "") || "").replace(/\/$/, "");
+    const isHome =
+      current === "" ||
+      current === "/fr" ||
+      current === "/en" ||
+      current === `/${locale}`;
+
+    if (isHome) {
+      if (typeof window !== "undefined") {
+        window.history.pushState(null, "", `/${locale}#contact`);
+      }
+      smoothScrollTo("contact", -80);
+    } else {
+      if (typeof window !== "undefined") {
+        window.location.href = `/${locale}#contact`;
       }
     }
   };
@@ -80,6 +136,7 @@ export default function Navbar({ locale = "fr", setLocale, translations, showCTA
             {/* Brand Logo */}
             <Link
               href={`/${locale}`}
+              onClick={() => setMobileMenuOpen(false)}
               className="flex items-center gap-2.5 group cursor-pointer"
             >
               <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-blue-600 to-indigo-600 p-0.5 group-hover:scale-105 transition-transform shadow-md shadow-blue-500/20">
@@ -109,7 +166,7 @@ export default function Navbar({ locale = "fr", setLocale, translations, showCTA
                 <a
                   key={idx}
                   href={link.href}
-                  onClick={(e) => handleNavClick(e, link.href)}
+                  onClick={(e) => handleNavClick(e, link)}
                   className="px-3.5 py-1.5 text-xs font-semibold text-slate-600 hover:text-slate-950 hover:bg-slate-100 rounded-full transition-all cursor-pointer"
                 >
                   {link.label}
@@ -151,16 +208,7 @@ export default function Navbar({ locale = "fr", setLocale, translations, showCTA
 
               {/* Magnetic CTA */}
               <MagneticButton
-                onClick={() => {
-                  const contact = document.getElementById("contact");
-                  const currentPath = typeof window !== "undefined" ? window.location.pathname : "";
-                  const isHome = currentPath === `/${locale}` || currentPath === `/${locale}/`;
-                  if (contact && isHome) {
-                    contact.scrollIntoView({ behavior: "smooth" });
-                  } else {
-                    window.location.href = `/${locale}#contact`;
-                  }
-                }}
+                onClick={handleCTAClick}
                 className="px-4 py-2 rounded-full bg-blue-600 hover:bg-blue-700 text-white text-xs font-bold shadow-md shadow-blue-500/20 transition-all cursor-pointer"
               >
                 <span className="flex items-center gap-1.5">
@@ -170,18 +218,19 @@ export default function Navbar({ locale = "fr", setLocale, translations, showCTA
               </MagneticButton>
             </div>
 
-            {/* Mobile Hamburger Button */}
+            {/* Mobile Header Controls */}
             <div className="lg:hidden flex items-center space-x-2">
               <button
                 onClick={() => handleToggleLang(locale === "fr" ? "en" : "fr")}
-                className="px-2.5 py-1 text-xs font-mono font-semibold rounded-lg bg-white border border-slate-200 text-slate-700 shadow-sm"
+                className="px-2.5 py-1 text-xs font-mono font-semibold rounded-lg bg-white border border-slate-200 text-slate-700 shadow-sm active:scale-95 transition-all"
+                aria-label={`Changer de langue vers ${locale === "fr" ? "English" : "Français"}`}
               >
                 {locale === "fr" ? "EN" : "FR"}
               </button>
 
               <button
                 onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-                className="p-2 rounded-xl bg-white border border-slate-200 text-slate-700 hover:text-slate-900 shadow-sm"
+                className="p-2 rounded-xl bg-white border border-slate-200 text-slate-700 hover:text-slate-900 shadow-sm active:scale-95 transition-all"
                 aria-label="Toggle navigation menu"
               >
                 {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
@@ -193,7 +242,7 @@ export default function Navbar({ locale = "fr", setLocale, translations, showCTA
 
       {/* Mobile Drawer Menu */}
       {mobileMenuOpen && (
-        <div className="fixed inset-0 z-40 lg:hidden bg-white/95 backdrop-blur-2xl pt-24 px-6 flex flex-col justify-between pb-10 animate-fadeIn">
+        <div className="fixed inset-0 z-40 lg:hidden bg-white/98 backdrop-blur-2xl pt-24 px-6 flex flex-col justify-between pb-10 overflow-y-auto animate-fadeIn">
           <div className="space-y-4">
             <div className="text-[10px] font-mono uppercase tracking-wider text-slate-400 mb-2 font-semibold">
               Navigation
@@ -202,18 +251,15 @@ export default function Navbar({ locale = "fr", setLocale, translations, showCTA
               <a
                 key={idx}
                 href={link.href}
-                onClick={(e) => {
-                  setMobileMenuOpen(false);
-                  handleNavClick(e, link.href);
-                }}
-                className="block text-xl font-bold text-slate-800 hover:text-blue-600 transition-colors py-2 border-b border-slate-100 cursor-pointer"
+                onClick={(e) => handleNavClick(e, link)}
+                className="block text-xl font-bold text-slate-800 hover:text-blue-600 transition-colors py-2 border-b border-slate-100 cursor-pointer active:translate-x-1"
               >
                 {link.label}
               </a>
             ))}
           </div>
 
-          <div className="space-y-4">
+          <div className="space-y-4 pt-6">
             <div className="flex items-center justify-between p-3 rounded-xl bg-slate-50 border border-slate-200">
               <span className="text-xs font-mono text-slate-500 font-semibold">
                 {locale === "fr" ? "Langue" : "Language"}
@@ -221,16 +267,20 @@ export default function Navbar({ locale = "fr", setLocale, translations, showCTA
               <div className="flex gap-2 font-mono text-xs">
                 <button
                   onClick={() => handleToggleLang("fr")}
-                  className={`px-3 py-1 rounded font-semibold ${
-                    locale === "fr" ? "bg-blue-600 text-white" : "text-slate-600"
+                  className={`px-3 py-1.5 rounded-lg font-semibold transition-all ${
+                    locale === "fr"
+                      ? "bg-blue-600 text-white shadow-sm"
+                      : "text-slate-600 hover:bg-slate-200"
                   }`}
                 >
                   Français
                 </button>
                 <button
                   onClick={() => handleToggleLang("en")}
-                  className={`px-3 py-1 rounded font-semibold ${
-                    locale === "en" ? "bg-blue-600 text-white" : "text-slate-600"
+                  className={`px-3 py-1.5 rounded-lg font-semibold transition-all ${
+                    locale === "en"
+                      ? "bg-blue-600 text-white shadow-sm"
+                      : "text-slate-600 hover:bg-slate-200"
                   }`}
                 >
                   English
@@ -238,14 +288,13 @@ export default function Navbar({ locale = "fr", setLocale, translations, showCTA
               </div>
             </div>
 
-            <a
-              href={`/${locale}#contact`}
-              onClick={() => setMobileMenuOpen(false)}
-              className="w-full flex items-center justify-center gap-2 py-3.5 rounded-xl bg-blue-600 text-white font-bold text-sm shadow-xl shadow-blue-600/20"
+            <button
+              onClick={handleCTAClick}
+              className="w-full flex items-center justify-center gap-2 py-3.5 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-bold text-sm shadow-xl shadow-blue-600/20 active:scale-[0.98] transition-all cursor-pointer"
             >
               <span>{locale === "fr" ? "Lancer un Projet" : "Start Project"}</span>
               <ArrowRight className="w-4 h-4" />
-            </a>
+            </button>
           </div>
         </div>
       )}

@@ -210,7 +210,7 @@ export default function InteractiveTerminal() {
                     : "text-slate-300"
                 }`}
               >
-                <span className="text-slate-600 select-none">{(idx + 1).toString().padStart(2, "0")}</span>
+                <span className="text-slate-400 select-none font-semibold" aria-hidden="true">{(idx + 1).toString().padStart(2, "0")}</span>
                 <span>{line}</span>
               </div>
             );

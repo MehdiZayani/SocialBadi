@@ -45,6 +45,7 @@ import CyberGrid from "@/components/react-bits/CyberGrid";
 import InteractiveTerminal from "@/components/react-bits/InteractiveTerminal";
 import ProjectCaseStudyModal from "@/components/ProjectCaseStudyModal";
 import { projectsData, ProjectCaseStudy } from "@/lib/projectsData";
+import { smoothScrollTo } from "@/lib/scroll";
 
 export default function HomePage({
   params,
@@ -128,11 +129,12 @@ export default function HomePage({
         {/* Global Navigation */}
         <Navbar locale={locale} setLocale={handleLocaleChange} />
 
-        {/* ======================================================== */}
-        {/* HERO SECTION (LIGHT MODE)                                */}
-        {/* ======================================================== */}
-        <section
-          id="home"
+        <main id="main-content">
+          {/* ======================================================== */}
+          {/* HERO SECTION (LIGHT MODE)                                */}
+          {/* ======================================================== */}
+          <section
+            id="home"
           className="relative min-h-screen pt-36 pb-20 sm:pt-44 sm:pb-28 flex flex-col items-center justify-center overflow-hidden px-4 sm:px-6 lg:px-8"
         >
           <div className="max-w-6xl mx-auto text-center relative z-10 flex flex-col items-center">
@@ -176,18 +178,19 @@ export default function HomePage({
               {locale === "fr" ? (
                 <>
                   Nous concevons des{" "}
-                  <span className="text-slate-900 font-semibold">applications Web Next.js</span>,{" "}
-                  <span className="text-slate-900 font-semibold">applications Mobiles natives</span> et{" "}
-                  <span className="text-slate-900 font-semibold">automatisations d'entreprise</span>.
-                  Code artisanal, zéro template générique, réactivité extrême.
+                  <span className="text-slate-900 font-semibold">applications Web sur-mesure</span>,{" "}
+                  des{" "}
+                  <span className="text-slate-900 font-semibold">expériences Mobiles d&apos;exception</span> et des{" "}
+                  <span className="text-slate-900 font-semibold">automatisations intelligentes</span>.
+                  Code d&apos;artisan, zéro modèle générique, réactivité et excellence d&apos;exécution.
                 </>
               ) : (
                 <>
                   We engineer bespoke{" "}
-                  <span className="text-slate-900 font-semibold">Next.js Web Applications</span>,{" "}
-                  <span className="text-slate-900 font-semibold">Native Mobile Platforms</span> and{" "}
-                  <span className="text-slate-900 font-semibold">Autonomous Automations</span>.
-                  Pure craftsmanship, zero templates, extreme velocity.
+                  <span className="text-slate-900 font-semibold">Custom Web Applications & Platforms</span>,{" "}
+                  <span className="text-slate-900 font-semibold">Seamless Mobile Experiences</span> and{" "}
+                  <span className="text-slate-900 font-semibold">Intelligent Business Automations</span> tailored to your needs.
+                  Pure craftsmanship, zero generic templates, uncompromising velocity.
                 </>
               )}
             </div>
@@ -196,7 +199,7 @@ export default function HomePage({
             <div className="flex flex-col sm:flex-row items-center gap-4 mb-16">
               <MagneticButton
                 onClick={() => {
-                  document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" });
+                  smoothScrollTo("contact", -80);
                 }}
                 className="w-full sm:w-auto px-8 py-4 rounded-full bg-blue-600 hover:bg-blue-700 text-white font-bold text-sm tracking-wide shadow-xl shadow-blue-500/25 border border-blue-500 group transition-all"
               >
@@ -209,7 +212,7 @@ export default function HomePage({
 
               <MagneticButton
                 onClick={() => {
-                  document.getElementById("clients")?.scrollIntoView({ behavior: "smooth" });
+                  smoothScrollTo("clients", -80);
                 }}
                 className="w-full sm:w-auto px-8 py-4 rounded-full bg-white hover:bg-slate-50 text-slate-800 font-bold text-sm tracking-wide border border-slate-200/90 shadow-sm transition-all"
               >
@@ -227,16 +230,16 @@ export default function HomePage({
                   <TextScramble text="<0.4s" speed={40} />
                 </div>
                 <p className="text-xs text-slate-500 font-mono font-medium">
-                  {locale === "fr" ? "First Contentful Paint" : "First Contentful Paint"}
+                  {locale === "fr" ? "Affichage Instantané" : "Instant Load Speed"}
                 </p>
               </div>
 
               <div className="p-4 rounded-xl bg-white/80 border border-slate-200/80 shadow-sm">
-                <div className="text-2xl sm:text-3xl font-mono font-bold text-emerald-600 mb-1">
+                <div className="text-2xl sm:text-3xl font-mono font-bold text-emerald-700 mb-1">
                   <TextScramble text="99.98%" speed={40} />
                 </div>
                 <p className="text-xs text-slate-500 font-mono font-medium">
-                  {locale === "fr" ? "Disponibilité Cloud SLA" : "Production SLA"}
+                  {locale === "fr" ? "Fiabilité & Continuité" : "Business Continuity"}
                 </p>
               </div>
 
@@ -245,7 +248,7 @@ export default function HomePage({
                   <TextScramble text="120 FPS" speed={40} />
                 </div>
                 <p className="text-xs text-slate-500 font-mono font-medium">
-                  {locale === "fr" ? "Fluidité Lenis & GSAP" : "Smooth Native Framerate"}
+                  {locale === "fr" ? "Fluidité & Confort Visuel" : "Ultra-Smooth Experience"}
                 </p>
               </div>
 
@@ -254,7 +257,7 @@ export default function HomePage({
                   <TextScramble text="100%" speed={40} />
                 </div>
                 <p className="text-xs text-slate-500 font-mono font-medium">
-                  {locale === "fr" ? "Sur-Mesure (No AI Cliché)" : "Handcrafted Craft"}
+                  {locale === "fr" ? "Conception 100% Sur-Mesure" : "Tailor-Made Craftsmanship"}
                 </p>
               </div>
             </div>
@@ -342,41 +345,41 @@ export default function HomePage({
                 </div>
                 <div className="flex items-center gap-3 mb-2">
                   <h3 className="text-2xl font-bold text-slate-900 group-hover:text-blue-600 transition-colors">
-                    {locale === "fr" ? "Développement Web & Applications Next.js" : "Next.js Web Applications & Platforms"}
+                    {locale === "fr" ? "Applications Web & Plateformes Sur-Mesure" : "Custom Web Applications & Platforms for your Needs"}
                   </h3>
                   <span className="text-xs font-mono px-2.5 py-0.5 rounded-full bg-blue-50 text-blue-700 border border-blue-200 font-semibold">
-                    SSR / Edge
+                    {locale === "fr" ? "Haute Performance" : "High Performance"}
                   </span>
                 </div>
                 <p className="text-sm text-slate-600 leading-relaxed mb-6">
                   {locale === "fr"
-                    ? "Conception d'applications web ultra-rapides basées sur Next.js 15 App Router, React 19 et TypeScript. Architecture modulaire, SEO technique sans faille, animations artistiques GSAP et temps de réponse sub-seconde."
-                    : "Engineering blazingly fast web applications powered by Next.js 15, React 19, and TypeScript. Modular architectures, flawless Core Web Vitals, and cinematic GSAP micro-interactions."}
+                    ? "Des expériences web rapides, élégantes et intuitives. Nous bâtissons des plateformes sur-mesure conçues pour convertir vos visiteurs, accélérer vos opérations et offrir une fluidité remarquable à chaque client."
+                    : "High-performance, elegant, and frictionless web platforms. We build custom applications tailored to your specific needs, engineered to convert, streamline your workflows, and deliver a memorable customer experience."}
                 </p>
 
                 <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 mb-6">
                   <div className="p-3 rounded-xl bg-slate-50 border border-slate-200">
-                    <span className="text-xs font-mono text-slate-500 block mb-1 font-semibold">Score SEO</span>
-                    <span className="text-lg font-bold text-emerald-600 font-mono">100 / 100</span>
+                    <span className="text-xs font-mono text-slate-500 block mb-1 font-semibold">{locale === "fr" ? "Visibilité & SEO" : "Search Visibility"}</span>
+                    <span className="text-lg font-bold text-emerald-700 font-mono">100 / 100</span>
                   </div>
                   <div className="p-3 rounded-xl bg-slate-50 border border-slate-200">
-                    <span className="text-xs font-mono text-slate-500 block mb-1 font-semibold">Architecture</span>
-                    <span className="text-lg font-bold text-blue-600 font-mono">Serverless</span>
+                    <span className="text-xs font-mono text-slate-500 block mb-1 font-semibold">{locale === "fr" ? "Expérience Client" : "User Experience"}</span>
+                    <span className="text-lg font-bold text-blue-600 font-mono">{locale === "fr" ? "Instantanée" : "Instant"}</span>
                   </div>
                   <div className="p-3 rounded-xl bg-slate-50 border border-slate-200 col-span-2 sm:col-span-1">
-                    <span className="text-xs font-mono text-slate-500 block mb-1 font-semibold">Type Safety</span>
-                    <span className="text-lg font-bold text-purple-600 font-mono">End-to-End</span>
+                    <span className="text-xs font-mono text-slate-500 block mb-1 font-semibold">{locale === "fr" ? "Sécurité & Fiabilité" : "Reliability"}</span>
+                    <span className="text-lg font-bold text-purple-600 font-mono">{locale === "fr" ? "Garantie" : "Maximized"}</span>
                   </div>
                 </div>
               </div>
 
               <div className="flex flex-wrap gap-2 pt-4 border-t border-slate-100 text-xs font-mono text-slate-500 font-medium">
-                <span>#NextJS15</span>
-                <span>#React19</span>
-                <span>#TypeScript</span>
-                <span>#TailwindCSS</span>
-                <span>#GSAP</span>
-                <span>#LenisScroll</span>
+                <span>#{locale === "fr" ? "SurMesure" : "CustomBuilt"}</span>
+                <span>#{locale === "fr" ? "HauteVitesse" : "HighSpeed"}</span>
+                <span>#{locale === "fr" ? "Conversion" : "Conversion"}</span>
+                <span>#{locale === "fr" ? "DesignÉlégant" : "BespokeDesign"}</span>
+                <span>#{locale === "fr" ? "Fluidité" : "Frictionless"}</span>
+                <span>#{locale === "fr" ? "Scalable" : "Scalable"}</span>
               </div>
             </SpotlightCard>
 
@@ -391,35 +394,35 @@ export default function HomePage({
                   <Smartphone className="w-6 h-6" />
                 </div>
                 <h3 className="text-2xl font-bold text-slate-900 mb-2 group-hover:text-purple-600 transition-colors">
-                  {locale === "fr" ? "Applications Mobiles" : "Native Mobile Apps"}
+                  {locale === "fr" ? "Applications Mobiles Intuitives" : "Intuitive Mobile Applications & Experiences"}
                 </h3>
                 <p className="text-sm text-slate-600 leading-relaxed mb-6">
                   {locale === "fr"
-                    ? "Applications iOS & Android fluides construites avec React Native Fabric et Flutter. Fonctionnement hors-ligne persistant, notifications push ciblées et intégration FaceID / TouchID."
-                    : "Silky 120Hz iOS and Android apps powered by React Native Fabric and Flutter. Offline-first local sync, targeted push triggers, and biometric security."}
+                    ? "Offrez à vos clients une présence directe et continue. Des interfaces mobiles raffinées, instantanées et sécurisées, conçues pour créer un lien fort avec votre marque au quotidien."
+                    : "Put your brand directly in your customers' hands. Refined, instantaneous, and secure mobile applications designed to drive daily engagement, effortless bookings, and lasting retention."}
                 </p>
 
                 <ul className="space-y-2 text-xs text-slate-700 mb-6 font-mono font-medium">
                   <li className="flex items-center gap-2">
                     <CheckCircle2 className="w-3.5 h-3.5 text-purple-600" />
-                    <span>Cross-platform iOS & Android unifié</span>
+                    <span>{locale === "fr" ? "Navigation naturelle et ergonomie utilisateur" : "Effortless navigation & user-first ergonomics"}</span>
                   </li>
                   <li className="flex items-center gap-2">
                     <CheckCircle2 className="w-3.5 h-3.5 text-purple-600" />
-                    <span>Synchronisation SQLite hors-ligne</span>
+                    <span>{locale === "fr" ? "Disponibilité continue même hors-ligne" : "Continuous offline access & local storage"}</span>
                   </li>
                   <li className="flex items-center gap-2">
                     <CheckCircle2 className="w-3.5 h-3.5 text-purple-600" />
-                    <span>Rendu matériel 60-120 FPS</span>
+                    <span>{locale === "fr" ? "Engagement direct avec notifications ciblées" : "Targeted push notifications & user alerts"}</span>
                   </li>
                 </ul>
               </div>
 
               <div className="flex flex-wrap gap-2 pt-4 border-t border-slate-100 text-xs font-mono text-slate-500 font-medium">
-                <span>#ReactNative</span>
-                <span>#Expo</span>
-                <span>#Flutter</span>
-                <span>#SQLite</span>
+                <span>#iOS</span>
+                <span>#Android</span>
+                <span>#{locale === "fr" ? "Fidélisation" : "UserRetention"}</span>
+                <span>#{locale === "fr" ? "Ergonomie" : "Ergonomics"}</span>
               </div>
             </SpotlightCard>
 
@@ -434,35 +437,35 @@ export default function HomePage({
                   <Workflow className="w-6 h-6" />
                 </div>
                 <h3 className="text-2xl font-bold text-slate-900 mb-2 group-hover:text-cyan-600 transition-colors">
-                  {locale === "fr" ? "Workflows & Automatisations" : "Autonomous Automations"}
+                  {locale === "fr" ? "Automatisations & Efficacité Opérationnelle" : "Process Automation & Operational Efficiency"}
                 </h3>
                 <p className="text-sm text-slate-600 leading-relaxed mb-6">
                   {locale === "fr"
-                    ? "Supprimez les tâches manuelles répétitives. Orchestration n8n, scripts Python sur-mesure, webhooks haute fréquence et synchronisation instantanée de vos outils métier."
-                    : "Eliminate hundreds of tedious operator hours. n8n enterprise workflows, custom Python daemons, high-frequency webhooks and seamless CRM bidirectional sync."}
+                    ? "Libérez vos équipes des tâches répétitives et chronophages. Nous automatisons vos processus métier de bout en bout pour fluidifier vos ventes, vos relances et la synchronisation de vos données."
+                    : "Free your team from tedious manual routines. We connect and automate your business processes to accelerate sales cycles, customer follow-ups, and data flows with zero friction."}
                 </p>
 
                 <ul className="space-y-2 text-xs text-slate-700 mb-6 font-mono font-medium">
                   <li className="flex items-center gap-2">
                     <CheckCircle2 className="w-3.5 h-3.5 text-cyan-600" />
-                    <span>Orchestration n8n / Make / Python</span>
+                    <span>{locale === "fr" ? "Gain de temps massif et zéro ressaisie" : "Massive time savings & zero manual re-entry"}</span>
                   </li>
                   <li className="flex items-center gap-2">
                     <CheckCircle2 className="w-3.5 h-3.5 text-cyan-600" />
-                    <span>Intégration WhatsApp & Twilio Voice</span>
+                    <span>{locale === "fr" ? "Synchronisation continue de vos outils métier" : "Seamless sync across all your business tools"}</span>
                   </li>
                   <li className="flex items-center gap-2">
                     <CheckCircle2 className="w-3.5 h-3.5 text-cyan-600" />
-                    <span>Zéro saisie manuelle de données</span>
+                    <span>{locale === "fr" ? "Alertes en direct pour décider plus vite" : "Real-time alerts for faster decision-making"}</span>
                   </li>
                 </ul>
               </div>
 
               <div className="flex flex-wrap gap-2 pt-4 border-t border-slate-100 text-xs font-mono text-slate-500 font-medium">
-                <span>#n8n</span>
-                <span>#Python</span>
-                <span>#Webhooks</span>
-                <span>#Twilio</span>
+                <span>#{locale === "fr" ? "Productivité" : "Productivity"}</span>
+                <span>#{locale === "fr" ? "GainDeTemps" : "TimeSaving"}</span>
+                <span>#{locale === "fr" ? "FluxAutomatisés" : "AutomatedFlows"}</span>
+                <span>#{locale === "fr" ? "Fiabilité" : "Reliability"}</span>
               </div>
             </SpotlightCard>
 
@@ -478,44 +481,44 @@ export default function HomePage({
                 </div>
                 <div className="flex items-center gap-3 mb-2">
                   <h3 className="text-2xl font-bold text-slate-900 group-hover:text-emerald-600 transition-colors">
-                    {locale === "fr" ? "Plateformes SaaS & Systèmes Cloud Sur-Mesure" : "Custom SaaS & Cloud Systems"}
+                    {locale === "fr" ? "Portails Clients & Espaces Métier Sur-Mesure" : "Custom Client Portals & Business Platforms"}
                   </h3>
                   <span className="text-xs font-mono px-2.5 py-0.5 rounded-full bg-emerald-50 text-emerald-700 border border-emerald-200 font-semibold">
-                    Enterprise Ready
+                    {locale === "fr" ? "Clé en Main" : "Turnkey Solution"}
                   </span>
                 </div>
                 <p className="text-sm text-slate-600 leading-relaxed mb-6">
                   {locale === "fr"
-                    ? "Création intégrale de votre plateforme SaaS : architecture multi-tenant, facturation Stripe récurrente, gestion de rôles complexes (RBAC), bases de données PostgreSQL avec pgvector et tableaux de bord analytiques en temps réel."
-                    : "End-to-end development of proprietary SaaS platforms: multi-tenant database partitioning, automated Stripe billing, granular RBAC access controls, pgvector search, and real-time WebSocket metrics."}
+                    ? "Donnez vie à vos projets de plateformes les plus ambitieux. Espaces membres privatifs, paiements en ligne fluides, gestion des accès et tableaux de bord de pilotage en temps réel conçus pour accompagner votre croissance."
+                    : "Bring your most ambitious platform visions to life. Private member spaces, frictionless online payments, granular access management, and live executive dashboards built to scale alongside your business."}
                 </p>
 
                 <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-6">
                   <div className="p-3 rounded-xl bg-slate-50 border border-slate-200">
-                    <span className="text-xs font-mono text-slate-500 block mb-1 font-semibold">Billing</span>
-                    <span className="text-sm font-bold text-slate-900 font-mono">Stripe Subscriptions</span>
+                    <span className="text-xs font-mono text-slate-500 block mb-1 font-semibold">{locale === "fr" ? "Paiements" : "Payments"}</span>
+                    <span className="text-sm font-bold text-slate-900 font-mono">{locale === "fr" ? "Automatisés & Sécurisés" : "Secure & Automated"}</span>
                   </div>
                   <div className="p-3 rounded-xl bg-slate-50 border border-slate-200">
-                    <span className="text-xs font-mono text-slate-500 block mb-1 font-semibold">Database</span>
-                    <span className="text-sm font-bold text-slate-900 font-mono">Postgres + pgvector</span>
+                    <span className="text-xs font-mono text-slate-500 block mb-1 font-semibold">{locale === "fr" ? "Données" : "Data & Privacy"}</span>
+                    <span className="text-sm font-bold text-slate-900 font-mono">{locale === "fr" ? "Hautement Protégées" : "Enterprise Safe"}</span>
                   </div>
                   <div className="p-3 rounded-xl bg-slate-50 border border-slate-200">
-                    <span className="text-xs font-mono text-slate-500 block mb-1 font-semibold">Auth</span>
-                    <span className="text-sm font-bold text-slate-900 font-mono">JWT / OAuth 2.0</span>
+                    <span className="text-xs font-mono text-slate-500 block mb-1 font-semibold">{locale === "fr" ? "Accès" : "Access Control"}</span>
+                    <span className="text-sm font-bold text-slate-900 font-mono">{locale === "fr" ? "Espaces Dédiés" : "Multi-Role Portals"}</span>
                   </div>
                   <div className="p-3 rounded-xl bg-slate-50 border border-slate-200">
-                    <span className="text-xs font-mono text-slate-500 block mb-1 font-semibold">Infra</span>
-                    <span className="text-sm font-bold text-slate-900 font-mono">Docker & AWS / VPS</span>
+                    <span className="text-xs font-mono text-slate-500 block mb-1 font-semibold">{locale === "fr" ? "Pilotage" : "Analytics"}</span>
+                    <span className="text-sm font-bold text-slate-900 font-mono">{locale === "fr" ? "Temps Réel" : "Live Dashboards"}</span>
                   </div>
                 </div>
               </div>
 
               <div className="flex flex-wrap gap-2 pt-4 border-t border-slate-100 text-xs font-mono text-slate-500 font-medium">
-                <span>#SaaSPlatform</span>
-                <span>#PostgreSQL</span>
-                <span>#Docker</span>
-                <span>#Redis</span>
-                <span>#Stripe</span>
+                <span>#{locale === "fr" ? "PortailClient" : "ClientPortal"}</span>
+                <span>#{locale === "fr" ? "EspaceMembre" : "MemberHub"}</span>
+                <span>#{locale === "fr" ? "PaiementEnLigne" : "OnlineBilling"}</span>
+                <span>#{locale === "fr" ? "TableauxDeBord" : "Dashboards"}</span>
+                <span>#{locale === "fr" ? "PilotageMétier" : "Operations"}</span>
               </div>
             </SpotlightCard>
           </div>
@@ -529,15 +532,15 @@ export default function HomePage({
             <div className="text-center max-w-3xl mx-auto mb-14">
               <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-50 border border-blue-200 text-xs font-mono text-blue-700 font-semibold mb-4">
                 <Terminal className="w-3.5 h-3.5" />
-                <span>{locale === "fr" ? "TECHNOLOGIES & EXPERTISE" : "SPECIALIZED TECH STACK"}</span>
+                <span>{locale === "fr" ? "SAVOIR-FAIRE & EXCELLENCE" : "EXPERIENCE & METHODOLOGY"}</span>
               </div>
               <h2 className="text-3xl sm:text-5xl font-black text-slate-900 tracking-tight mb-4">
-                The Specialized Stack We Master
+                {locale === "fr" ? "Une Ingénierie Pensée Pour Votre Succès" : "Engineering Built Around Your Success"}
               </h2>
               <p className="text-sm sm:text-base text-slate-600">
                 {locale === "fr"
-                  ? "Du développement Web & Mobile aux Chatbots IA WhatsApp, tunnels de Newsletters et automatisations n8n : nos briques réelles éprouvées en production."
-                  : "From Web & Mobile platforms to AI WhatsApp chatbots, Newsletter pipelines, and n8n workflows: battle-tested production stacks."}
+                  ? "De la création d'interfaces captivantes à l'intégration de parcours clients fluides et automatisés : chaque solution est pensée pour délivrer une valeur mesurable et pérenne."
+                  : "From captivating digital journeys to seamless operational workflows: every capability is tailored to guarantee performance, security, and measurable ROI."}
               </p>
             </div>
 
@@ -627,9 +630,9 @@ export default function HomePage({
                         />
                       </div>
                       <div>
-                        <h4 className="text-lg font-bold text-white drop-shadow-md">
+                        <h3 className="text-lg font-bold text-white drop-shadow-md">
                           {project.title}
-                        </h4>
+                        </h3>
                         <p className="text-xs text-slate-200 drop-shadow">
                           {project.client} · {project.location}
                         </p>
@@ -659,7 +662,7 @@ export default function HomePage({
                     <div className="grid grid-cols-3 gap-2 p-3 rounded-xl bg-slate-50 border border-slate-200 mb-6">
                       {project.results.slice(0, 3).map((res, rIdx) => (
                         <div key={rIdx} className="text-center">
-                          <span className="block text-sm font-mono font-bold text-emerald-600">
+                          <span className="block text-sm font-mono font-bold text-emerald-700">
                             {res.metric}
                           </span>
                           <span className="block text-[10px] text-slate-500 font-medium truncate">
@@ -686,7 +689,8 @@ export default function HomePage({
                     target="_blank"
                     rel="noopener noreferrer"
                     className="p-2.5 rounded-xl bg-blue-50 hover:bg-blue-600 text-blue-600 hover:text-white border border-blue-200 transition-all shadow-sm"
-                    title={locale === "fr" ? "Ouvrir le site en direct" : "Visit live site"}
+                    title={`${locale === "fr" ? "Visiter le site officiel" : "Visit live website"} ${project.title}`}
+                    aria-label={`${locale === "fr" ? "Visiter le site officiel" : "Visit live website"} ${project.title}`}
                   >
                     <ArrowUpRight className="w-4 h-4" />
                   </a>
@@ -781,12 +785,12 @@ export default function HomePage({
                 borderColor="rgba(59, 130, 246, 0.35)"
                 className="p-6 relative group"
               >
-                <span className="text-4xl font-black font-mono text-slate-200 group-hover:text-blue-500/30 transition-colors block mb-4">
+                <span className="text-4xl font-black font-mono text-slate-200 group-hover:text-blue-500/30 transition-colors block mb-4" aria-hidden="true">
                   {phase.step}
                 </span>
-                <h4 className="text-lg font-bold text-slate-900 mb-2 group-hover:text-blue-600 transition-colors">
+                <h3 className="text-lg font-bold text-slate-900 mb-2 group-hover:text-blue-600 transition-colors">
                   {locale === "fr" ? phase.titleFr : phase.titleEn}
-                </h4>
+                </h3>
                 <p className="text-xs text-slate-600 leading-relaxed">
                   {locale === "fr" ? phase.descFr : phase.descEn}
                 </p>
@@ -828,10 +832,10 @@ export default function HomePage({
                 </label>
                 <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
                   {[
-                    { id: "web", label: "Web App / Next.js", icon: Code2 },
-                    { id: "mobile", label: "Mobile (iOS / Android)", icon: Smartphone },
-                    { id: "automation", label: "Automation / n8n", icon: Workflow },
-                    { id: "saas", label: "Plateforme SaaS Complète", icon: Cpu },
+                    { id: "web", label: locale === "fr" ? "Application Web Sur-Mesure" : "Custom Web Application", icon: Code2 },
+                    { id: "mobile", label: locale === "fr" ? "Application Mobile Dédiée" : "Dedicated Mobile App", icon: Smartphone },
+                    { id: "automation", label: locale === "fr" ? "Automatisation des Processus" : "Workflow Automation", icon: Workflow },
+                    { id: "saas", label: locale === "fr" ? "Portail & Plateforme Métier" : "Custom Platform & Portal", icon: Cpu },
                   ].map((item) => {
                     const Icon = item.icon;
                     const isSelected = estimatorType === item.id;
@@ -897,6 +901,9 @@ export default function HomePage({
 
                 <button
                   type="button"
+                  role="switch"
+                  aria-checked={estimatorNeedsAI}
+                  aria-label={locale === "fr" ? "Activer ou désactiver l'intégration d'agents IA" : "Toggle autonomous AI agents integration"}
                   onClick={() => setEstimatorNeedsAI(!estimatorNeedsAI)}
                   className={`w-12 h-6 rounded-full p-1 transition-colors ${
                     estimatorNeedsAI ? "bg-blue-600" : "bg-slate-300"
@@ -931,7 +938,7 @@ export default function HomePage({
                     message: msg,
                     service: estimatorType,
                   }));
-                  document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" });
+                  smoothScrollTo("contact", -80);
                 }}
                 className="px-6 py-2.5 rounded-full bg-slate-900 hover:bg-slate-800 text-white font-bold text-xs transition-all shadow-md shrink-0"
               >
@@ -1090,18 +1097,21 @@ export default function HomePage({
                     </div>
 
                     <div>
-                      <label className="text-xs font-mono text-slate-700 block mb-1.5 font-bold">
+                      <label htmlFor="contact-service" className="text-xs font-mono text-slate-700 block mb-1.5 font-bold">
                         {locale === "fr" ? "Discipline Principale" : "Core Discipline"}
                       </label>
                       <select
+                        id="contact-service"
+                        name="service"
+                        aria-label={locale === "fr" ? "Discipline Principale" : "Core Discipline"}
                         value={contactForm.service}
                         onChange={(e) => setContactForm({ ...contactForm, service: e.target.value })}
                         className="w-full px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 text-sm focus:outline-none focus:border-blue-500 focus:bg-white transition-colors font-medium"
                       >
-                        <option value="webdev">{locale === "fr" ? "Web Application (Next.js)" : "Web App (Next.js)"}</option>
-                        <option value="mobile">{locale === "fr" ? "Application Mobile (iOS / Android)" : "Mobile App (iOS/Android)"}</option>
-                        <option value="automation">{locale === "fr" ? "Automation & Agents IA" : "Automation & AI Agents"}</option>
-                        <option value="saas">{locale === "fr" ? "Plateforme SaaS Complète" : "Full SaaS Platform"}</option>
+                        <option value="webdev">{locale === "fr" ? "Application Web Sur-Mesure" : "Custom Web Application & Platform"}</option>
+                        <option value="mobile">{locale === "fr" ? "Application Mobile (iOS & Android)" : "Mobile Application (iOS & Android)"}</option>
+                        <option value="automation">{locale === "fr" ? "Automatisation des Processus Métier" : "Business Process Automation"}</option>
+                        <option value="saas">{locale === "fr" ? "Portail Client & Plateforme Métier" : "Client Portal & Platform"}</option>
                       </select>
                     </div>
                   </div>
@@ -1142,6 +1152,7 @@ export default function HomePage({
             </SpotlightCard>
           </div>
         </section>
+        </main>
 
         {/* ======================================================== */}
         {/* CASE STUDY MODAL                                         */}

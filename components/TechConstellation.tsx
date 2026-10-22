@@ -39,132 +39,132 @@ interface TechItem {
 const STACK_ITEMS: TechItem[] = [
   // Chatbots & IA
   {
-    name: "Chatbots IA & Agents 24/7",
+    name: "Assistants IA & Qualification 24/7",
     category: "ai-chatbots",
     icon: Bot,
     iconBg: "bg-blue-50 border-blue-200",
     iconColor: "text-blue-600",
     concreteUse: {
-      fr: "Support client & qualification automatique de leads",
-      en: "Automated customer support & inbound lead qualification"
+      fr: "Réponses immédiates & qualification automatique de vos prospects",
+      en: "Instant customer support & automated inbound lead qualification"
     },
     details: {
-      fr: "Intégration sur votre site, WhatsApp & Instagram avec connexion directe à votre CRM.",
-      en: "Live web widget, WhatsApp & Instagram channels synced in real-time with your CRM."
+      fr: "Intégration directe sur votre site web, WhatsApp et réseaux sociaux pour ne plus perdre aucun prospect.",
+      en: "Seamlessly deployed on your website, WhatsApp, and social channels, syncing hot leads directly with your CRM."
     },
-    tags: ["OpenAI", "Claude", "WhatsApp API", "RAG"]
+    tags: ["Disponibilité 24/7", "WhatsApp", "Qualification", "Conversion"]
   },
   {
-    name: "Newsletters & E-mail Automations",
+    name: "Campagnes E-mail & Fidélisation",
     category: "newsletters",
     icon: Mail,
     iconBg: "bg-amber-50 border-amber-200",
     iconColor: "text-amber-600",
     concreteUse: {
-      fr: "Délivrabilité maximale, onboarding & séquences de vente",
+      fr: "Délivrabilité maximale, accueil client & séquences de vente",
       en: "High inbox deliverability, onboarding flows & sales drips"
     },
     details: {
-      fr: "Templates réactifs sur-mesure, Resend / Brevo, segmentation fine et relances automatiques.",
-      en: "Custom responsive email designs, Resend / Brevo setups and behavioral triggers."
+      fr: "Designs élégants adaptés à tous les écrans, segmentation intelligente et relances automatiques.",
+      en: "Tailored responsive email layouts, behavioral segmentation, and automated re-engagement triggers."
     },
-    tags: ["Resend", "Brevo", "Loops", "DKIM/SPF"]
+    tags: ["Délivrabilité", "Séquences Vente", "Fidélisation", "Sur-Mesure"]
   },
   {
-    name: "Next.js 15 & React 19",
+    name: "Applications Web & Plateformes Sur-Mesure",
     category: "web-mobile",
     icon: Globe,
     iconBg: "bg-indigo-50 border-indigo-200",
     iconColor: "text-indigo-600",
     concreteUse: {
-      fr: "Applications web & plateformes SaaS haute performance",
-      en: "High-performance web applications & SaaS dashboards"
+      fr: "Expériences web rapides et plateformes métier performantes",
+      en: "High-performance web applications & custom business platforms"
     },
     details: {
-      fr: "Architecture moderne App Router, SEO technique irréprochable et chargement instantané.",
-      en: "App Router architecture, bulletproof technical SEO and instant edge loading."
+      fr: "Interfaces fluides, vitesse d'affichage instantanée et optimisation pour convertir vos visiteurs en clients.",
+      en: "Fluid user interfaces, instant load speeds, and architectures engineered to maximize client conversion."
     },
-    tags: ["Next.js", "TypeScript", "Tailwind", "Vercel"]
+    tags: ["Sur-Mesure", "Haute Vitesse", "SEO Optimal", "Conversion"]
   },
   {
-    name: "Applications Mobiles (iOS & Android)",
+    name: "Expériences Mobiles Dédiées (iOS & Android)",
     category: "web-mobile",
     icon: Smartphone,
     iconBg: "bg-purple-50 border-purple-200",
     iconColor: "text-purple-600",
     concreteUse: {
-      fr: "Apps natives téléchargeables sur l'App Store & Play Store",
-      en: "Production native apps published on App Store & Google Play"
+      fr: "Applications intuitives téléchargeables sur l'App Store & Play Store",
+      en: "Refined native mobile apps published on the App Store & Google Play"
     },
     details: {
-      fr: "React Native & Flutter : fluidité 120Hz, notifications push, biométrie et mode hors-ligne.",
-      en: "React Native & Flutter: 120Hz gestures, targeted push, biometrics and offline sync."
+      fr: "Navigation soignée, notifications ciblées, accès sécurisé et fonctionnement fluide même sans réseau.",
+      en: "Refined navigation, timely push notifications, biometric security, and full offline usability."
     },
-    tags: ["React Native", "Expo", "Flutter", "Push APNs"]
+    tags: ["iOS & Android", "Notifications", "Ergonomie", "Fidélité"]
   },
   {
-    name: "Automatisations n8n & Make",
+    name: "Automatisations & Synchronisation Métier",
     category: "automation-cloud",
     icon: Workflow,
     iconBg: "bg-cyan-50 border-cyan-200",
     iconColor: "text-cyan-600",
     concreteUse: {
-      fr: "Élimination des tâches manuelles et synchronisation d'outils",
+      fr: "Élimination des tâches manuelles et interconnexion de vos logiciels",
       en: "Manual workload elimination & bi-directional tool sync"
     },
     details: {
-      fr: "Liaison entre vos formulaires, CRM, Google Sheets, Slack, facturation et alertes SMS.",
-      en: "Seamless glue between web forms, CRM, Google Sheets, Slack, billing and SMS alerts."
+      fr: "Liaison fluide entre vos formulaires, votre CRM, vos tableaux de bord, votre facturation et vos alertes.",
+      en: "Automated glue connecting your forms, CRM, dashboards, billing, and team alerts with zero friction."
     },
-    tags: ["n8n", "Make", "Webhooks", "Zapier"]
+    tags: ["Gain de Temps", "Zéro Erreur", "Synchronisation", "Productivité"]
   },
   {
-    name: "Paiements Stripe & Facturation",
+    name: "Paiements Sécurisés & Facturation en Ligne",
     category: "automation-cloud",
     icon: CreditCard,
     iconBg: "bg-emerald-50 border-emerald-200",
     iconColor: "text-emerald-600",
     concreteUse: {
-      fr: "Abonnements récurrents, portails clients & facturation",
-      en: "Recurring subscriptions, customer portals & invoicing"
+      fr: "Abonnements récurrents, portails clients & encaissement sans friction",
+      en: "Recurring subscriptions, customer portals & frictionless billing"
     },
     details: {
-      fr: "Gestion des cartes bancaires, prélèvements SEPA, relances d'impayés et portail client sécurisé.",
-      en: "Credit card & SEPA handling, failed payment recovery and secure billing portals."
+      fr: "Paiements par cartes bancaires et virements, relances d'impayés automatiques et reçus conformes.",
+      en: "Worldwide credit cards, recurring direct debits, smart retry recovery, and compliant digital invoices."
     },
-    tags: ["Stripe Checkout", "Billing", "Webhooks", "SCA"]
+    tags: ["Paiement Sécurisé", "Abonnements", "Automatisé", "Sérénité"]
   },
   {
-    name: "Scripts Python & Scraping de Données",
+    name: "Traitement Intelligent & Extraction de Données",
     category: "automation-cloud",
     icon: Terminal,
     iconBg: "bg-sky-50 border-sky-200",
     iconColor: "text-sky-600",
     concreteUse: {
-      fr: "Extraction de données ciblées, enrichissement & bots",
-      en: "Targeted data scraping, lead enrichment & background bots"
+      fr: "Veille concurrentielle, enrichissement de données & alertes",
+      en: "Competitive intelligence, lead enrichment & automated alerts"
     },
     details: {
-      fr: "Robots d'extraction légaux, nettoyage de bases de données et traitement automatique de fichiers.",
-      en: "Automated web scrapers, data cleaning pipelines and bulk file transformations."
+      fr: "Collecte structurée d'informations, nettoyage automatique de fichiers et enrichissement de vos contacts.",
+      en: "Structured data aggregation, automated spreadsheet enrichment, and intelligent alert bots."
     },
-    tags: ["Python", "FastAPI", "Pandas", "Scrapy"]
+    tags: ["Données Fiables", "Veille Stratégique", "Gain de Temps", "Enrichissement"]
   },
   {
-    name: "Bases de Données PostgreSQL & Supabase",
+    name: "Espaces Membres & Données Sécurisées",
     category: "automation-cloud",
     icon: Database,
     iconBg: "bg-rose-50 border-rose-200",
     iconColor: "text-rose-600",
     concreteUse: {
-      fr: "Stockage sécurisé, temps réel & sécurité des données",
-      en: "Secure ACID storage, real-time sync & enterprise security"
+      fr: "Espaces privés protégés, synchronisation en direct & confidentialité",
+      en: "Private client vaults, real-time sync & enterprise data security"
     },
     details: {
-      fr: "Bases relationnelles rapides avec sauvegardes automatiques et gestion stricte des droits (RLS).",
-      en: "Fast relational schemas with automated backups and strict Row Level Security (RLS)."
+      fr: "Protection rigoureuse des données clients, sauvegardes automatiques et gestion stricte des droits d'accès.",
+      en: "Rigorous customer privacy, automated daily backups, and granular role-based access controls."
     },
-    tags: ["PostgreSQL", "Supabase", "Prisma", "Redis"]
+    tags: ["Haute Sécurité", "Temps Réel", "Confidentialité", "Évolutivité"]
   }
 ];
 
@@ -172,11 +172,11 @@ export default function TechConstellation({ locale = "fr" }: { locale?: "fr" | "
   const [activeCategory, setActiveCategory] = useState<string>("all");
 
   const categories = [
-    { id: "all", labelFr: "Tout ce qu'on développe", labelEn: "All Services & Stack" },
-    { id: "ai-chatbots", labelFr: "Chatbots IA & WhatsApp", labelEn: "AI Chatbots & WhatsApp" },
-    { id: "newsletters", labelFr: "Newsletters & E-mails", labelEn: "Newsletters & Email" },
-    { id: "web-mobile", labelFr: "Web & Mobile Apps", labelEn: "Web & Mobile" },
-    { id: "automation-cloud", labelFr: "Automatisations & Stripe", labelEn: "Automations & Stripe" },
+    { id: "all", labelFr: "Toutes nos solutions", labelEn: "All Solutions" },
+    { id: "web-mobile", labelFr: "Web & Mobile Sur-Mesure", labelEn: "Custom Web & Mobile" },
+    { id: "ai-chatbots", labelFr: "Assistants IA & Qualification", labelEn: "AI Assistants & Leads" },
+    { id: "newsletters", labelFr: "E-mails & Fidélisation", labelEn: "Email & Retention" },
+    { id: "automation-cloud", labelFr: "Processus & Paiements", labelEn: "Automations & Payments" },
   ];
 
   const filtered = activeCategory === "all"
@@ -231,9 +231,9 @@ export default function TechConstellation({ locale = "fr" }: { locale?: "fr" | "
                       <Icon className={`w-5 h-5 ${tech.iconColor}`} />
                     </div>
                     <div>
-                      <h4 className="text-base font-bold text-slate-900 group-hover:text-blue-600 transition-colors">
+                      <h3 className="text-base font-bold text-slate-900 group-hover:text-blue-600 transition-colors">
                         {tech.name}
-                      </h4>
+                      </h3>
                       <p className="text-xs font-semibold text-blue-600 mt-0.5">
                         {tech.concreteUse[locale]}
                       </p>
@@ -258,9 +258,9 @@ export default function TechConstellation({ locale = "fr" }: { locale?: "fr" | "
                       </span>
                     ))}
                   </div>
-                  <span className="text-[11px] font-bold text-emerald-600 flex items-center gap-1">
-                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 inline-block" />
-                    En prod
+                  <span className="text-[11px] font-bold text-emerald-700 flex items-center gap-1">
+                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-600 inline-block" />
+                    {locale === "fr" ? "En production" : "In production"}
                   </span>
                 </div>
               </div>
@@ -282,9 +282,9 @@ export default function TechConstellation({ locale = "fr" }: { locale?: "fr" | "
                       <Icon className={`w-5 h-5 ${tech.iconColor}`} />
                     </div>
                     <div>
-                      <h4 className="text-base font-bold text-slate-900 group-hover:text-blue-600 transition-colors">
+                      <h3 className="text-base font-bold text-slate-900 group-hover:text-blue-600 transition-colors">
                         {tech.name}
-                      </h4>
+                      </h3>
                       <p className="text-xs font-semibold text-blue-600 mt-0.5">
                         {tech.concreteUse[locale]}
                       </p>
@@ -307,9 +307,9 @@ export default function TechConstellation({ locale = "fr" }: { locale?: "fr" | "
                       </span>
                     ))}
                   </div>
-                  <span className="text-[11px] font-bold text-emerald-600 flex items-center gap-1">
-                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 inline-block" />
-                    En prod
+                  <span className="text-[11px] font-bold text-emerald-700 flex items-center gap-1">
+                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-600 inline-block" />
+                    {locale === "fr" ? "En production" : "In production"}
                   </span>
                 </div>
               </div>

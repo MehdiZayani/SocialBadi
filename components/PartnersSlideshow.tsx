@@ -97,6 +97,7 @@ export default function PartnersSlideshow({
                 alt={partner.name}
                 width={220}
                 height={80}
+                sizes="(max-width: 640px) 140px, (max-width: 1024px) 180px, 220px"
                 className="max-h-full max-w-full object-contain filter opacity-85 hover:opacity-100 group-hover:scale-105 transition-all duration-300 rounded-md"
                 priority={index < 6}
               />

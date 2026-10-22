@@ -5,6 +5,7 @@ import Image from "next/image";
 import { Github, Linkedin, ShieldCheck, Sparkles, Terminal, Mail, CheckCircle2 } from "lucide-react";
 import SpotlightCard from "./react-bits/SpotlightCard";
 import MagneticButton from "./react-bits/MagneticButton";
+import { smoothScrollTo } from "@/lib/scroll";
 
 interface TeamMember {
   name: string;
@@ -183,7 +184,7 @@ export default function TeamSection({ locale = "fr" }: { locale?: "fr" | "en" })
 
               {/* Stack / Skills Badges */}
               <div className="pt-4 border-t border-slate-100">
-                <span className="text-[10px] uppercase font-mono tracking-wider text-slate-400 block mb-2 font-bold">
+                <span className="text-[10px] uppercase font-mono tracking-wider text-slate-600 block mb-2 font-bold">
                   {locale === "fr" ? "Périmètre technique" : "Core Competencies"}
                 </span>
                 <div className="flex flex-wrap gap-1.5">
@@ -209,9 +210,9 @@ export default function TeamSection({ locale = "fr" }: { locale?: "fr" | "en" })
             <ShieldCheck className="w-6 h-6" />
           </div>
           <div>
-            <h4 className="text-base font-bold text-slate-900">
+            <h3 className="text-base font-bold text-slate-900">
               {locale === "fr" ? "Direction Impliquée & Sécurité à Chaque Étape" : "Direct Executive & Security Involvement"}
-            </h4>
+            </h3>
             <p className="text-xs text-slate-600 mt-0.5 max-w-2xl">
               {locale === "fr"
                 ? "Chaque projet bénéficie d'un suivi direct par nos leads techniques en IA et cybersécurité. Pas d'intermédiaires, une communication transparente."
@@ -222,8 +223,7 @@ export default function TeamSection({ locale = "fr" }: { locale?: "fr" | "en" })
 
         <MagneticButton
           onClick={() => {
-            const contactSection = document.getElementById("contact");
-            contactSection?.scrollIntoView({ behavior: "smooth" });
+            smoothScrollTo("contact", -80);
           }}
           className="px-6 py-3 rounded-full bg-slate-900 text-white font-bold text-xs sm:text-sm hover:bg-slate-800 transition-all shadow-md shadow-slate-900/10 shrink-0"
         >

@@ -89,7 +89,6 @@ export default async function RootLayout(
         <link rel="icon" type="image/png" sizes="128x128" href="/favicon.png" />
         <link rel="icon" type="image/x-icon" href="/favicon.ico" />
         <link rel="apple-touch-icon" href="/favicon.png" />
-        <link rel="canonical" href="https://socialbadi.com" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </head>
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>

@@ -31,8 +31,8 @@ export default function ModernFooter({ locale = "fr" }: { locale?: "fr" | "en" }
 
             <p className="text-sm text-slate-600 leading-relaxed max-w-sm">
               {locale === "fr"
-                ? "Studio d'ingénierie logicielle & création digitale. Nous concevons des applications web haut débit, des applications mobiles natives et des automatisations intelligentes taillées pour scaler."
-                : "Software engineering studio & digital product foundry. We architect high-throughput web apps, native mobile platforms, and intelligent automation systems built to scale."}
+                ? "Studio d'ingénierie digitale & expériences sur-mesure. Nous concevons des applications web d'exception, des applications mobiles intuitives et des automatisations intelligentes conçues pour votre réussite."
+                : "Bespoke digital engineering studio. We craft custom web applications, intuitive mobile experiences, and intelligent business automations tailored to your specific needs."}
             </p>
 
             {/* Live Status indicator */}
@@ -72,38 +72,38 @@ export default function ModernFooter({ locale = "fr" }: { locale?: "fr" | "en" }
 
           {/* Col 3: Services / Pôles */}
           <div>
-            <h4 className="text-xs font-mono uppercase tracking-wider text-slate-900 mb-4 font-bold">
+            <h3 className="text-xs font-mono uppercase tracking-wider text-slate-900 mb-4 font-bold">
               {locale === "fr" ? "Expertises" : "Disciplines"}
-            </h4>
+            </h3>
             <ul className="space-y-2.5 text-xs text-slate-600 font-medium">
               <li>
                 <a href="#services" className="hover:text-blue-600 transition-colors">
-                  Web Applications & Next.js 15
+                  {locale === "fr" ? "Applications Web Sur-Mesure" : "Custom Web Applications & Platforms"}
                 </a>
               </li>
               <li>
                 <a href="#services" className="hover:text-blue-600 transition-colors">
-                  Mobile iOS & Android (React Native)
+                  {locale === "fr" ? "Applications Mobiles Intuitives" : "Intuitive Mobile Experiences"}
                 </a>
               </li>
               <li>
                 <a href="#services" className="hover:text-blue-600 transition-colors">
-                  Workflows & Automatisations n8n
+                  {locale === "fr" ? "Automatisations des Processus" : "Business Process Automation"}
                 </a>
               </li>
               <li>
                 <a href="#services" className="hover:text-blue-600 transition-colors">
-                  Agents IA & Modèles RAG
+                  {locale === "fr" ? "Assistants & IA Conversationnelle" : "Intelligent AI Assistants"}
                 </a>
               </li>
               <li>
                 <a href="#services" className="hover:text-blue-600 transition-colors">
-                  Plateformes SaaS & CRM sur-mesure
+                  {locale === "fr" ? "Portails Clients & Espaces Métier" : "Client Portals & Custom Hubs"}
                 </a>
               </li>
               <li>
                 <a href="#technologies" className="hover:text-blue-600 transition-colors">
-                  UI/UX & Design Systems
+                  {locale === "fr" ? "Design d'Expérience & Ergonomie" : "Experience Design & Brand Identity"}
                 </a>
               </li>
             </ul>
@@ -111,9 +111,9 @@ export default function ModernFooter({ locale = "fr" }: { locale?: "fr" | "en" }
 
           {/* Col 4: Featured Works */}
           <div>
-            <h4 className="text-xs font-mono uppercase tracking-wider text-slate-900 mb-4 font-bold">
+            <h3 className="text-xs font-mono uppercase tracking-wider text-slate-900 mb-4 font-bold">
               {locale === "fr" ? "Réalisations" : "Case Studies"}
-            </h4>
+            </h3>
             <ul className="space-y-2.5 text-xs text-slate-600 font-medium">
               <li>
                 <a
@@ -172,9 +172,9 @@ export default function ModernFooter({ locale = "fr" }: { locale?: "fr" | "en" }
 
           {/* Col 5: Contact Direct */}
           <div>
-            <h4 className="text-xs font-mono uppercase tracking-wider text-slate-900 mb-4 font-bold">
+            <h3 className="text-xs font-mono uppercase tracking-wider text-slate-900 mb-4 font-bold">
               {locale === "fr" ? "Direct Studio" : "Direct Contact"}
-            </h4>
+            </h3>
             <div className="space-y-3 text-xs text-slate-600">
               <a
                 href="mailto:contact@socialbadi.com"
@@ -202,7 +202,7 @@ export default function ModernFooter({ locale = "fr" }: { locale?: "fr" | "en" }
         </div>
 
         {/* Bottom Bar */}
-        <div className="pt-8 border-t border-slate-200 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500 font-mono">
+        <div className="pt-8 border-t border-slate-200 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-700 font-mono font-medium">
           <div>
             © {new Date().getFullYear()} SocialBadi Studio. {locale === "fr" ? "Tous droits réservés." : "All rights reserved."}
           </div>

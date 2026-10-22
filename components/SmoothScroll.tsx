@@ -22,10 +22,11 @@ export default function SmoothScroll({
       gestureOrientation: "vertical",
       smoothWheel: true,
       wheelMultiplier: 0.95,
-      touchMultiplier: 1.5,
+      syncTouch: false,
     });
 
     lenisRef.current = lenis;
+    (window as unknown as { __lenis?: Lenis | null }).__lenis = lenis;
 
     // Sync Lenis with GSAP ScrollTrigger
     lenis.on("scroll", ScrollTrigger.update);
@@ -37,8 +38,27 @@ export default function SmoothScroll({
     gsap.ticker.add(updateTicker);
     gsap.ticker.lagSmoothing(0);
 
+    // If an initial anchor hash exists in URL, scroll to it smoothly once layout is ready
+    if (typeof window !== "undefined" && window.location.hash) {
+      const hash = window.location.hash;
+      const timer = setTimeout(() => {
+        const el = document.querySelector(hash);
+        if (el) {
+          lenis.scrollTo(el as HTMLElement, { offset: -80, duration: 0.9 });
+        }
+      }, 350);
+      return () => {
+        clearTimeout(timer);
+        gsap.ticker.remove(updateTicker);
+        (window as unknown as { __lenis?: Lenis | null }).__lenis = null;
+        lenis.destroy();
+        lenisRef.current = null;
+      };
+    }
+
     return () => {
       gsap.ticker.remove(updateTicker);
+      (window as unknown as { __lenis?: Lenis | null }).__lenis = null;
       lenis.destroy();
       lenisRef.current = null;
     };
