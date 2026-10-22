@@ -152,8 +152,8 @@ export default function HomePage({
           {/* ======================================================== */}
           <section
             id="home"
-          className="relative min-h-screen pt-36 pb-20 sm:pt-44 sm:pb-28 flex flex-col items-center justify-center overflow-hidden px-4 sm:px-6 lg:px-8"
-        >
+            className="relative pt-28 pb-10 sm:pt-40 sm:pb-20 sm:min-h-screen flex flex-col items-center justify-center overflow-hidden px-4 sm:px-6 lg:px-8"
+          >
           <div className="max-w-6xl mx-auto text-center relative z-10 flex flex-col items-center">
             {/* Top Engineering Pill */}
             <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/90 border border-slate-200/90 shadow-sm backdrop-blur-xl mb-8 group hover:border-blue-400 transition-colors">
@@ -281,7 +281,7 @@ export default function HomePage({
           </div>
 
           {/* Interactive Code / Studio Terminal Showcase */}
-          <div className="w-full max-w-5xl mt-14 sm:mt-20 relative z-10 px-2">
+          <div className="w-full max-w-5xl mt-6 sm:mt-14 relative z-10 px-2">
             <InteractiveTerminal />
           </div>
         </section>
@@ -289,7 +289,7 @@ export default function HomePage({
         {/* ======================================================== */}
         {/* PARTNERS / SLIDESHOW DES ENTREPRISES                     */}
         {/* ======================================================== */}
-        <section id="clients" className="relative py-24 sm:py-32 bg-white/60 border-y border-slate-200/80 overflow-hidden">
+        <section id="clients" className="relative py-12 sm:py-24 bg-slate-100/80 border-y border-slate-200/90 overflow-hidden">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-12 text-center">
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-50 border border-blue-200 text-xs font-mono text-blue-700 font-semibold mb-4">
               <Sparkles className="w-3.5 h-3.5" />
@@ -330,7 +330,7 @@ export default function HomePage({
         {/* ======================================================== */}
         {/* CORE SERVICES / DISCIPLINES (BENTO GRID)                 */}
         {/* ======================================================== */}
-        <section id="services" className="relative py-28 sm:py-36 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+        <section id="services" className="relative py-14 sm:py-28 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
           <div className="text-center max-w-3xl mx-auto mb-16">
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-purple-50 border border-purple-200 text-xs font-mono text-purple-700 font-semibold mb-4">
               <Layers className="w-3.5 h-3.5" />
@@ -544,7 +544,7 @@ export default function HomePage({
         {/* ======================================================== */}
         {/* SPECIALIZED TECHNOLOGIES SECTION: CONTINUOUS SLIDESHOW   */}
         {/* ======================================================== */}
-        <section id="technologies" className="relative py-28 sm:py-36 bg-slate-50/70 border-y border-slate-200/80 px-4 sm:px-6 lg:px-8">
+        <section id="technologies" className="relative py-14 sm:py-28 bg-slate-100/70 border-y border-slate-200/90 px-4 sm:px-6 lg:px-8">
           <div className="max-w-7xl mx-auto">
             <div className="text-center max-w-3xl mx-auto mb-14">
               <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-50 border border-blue-200 text-xs font-mono text-blue-700 font-semibold mb-4">
@@ -569,7 +569,7 @@ export default function HomePage({
         {/* ======================================================== */}
         {/* FEATURED PROJECTS / CASE STUDIES                         */}
         {/* ======================================================== */}
-        <section id="projects" className="relative py-28 sm:py-36 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+        <section id="projects" className="relative py-14 sm:py-28 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
           <div className="flex flex-col md:flex-row items-start md:items-end justify-between gap-6 mb-16">
             <div>
               <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-50 border border-indigo-200 text-xs font-mono text-indigo-700 font-semibold mb-4">
@@ -720,7 +720,7 @@ export default function HomePage({
         {/* ======================================================== */}
         {/* TEAM SECTION ("TEAM")                                    */}
         {/* ======================================================== */}
-        <section id="team" className="relative py-28 sm:py-36 bg-slate-50/70 border-y border-slate-200/80 px-4 sm:px-6 lg:px-8">
+        <section id="team" className="relative py-14 sm:py-28 bg-slate-100/70 border-y border-slate-200/90 px-4 sm:px-6 lg:px-8">
           <div className="max-w-7xl mx-auto">
             <div className="text-center max-w-3xl mx-auto mb-16">
               <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-50 border border-emerald-200 text-xs font-mono text-emerald-700 font-semibold mb-4">
@@ -747,7 +747,7 @@ export default function HomePage({
         {/* ======================================================== */}
         {/* ENGINEERING BLUEPRINT / PROCESS                          */}
         {/* ======================================================== */}
-        <section className="relative py-28 sm:py-36 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+        <section className="relative py-14 sm:py-28 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
           <div className="text-center max-w-3xl mx-auto mb-16">
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-50 border border-blue-200 text-xs font-mono text-blue-700 font-semibold mb-4">
               <Gauge className="w-3.5 h-3.5" />
@@ -819,7 +819,7 @@ export default function HomePage({
         {/* ======================================================== */}
         {/* INTERACTIVE SCOPE & ESTIMATOR CALCULATOR                 */}
         {/* ======================================================== */}
-        <section className="relative py-20 px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto">
+        <section className="relative py-12 sm:py-20 bg-slate-100/60 border-y border-slate-200/90 px-4 sm:px-6 lg:px-8">
           <SpotlightCard
             spotlightColor="rgba(59, 130, 246, 0.15)"
             borderColor="rgba(59, 130, 246, 0.4)"
@@ -968,7 +968,7 @@ export default function HomePage({
         {/* ======================================================== */}
         {/* CONTACT & START PROJECT SECTION                          */}
         {/* ======================================================== */}
-        <section id="contact" className="relative py-28 sm:py-36 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+        <section id="contact" className="relative py-14 sm:py-28 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
             {/* Left: Pitch & Coordinates */}
             <div>

@@ -11,6 +11,18 @@ export default function SmoothScroll({
   const lenisRef = useRef<Lenis | null>(null);
 
   useEffect(() => {
+    // Detect mobile touch devices: native touch scrolling is 120Hz hardware-accelerated
+    // and prevents virtual scroll compositor lag or white blanking
+    const isTouch =
+      typeof window !== "undefined" &&
+      ("ontouchstart" in window || navigator.maxTouchPoints > 0 || window.innerWidth < 768);
+
+    if (isTouch) {
+      // Expose a dummy scrollTo for mobile anchors
+      (window as unknown as { __lenis?: Lenis | null }).__lenis = null;
+      return;
+    }
+
     const lenis = new Lenis({
       duration: 1.15,
       easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),

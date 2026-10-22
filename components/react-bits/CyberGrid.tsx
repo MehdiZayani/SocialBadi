@@ -23,9 +23,13 @@ export default function CyberGrid() {
 
     window.addEventListener("resize", handleResize);
 
-    // Floating subtle particles for light theme (fewer on mobile to prevent TBT)
+    // On mobile devices, skip the canvas animation loop entirely to keep scrolling 120Hz smooth with zero lag
+    if (window.innerWidth < 768) {
+      return;
+    }
+
     const isMobile = window.innerWidth < 768;
-    const particleCount = isMobile ? 14 : 26;
+    const particleCount = isMobile ? 12 : 24;
     const particles: Array<{
       x: number;
       y: number;
@@ -70,14 +74,13 @@ export default function CyberGrid() {
         ctx.globalAlpha = p.alpha;
         ctx.fill();
 
-        // Connect nearby particles without expensive shadowBlur
         for (let j = i + 1; j < pLen; j++) {
           const p2 = particles[j];
           const dx = p.x - p2.x;
           const dy = p.y - p2.y;
           const distSq = dx * dx + dy * dy;
 
-          if (distSq < 10000) { // 100px max distance squared (avoids Math.sqrt)
+          if (distSq < 10000) {
             const dist = Math.sqrt(distSq);
             ctx.beginPath();
             ctx.moveTo(p.x, p.y);
@@ -94,7 +97,6 @@ export default function CyberGrid() {
       animationFrameId = requestAnimationFrame(render);
     };
 
-    // Defer start slightly so initial page paint and critical hydration aren't blocked
     let startTimeout: NodeJS.Timeout;
     if (typeof window !== "undefined" && "requestIdleCallback" in window) {
       (window as any).requestIdleCallback(() => {
@@ -103,7 +105,7 @@ export default function CyberGrid() {
     } else {
       startTimeout = setTimeout(() => {
         animationFrameId = requestAnimationFrame(render);
-      }, 300);
+      }, 400);
     }
 
     return () => {
@@ -115,16 +117,23 @@ export default function CyberGrid() {
 
   return (
     <div className="pointer-events-none fixed inset-0 z-0 overflow-hidden">
-      {/* Light Theme Pastel Radial Ambient Glows */}
-      <div className="absolute -top-[20%] left-1/2 -translate-x-1/2 w-[1000px] h-[650px] bg-gradient-to-br from-blue-100/60 via-indigo-100/40 to-transparent blur-[140px] rounded-full pointer-events-none" />
-      <div className="absolute top-[35%] -left-[10%] w-[700px] h-[700px] bg-gradient-to-tr from-sky-100/50 via-purple-100/30 to-transparent blur-[150px] rounded-full pointer-events-none" />
-      <div className="absolute bottom-[5%] -right-[10%] w-[750px] h-[750px] bg-gradient-to-tl from-indigo-100/50 via-blue-100/30 to-transparent blur-[160px] rounded-full pointer-events-none" />
+      {/* High-Performance Native CSS Radial Glows (0ms GPU blur computation) */}
+      <div
+        className="absolute inset-0 pointer-events-none opacity-80"
+        style={{
+          background: `
+            radial-gradient(circle 650px at 50% 0%, rgba(219, 234, 254, 0.5) 0%, transparent 70%),
+            radial-gradient(circle 500px at 0% 35%, rgba(224, 231, 255, 0.4) 0%, transparent 65%),
+            radial-gradient(circle 600px at 100% 75%, rgba(238, 242, 255, 0.45) 0%, transparent 65%)
+          `,
+        }}
+      />
 
       {/* Modern Light Dot Grid */}
       <div
-        className="absolute inset-0 opacity-[0.4]"
+        className="absolute inset-0 opacity-[0.35]"
         style={{
-          backgroundImage: `radial-gradient(rgba(148, 163, 184, 0.4) 1px, transparent 1px)`,
+          backgroundImage: `radial-gradient(rgba(148, 163, 184, 0.35) 1px, transparent 1px)`,
           backgroundSize: "28px 28px",
           maskImage:
             "radial-gradient(ellipse at center, rgba(0,0,0,1) 40%, rgba(0,0,0,0) 85%)",
@@ -133,8 +142,8 @@ export default function CyberGrid() {
         }}
       />
 
-      {/* Interactive Canvas for constellation nodes */}
-      <canvas ref={canvasRef} className="absolute inset-0" />
+      {/* Interactive Canvas for constellation nodes (desktop only) */}
+      <canvas ref={canvasRef} className="hidden md:block absolute inset-0" />
     </div>
   );
 }

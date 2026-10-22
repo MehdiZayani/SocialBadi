@@ -40,7 +40,7 @@ export default function SpotlightCard({
       onMouseMove={handleMouseMove}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
-      className={`relative rounded-2xl border border-slate-200/80 bg-white/80 backdrop-blur-xl overflow-hidden transition-all duration-300 hover:border-blue-400/60 shadow-[0_4px_20px_-4px_rgba(15,23,42,0.06)] hover:shadow-[0_16px_36px_-6px_rgba(59,130,246,0.12)] ${className}`}
+      className={`relative rounded-2xl border border-slate-200/90 bg-white md:bg-white/90 md:backdrop-blur-lg overflow-hidden transition-all duration-300 hover:border-blue-400/60 shadow-[0_4px_20px_-4px_rgba(15,23,42,0.06)] hover:shadow-[0_16px_36px_-6px_rgba(59,130,246,0.12)] ${className}`}
       {...props}
     >
       {/* Dynamic Cursor Spotlight Overlay */}
