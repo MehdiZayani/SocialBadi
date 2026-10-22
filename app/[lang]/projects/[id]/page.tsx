@@ -2,7 +2,7 @@ import React from "react";
 import type { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
-import { notFound } from "next/navigation";
+import { notFound, redirect } from "next/navigation";
 import { 
   ArrowLeft, 
   ExternalLink, 
@@ -27,7 +27,6 @@ export function generateStaticParams() {
   ["fr", "en"].forEach((lang) => {
     projectsData.forEach((project) => {
       params.push({ lang, id: project.slug });
-      params.push({ lang, id: project.id });
     });
   });
   return params;
@@ -120,6 +119,11 @@ export default async function ProjectDetailPage({
 
   if (!project) {
     notFound();
+  }
+
+  // If accessed by old/short id instead of canonical slug, permanently redirect
+  if (id !== project.slug) {
+    redirect(`/${locale}/projects/${project.slug}`);
   }
 
   // JSON-LD structured data for Googlebot

@@ -1,8 +1,8 @@
 import { NextResponse } from 'next/server';
 import type { NextRequest } from 'next/server';
 
-const locales = ['en', 'fr', 'de']; // Supported languages
-const defaultLocale = 'en';
+const locales = ['fr', 'en']; // Supported languages
+const defaultLocale = 'fr';
 
 export function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
@@ -27,10 +27,10 @@ export function middleware(request: NextRequest) {
     return NextResponse.next();
   }
 
-  // Redirect to default locale
+  // Redirect permanently (308) to default locale so search engines understand the canonical structure
   const newUrl = request.nextUrl.clone();
   newUrl.pathname = `/${defaultLocale}${pathname}`;
-  return NextResponse.redirect(newUrl);
+  return NextResponse.redirect(newUrl, 308);
 }
 
 export const config = {

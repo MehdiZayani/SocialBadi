@@ -7,21 +7,21 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   const sitemap: MetadataRoute.Sitemap = [];
 
-  // Root URL
-  sitemap.push({
-    url: baseUrl,
-    lastModified: new Date(),
-    changeFrequency: 'daily',
-    priority: 1.0,
-  });
-
+  // Only include real canonical 200-OK URLs in the sitemap with bidirectional hreflang
   languages.forEach((lang) => {
-    // Language home
+    // Language home (Priority 1.0 for main languages)
     sitemap.push({
       url: `${baseUrl}/${lang}`,
       lastModified: new Date(),
       changeFrequency: 'daily',
-      priority: 0.95,
+      priority: lang === 'fr' ? 1.0 : 0.9,
+      alternates: {
+        languages: {
+          fr: `${baseUrl}/fr`,
+          en: `${baseUrl}/en`,
+          'x-default': `${baseUrl}/fr`,
+        },
+      },
     });
 
     // Main Projects page
@@ -30,6 +30,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified: new Date(),
       changeFrequency: 'weekly',
       priority: 0.9,
+      alternates: {
+        languages: {
+          fr: `${baseUrl}/fr/projects`,
+          en: `${baseUrl}/en/projects`,
+          'x-default': `${baseUrl}/fr/projects`,
+        },
+      },
     });
 
     // Each case study individual project page
@@ -39,6 +46,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
         lastModified: new Date(),
         changeFrequency: 'weekly',
         priority: 0.85,
+        alternates: {
+          languages: {
+            fr: `${baseUrl}/fr/projects/${project.slug}`,
+            en: `${baseUrl}/en/projects/${project.slug}`,
+            'x-default': `${baseUrl}/fr/projects/${project.slug}`,
+          },
+        },
       });
     });
 
@@ -48,6 +62,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified: new Date(),
       changeFrequency: 'monthly',
       priority: 0.3,
+      alternates: {
+        languages: {
+          fr: `${baseUrl}/fr/legal`,
+          en: `${baseUrl}/en/legal`,
+          'x-default': `${baseUrl}/fr/legal`,
+        },
+      },
     });
 
     sitemap.push({
@@ -55,6 +76,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified: new Date(),
       changeFrequency: 'monthly',
       priority: 0.3,
+      alternates: {
+        languages: {
+          fr: `${baseUrl}/fr/privacy`,
+          en: `${baseUrl}/en/privacy`,
+          'x-default': `${baseUrl}/fr/privacy`,
+        },
+      },
     });
   });
 

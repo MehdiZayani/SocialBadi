@@ -32,6 +32,7 @@ export async function generateMetadata({
       languages: {
         fr: "https://socialbadi.com/fr",
         en: "https://socialbadi.com/en",
+        "x-default": "https://socialbadi.com/fr",
       },
     },
   };
