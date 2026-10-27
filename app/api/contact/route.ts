@@ -4,10 +4,12 @@ import { Resend } from 'resend';
 const cleanApiKey = process.env.RESEND_API_KEY?.replace(/['"]/g, '').trim();
 const resend = new Resend(cleanApiKey || 're_placeholder');
 
-// Notification recipients: Mehdi Zayani (CEO) & Yassine Rassas (Head of AI)
+// Notification recipients: Mehdi Zayani (CEO), Yassine Rassas (Head of AI), Sales & Contact inboxes
 const ADMIN_EMAILS = [
   'medmehdizayani1@gmail.com',
-  'yassinerassas777@gmail.com'
+  'yassinerassas777@gmail.com',
+  'sales@socialbadi.com',
+  'contact@socialbadi.com'
 ];
 
 /**
@@ -348,8 +350,13 @@ function buildClientConfirmationHtml({
                   <td style="font-size:13px; color:#475569; line-height:1.6;">
                     Bien cordialement,<br>
                     <strong style="color:#0f172a;">Mehdi Zayani</strong> (Fondateur &amp; CEO)<br>
+                    <strong style="color:#0f172a;">Sarra Ben Salem</strong> (Head of Sales)<br>
                     <strong style="color:#0f172a;">Yassine Rassas</strong> (Head of AI)<br>
-                    <span style="font-size:12px; color:#64748b;">SocialBadi Studio • Paris &amp; International</span>
+                    <span style="font-size:12px; color:#64748b;">SocialBadi Studio • Paris &amp; International</span><br>
+                    <span style="font-size:11px; color:#94a3b8;">
+                      Commercial : <a href="mailto:sales@socialbadi.com" style="color:#2563eb; text-decoration:none;">sales@socialbadi.com</a> | 
+                      Contact : <a href="mailto:contact@socialbadi.com" style="color:#2563eb; text-decoration:none;">contact@socialbadi.com</a>
+                    </span>
                   </td>
                   <td align="right" style="vertical-align:bottom; font-size:11px; color:#94a3b8;">
                     <a href="https://socialbadi.com" style="color:#2563eb; text-decoration:none; font-weight:600;">socialbadi.com</a>
@@ -423,6 +430,7 @@ export async function POST(request: NextRequest) {
       const clientEmailResult = await resend.emails.send({
         from: clientFromAddress,
         to: [email],
+        replyTo: 'sales@socialbadi.com',
         subject: `✨ Confirmation : Votre projet avec SocialBadi Studio`,
         html: clientHtml,
       });

@@ -112,6 +112,7 @@ export default function HomePage({
   const [contactForm, setContactForm] = useState({
     name: "",
     email: "",
+    phone: "",
     company: "",
     service: "webdev",
     message: "",
@@ -988,9 +989,9 @@ export default function HomePage({
               </p>
 
               {/* Direct channels */}
-              <div className="space-y-4 mb-8">
+              <div className="space-y-3.5 mb-8">
                 <a
-                  href="mailto:contact@socialbadi.com"
+                  href="mailto:sales@socialbadi.com"
                   className="flex items-center gap-4 p-4 rounded-2xl bg-white border border-slate-200 hover:border-blue-500 hover:shadow-md transition-all group shadow-sm"
                 >
                   <div className="w-12 h-12 rounded-xl bg-blue-50 border border-blue-200 flex items-center justify-center text-blue-600 group-hover:scale-105 transition-transform">
@@ -998,9 +999,26 @@ export default function HomePage({
                   </div>
                   <div>
                     <span className="text-xs font-mono text-slate-500 block font-semibold">
-                      Email Direct
+                      {locale === "fr" ? "Pôle Commercial & Projets" : "Sales & New Projects"}
                     </span>
                     <span className="text-sm font-bold text-slate-900 group-hover:text-blue-600 transition-colors">
+                      sales@socialbadi.com
+                    </span>
+                  </div>
+                </a>
+
+                <a
+                  href="mailto:contact@socialbadi.com"
+                  className="flex items-center gap-4 p-4 rounded-2xl bg-white border border-slate-200 hover:border-indigo-500 hover:shadow-md transition-all group shadow-sm"
+                >
+                  <div className="w-12 h-12 rounded-xl bg-indigo-50 border border-indigo-200 flex items-center justify-center text-indigo-600 group-hover:scale-105 transition-transform">
+                    <Mail className="w-5 h-5" />
+                  </div>
+                  <div>
+                    <span className="text-xs font-mono text-slate-500 block font-semibold">
+                      {locale === "fr" ? "Contact Général & Studio" : "General & Studio Inquiries"}
+                    </span>
+                    <span className="text-sm font-bold text-slate-900 group-hover:text-indigo-600 transition-colors">
                       contact@socialbadi.com
                     </span>
                   </div>
@@ -1102,6 +1120,20 @@ export default function HomePage({
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div>
                       <label className="text-xs font-mono text-slate-700 block mb-1.5 font-bold">
+                        {locale === "fr" ? "Téléphone / WhatsApp" : "Phone / WhatsApp"} *
+                      </label>
+                      <input
+                        type="tel"
+                        required
+                        value={contactForm.phone}
+                        onChange={(e) => setContactForm({ ...contactForm, phone: e.target.value })}
+                        placeholder={locale === "fr" ? "+33 6 12 34 56 78 / +216..." : "+1 (555) 000-0000"}
+                        className="w-full px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 text-sm focus:outline-none focus:border-blue-500 focus:bg-white transition-colors placeholder:text-slate-400"
+                      />
+                    </div>
+
+                    <div>
+                      <label className="text-xs font-mono text-slate-700 block mb-1.5 font-bold">
                         {locale === "fr" ? "Entreprise / Projet" : "Company / Venture"}
                       </label>
                       <input
@@ -1112,25 +1144,25 @@ export default function HomePage({
                         className="w-full px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 text-sm focus:outline-none focus:border-blue-500 focus:bg-white transition-colors placeholder:text-slate-400"
                       />
                     </div>
+                  </div>
 
-                    <div>
-                      <label htmlFor="contact-service" className="text-xs font-mono text-slate-700 block mb-1.5 font-bold">
-                        {locale === "fr" ? "Discipline Principale" : "Core Discipline"}
-                      </label>
-                      <select
-                        id="contact-service"
-                        name="service"
-                        aria-label={locale === "fr" ? "Discipline Principale" : "Core Discipline"}
-                        value={contactForm.service}
-                        onChange={(e) => setContactForm({ ...contactForm, service: e.target.value })}
-                        className="w-full px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 text-sm focus:outline-none focus:border-blue-500 focus:bg-white transition-colors font-medium"
-                      >
-                        <option value="webdev">{locale === "fr" ? "Application Web Sur-Mesure" : "Custom Web Application & Platform"}</option>
-                        <option value="mobile">{locale === "fr" ? "Application Mobile (iOS & Android)" : "Mobile Application (iOS & Android)"}</option>
-                        <option value="automation">{locale === "fr" ? "Automatisation des Processus Métier" : "Business Process Automation"}</option>
-                        <option value="saas">{locale === "fr" ? "Portail Client & Plateforme Métier" : "Client Portal & Platform"}</option>
-                      </select>
-                    </div>
+                  <div>
+                    <label htmlFor="contact-service" className="text-xs font-mono text-slate-700 block mb-1.5 font-bold">
+                      {locale === "fr" ? "Discipline Principale" : "Core Discipline"}
+                    </label>
+                    <select
+                      id="contact-service"
+                      name="service"
+                      aria-label={locale === "fr" ? "Discipline Principale" : "Core Discipline"}
+                      value={contactForm.service}
+                      onChange={(e) => setContactForm({ ...contactForm, service: e.target.value })}
+                      className="w-full px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 text-sm focus:outline-none focus:border-blue-500 focus:bg-white transition-colors font-medium"
+                    >
+                      <option value="webdev">{locale === "fr" ? "Application Web Sur-Mesure" : "Custom Web Application & Platform"}</option>
+                      <option value="mobile">{locale === "fr" ? "Application Mobile (iOS & Android)" : "Mobile Application (iOS & Android)"}</option>
+                      <option value="automation">{locale === "fr" ? "Automatisation des Processus Métier" : "Business Process Automation"}</option>
+                      <option value="saas">{locale === "fr" ? "Portail Client & Plateforme Métier" : "Client Portal & Platform"}</option>
+                    </select>
                   </div>
 
                   <div>

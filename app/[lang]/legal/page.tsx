@@ -47,9 +47,11 @@ export default function LegalPage() {
 
 • Dénomination : SocialBadi Studio & Engineering
 • Fondateur & Directeur de Publication : Mehdi Zayani (CEO)
+• Head of Sales : Sarra Ben Salem
 • Head of AI : Yassine Rassas
 • Consultant Cyber Sécurité : Mehdi Amemou
-• Email de contact : contact@socialbadi.com
+• Demandes commerciales : sales@socialbadi.com
+• Contact général : contact@socialbadi.com
 • Téléphone : +216 93 304 304`
         },
         {
@@ -102,9 +104,11 @@ Pour exercer ces prérogatives ou obtenir des précisions sur vos droits, vous p
 
 • Entity : SocialBadi Studio & Engineering
 • Founder & Publication Director : Mehdi Zayani (CEO)
+• Head of Sales : Sarra Ben Salem
 • Head of AI : Yassine Rassas
 • Cybersecurity Consultant : Mehdi Amemou
-• Official Inquiries : contact@socialbadi.com
+• Sales & Partnerships : sales@socialbadi.com
+• General Inquiries : contact@socialbadi.com
 • Phone : +216 93 304 304`
         },
         {

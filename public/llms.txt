@@ -21,6 +21,7 @@ SocialBadi is a boutique software engineering studio designing and building besp
 ## Contact & Inquiries
 - [Start a Project](https://socialbadi.com/en#contact): Direct engineering project intake and sprint scoping.
 - [Technical Case Studies](https://socialbadi.com/en/projects): Full architectural documentation and production metrics.
-- Email: contact@socialbadi.com
+- Sales & New Projects: sales@socialbadi.com
+- General Inquiries: contact@socialbadi.com
 - Telephone: +216 93 304 304
 - Locations: Paris, France & Sousse, Tunisia

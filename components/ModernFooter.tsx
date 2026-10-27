@@ -177,17 +177,26 @@ export default function ModernFooter({ locale = "fr" }: { locale?: "fr" | "en" }
             </h3>
             <div className="space-y-3 text-xs text-slate-600">
               <a
-                href="mailto:contact@socialbadi.com"
-                className="flex items-center gap-2 hover:text-blue-600 transition-colors"
+                href="mailto:sales@socialbadi.com"
+                className="flex items-center gap-2 hover:text-blue-600 transition-colors group"
+                title="Pôle Commercial & Projets"
               >
-                <Mail className="w-3.5 h-3.5 text-blue-600" />
+                <Mail className="w-3.5 h-3.5 text-blue-600 shrink-0" />
+                <span className="font-medium text-slate-800 group-hover:text-blue-600 transition-colors">sales@socialbadi.com</span>
+              </a>
+              <a
+                href="mailto:contact@socialbadi.com"
+                className="flex items-center gap-2 hover:text-blue-600 transition-colors group"
+                title="Studio & Support Général"
+              >
+                <Mail className="w-3.5 h-3.5 text-slate-400 group-hover:text-blue-600 shrink-0 transition-colors" />
                 <span className="font-medium">contact@socialbadi.com</span>
               </a>
               <a
                 href="tel:+21693304304"
                 className="flex items-center gap-2 hover:text-blue-600 transition-colors"
               >
-                <Phone className="w-3.5 h-3.5 text-blue-600" />
+                <Phone className="w-3.5 h-3.5 text-emerald-600 shrink-0" />
                 <span className="font-medium">+216 93 304 304</span>
               </a>
               <div className="flex items-center gap-2 text-slate-500">

@@ -7,7 +7,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "generate:ads": "node scripts/generate-ad-creative.js"
+    "generate:ads": "node scripts/generate-ad-creative.js",
+    "generate:favicons": "node scripts/generate-favicons.js"
   },
   "dependencies": {
     "@formatjs/intl-localematcher": "^0.5.10",

@@ -28,6 +28,7 @@ interface TeamMember {
   techStack: string[];
   linkedin?: string;
   github?: string;
+  email?: string;
 }
 
 const TEAM_MEMBERS: TeamMember[] = [
@@ -51,6 +52,29 @@ const TEAM_MEMBERS: TeamMember[] = [
     badgeColor: "bg-blue-50 text-blue-700 border-blue-200",
     techStack: ["Product Strategy", "Next.js", "Enterprise SaaS", "Growth Operations", "Agile Sprints"],
     linkedin: "https://www.linkedin.com/company/socialbadi",
+    email: "contact@socialbadi.com",
+  },
+  {
+    name: "Sarra Ben Salem",
+    role: {
+      fr: "Head of Sales",
+      en: "Head of Sales"
+    },
+    specialty: {
+      fr: "Développement Commercial, Cadrage Stratégique & Partenariats B2B",
+      en: "Commercial Growth, Strategic Scoping & B2B Partnerships"
+    },
+    bio: {
+      fr: "Accompagne les dirigeants et fondateurs dans le cadrage de leurs projets tech, la qualification des besoins stratégiques et la structuration de partenariats digitaux à fort ROI.",
+      en: "Partners with founders and enterprise leaders to scope high-impact technical briefs, negotiate strategic partnerships, and accelerate sales pipeline execution."
+    },
+    photo: "/team/head-of-sales.jpg",
+    initials: "SB",
+    accentBadge: "Sales & Growth",
+    badgeColor: "bg-amber-50 text-amber-700 border-amber-200",
+    techStack: ["Enterprise B2B", "Deal Structuring", "Pipeline Scaling", "CRM Strategy", "Client Success", "Account Growth"],
+    linkedin: "https://www.linkedin.com/company/socialbadi",
+    email: "sales@socialbadi.com",
   },
   {
     name: "Yassine Rassas",
@@ -105,7 +129,7 @@ export default function TeamSection({ locale = "fr" }: { locale?: "fr" | "en" })
 
   return (
     <div className="w-full">
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
         {TEAM_MEMBERS.map((member, idx) => {
           const hasImage = member.photo && !imageErrorMap[member.name];
 
@@ -149,17 +173,28 @@ export default function TeamSection({ locale = "fr" }: { locale?: "fr" | "en" })
                       {member.accentBadge}
                     </span>
 
-                    {member.linkedin && (
-                      <a
-                        href={member.linkedin}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="p-2 rounded-xl bg-slate-50 border border-slate-200 text-slate-500 hover:text-blue-600 hover:border-blue-300 transition-all shadow-sm"
-                        title={`LinkedIn - ${member.name}`}
-                      >
-                        <Linkedin className="w-4 h-4" />
-                      </a>
-                    )}
+                    <div className="flex items-center gap-1.5">
+                      {member.email && (
+                        <a
+                          href={`mailto:${member.email}`}
+                          className="p-2 rounded-xl bg-slate-50 border border-slate-200 text-slate-500 hover:text-blue-600 hover:border-blue-300 transition-all shadow-sm"
+                          title={`Email - ${member.email}`}
+                        >
+                          <Mail className="w-3.5 h-3.5" />
+                        </a>
+                      )}
+                      {member.linkedin && (
+                        <a
+                          href={member.linkedin}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="p-2 rounded-xl bg-slate-50 border border-slate-200 text-slate-500 hover:text-blue-600 hover:border-blue-300 transition-all shadow-sm"
+                          title={`LinkedIn - ${member.name}`}
+                        >
+                          <Linkedin className="w-3.5 h-3.5" />
+                        </a>
+                      )}
+                    </div>
                   </div>
                 </div>
 
@@ -215,8 +250,8 @@ export default function TeamSection({ locale = "fr" }: { locale?: "fr" | "en" })
             </h3>
             <p className="text-xs text-slate-600 mt-0.5 max-w-2xl">
               {locale === "fr"
-                ? "Chaque projet bénéficie d'un suivi direct par nos leads techniques en IA et cybersécurité. Pas d'intermédiaires, une communication transparente."
-                : "Every deployment is personally supervised by our leadership, AI architects, and cybersecurity consultants. Zero overhead, pure accountability."}
+                ? "Chaque projet bénéficie d'un cadrage stratégique par notre direction commerciale et d'un suivi direct par nos leads en IA et cybersécurité. Pas d'intermédiaires, une communication transparente."
+                : "Every deployment benefits from executive sales scoping and hands-on guidance by our AI architects and cybersecurity consultants. Zero overhead, pure accountability."}
             </p>
           </div>
         </div>
