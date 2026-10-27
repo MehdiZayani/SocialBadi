@@ -130,6 +130,14 @@ export default function HomePage({
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(contactForm),
       });
+
+      // Track Meta Pixel Lead conversion event
+      if (typeof window !== "undefined" && (window as any).fbq) {
+        (window as any).fbq("track", "Lead", {
+          content_name: contactForm.service,
+          currency: "EUR",
+        });
+      }
     } catch {
       // Continue anyway for optimal user feedback
     }
